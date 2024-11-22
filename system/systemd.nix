@@ -17,6 +17,6 @@
       Restart = "always";
       RestartSec = 12;
     };
-    wantedBy = "default.target";
+    wantedBy = [ "default.target" ];
   };
 }
