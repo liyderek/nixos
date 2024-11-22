@@ -3,7 +3,7 @@
   systemd.services.spotifyd = {
     enable = true;
     description = "A spotify playing daemon";
-    documentation = "https://github.com/Spotifyd/spotifyd";
+    documentation = [ "https://github.com/Spotifyd/spotifyd" ];
     wants = [
       "network-online.target"
       "sound.target"
