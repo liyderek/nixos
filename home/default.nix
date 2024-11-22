@@ -34,7 +34,7 @@
     spotify
     nix-init
     passt
-    raspotify
+    spotifyd
   ];
 
   imports = [
