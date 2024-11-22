@@ -6,6 +6,7 @@
     ./chinese.nix
     ./distrobox.nix
     ./binfmt.nix
+    ./systemd.nix
   ];
 
   nixpkgs.overlays = [
