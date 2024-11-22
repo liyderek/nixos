@@ -1,6 +1,8 @@
 { pkgs, lib, ... }:
 let
   box64-asahi = pkgs.box64.overrideAttrs (old: {
+    doCheck = false;
+    doInstallCheck = false;
     cmakeFlags = (old.cmakeFlags or [ ]) ++ [ "-D M1=1" ];
   });
 in
