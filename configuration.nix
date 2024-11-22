@@ -125,7 +125,6 @@
     gcc14
     chromium
     distrobox
-    box64
     krunvm
     libtinfo
     libgcc
