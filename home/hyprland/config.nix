@@ -302,7 +302,7 @@
 
     extraConfig = "
       monitor=DVI-I-1, 2560x1440@144.00000, 0x0, 1
-      monitor=eDP-1, 2560x1440@60.00000, 2560x1120, 2
+      monitor=eDP-1, 2560x1600@60.00000, 2560x1120, 2
 
       xwayland {
         force_zero_scaling = true
