@@ -309,7 +309,7 @@
       monitor=eDP-1, preferred, 2560x640, 2
 
       xwayland {
-        # force_zero_scaling = true
+        force_zero_scaling = true
       }
     ";
   };
