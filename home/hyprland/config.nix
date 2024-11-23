@@ -22,6 +22,10 @@
         "hyprlock"
       ];
 
+      env = [
+        "XCURSOR_SIZE,22"
+      ];
+
       input = {
         kb_layout = "us,cn";
         kb_options = "grp:alt_caps_toggle";
