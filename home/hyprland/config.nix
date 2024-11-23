@@ -301,7 +301,8 @@
     };
 
     extraConfig = "
-      monitor=,preferred,auto,auto
+      monitor=DVI-I-1, 2560x1440@144, 0x0, 1
+      monitor=eDP-1, 2560x1440@60, 2560x1120, 2
 
       xwayland {
         force_zero_scaling = true
