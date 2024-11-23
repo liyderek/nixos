@@ -11,5 +11,6 @@
     ./apps.nix
     ./muvm.nix
     ./git.nix
+    ./qt.nix
   ];
 }
