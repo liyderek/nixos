@@ -17,12 +17,14 @@
     QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_STYLE_OVERRIDE = "kvantum";
     MOZ_ENABLE_WAYLAND = "1";
-    # WLR_BACKEND = "vulkan";
-    # WLR_RENDERER = "vulkan";
-    WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_BACKEND = "vulkan";
+    WLR_RENDERER = "vulkan";
+    # WLR_NO_HARDWARE_CURSORS = "1";
     XDG_SESSION_TYPE = "wayland";
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
     GTK_THEME = "Catppuccin-Mocha-Compact-Lavender-Dark";
+    GDK_SCALE = 2;
+    XCURSOR_SIZE = 22;
   };
 }
