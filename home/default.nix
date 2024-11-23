@@ -35,6 +35,7 @@
     nix-init
     passt
     spotifyd
+    jetbrains.clion
   ];
 
   imports = [
