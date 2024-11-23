@@ -166,8 +166,8 @@
         ",Print, exec, grimblast --notify --cursor --freeze copy area"
 
         # switch focus
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
+        "$mainMod, left, workspace, -1"
+        "$mainMod, right, workspace, +1"
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
