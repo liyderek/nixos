@@ -20,7 +20,6 @@
     nil
     nixfmt-rfc-style
     fzf
-    neofetch
     pfetch
     nerdfetch
     pamixer
@@ -29,10 +28,8 @@
     dconf-editor
     blueman
     altserver-linux
-    bluetuith
     irssi
     nix-init
-    passt
     jetbrains.clion
     renderdoc
   ];

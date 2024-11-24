@@ -124,10 +124,6 @@
     vcpkg-tool
     gcc14
     chromium
-    distrobox
-    krunvm
-    libtinfo
-    libgcc
   ];
 
   system.stateVersion = "24.11"; # dont change
