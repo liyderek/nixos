@@ -31,11 +31,10 @@
     altserver-linux
     bluetuith
     irssi
-    spotify
     nix-init
     passt
-    spotifyd
     jetbrains.clion
+    renderdoc
   ];
 
   imports = [
