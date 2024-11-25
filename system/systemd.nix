@@ -1,22 +1,14 @@
 { lib, pkgs, ... }:
 {
-  systemd.services.spotifyd = {
-    enable = true;
-    description = "A spotify playing daemon";
-    documentation = [ "https://github.com/Spotifyd/spotifyd" ];
-    wants = [
-      "network-online.target"
-      "sound.target"
-    ];
-    after = [
-      "network-online.target"
-      "sound.target"
-    ];
-    serviceConfig = {
-      ExecStart = "${lib.getExe pkgs.spotifyd} --no-daemon";
-      Restart = "always";
-      RestartSec = 12;
+  systemd.user.services.kanshi = {
+    description = "kanshi daemon";
+    environment = {
+      WAYLAND_DISPLAY = "wayland-1";
+      DISPLAY = ":0";
     };
-    wantedBy = [ "default.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''${pkgs.kanshi}/bin/kanshi -c kanshi_config_file'';
+    };
   };
 }

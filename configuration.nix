@@ -124,6 +124,7 @@
     vcpkg-tool
     gcc14
     chromium
+    kanshi
   ];
 
   system.stateVersion = "24.11"; # dont change
