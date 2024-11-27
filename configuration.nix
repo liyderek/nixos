@@ -64,9 +64,6 @@
   time.timeZone = "America/Los_Angeles";
 
   services.xserver.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  services.desktopManager.plasma6.enable = true;
   services.xserver.displayManager.gdm = {
     enable = true;
     wayland = true;
@@ -112,7 +109,6 @@
     git
     vim
     libgcc
-    clang-tools
     cmake
     codespell
     conan

@@ -6,7 +6,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     apple-silicon-support = {
-      url = "github:oliverbestmann/nixos-apple-silicon";
+      url = "github:tpwrules/nixos-apple-silicon";
     };
 
     hyprland = {
