@@ -21,17 +21,17 @@
     nixfmt-rfc-style
     fzf
     pfetch
-    nerdfetch
     pamixer
     wl-clipboard
     cliphist
     dconf-editor
     blueman
-    altserver-linux
     irssi
     nix-init
     jetbrains.clion
     renderdoc
+    nix-du
+    graphviz
   ];
 
   imports = [

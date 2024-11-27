@@ -110,17 +110,8 @@
     vim
     libgcc
     cmake
-    codespell
-    conan
-    cppcheck
-    doxygen
-    gtest
-    lcov
-    vcpkg
-    vcpkg-tool
     gcc14
     chromium
-    kanshi
     gparted
     ryujinx # nintendo
   ];
