@@ -126,6 +126,7 @@
     chromium
     kanshi
     gparted
+    ryujinx # nintendo
   ];
 
   system.stateVersion = "24.11"; # dont change
