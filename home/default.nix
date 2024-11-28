@@ -32,6 +32,7 @@
     renderdoc
     nix-du
     graphviz
+    distrobox
   ];
 
   imports = [
