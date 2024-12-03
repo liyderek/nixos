@@ -114,6 +114,7 @@
     chromium
     gparted
     ryujinx # nintendo
+    mkosi
   ];
 
   system.stateVersion = "24.11"; # dont change
