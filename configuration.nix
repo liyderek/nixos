@@ -17,8 +17,27 @@
     (import ./system { inherit pkgs; })
   ];
 
+  boot.loader = {
+    grub = {
+      enable = true;
+      useOSProber = true;
+      copyKernels = true;
+      efiInstallAsRemovable = true;
+      efiSupport = true;
+      fsIdentifier = "label";
+      devices = [ "nodev" ];
+      extraEntries = ''
+        menuentry "Reboot" {
+            reboot
+        }
+        menuentry "Poweroff" {
+            halt
+        }
+      '';
+    };
+  };
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
 
   # unfree
