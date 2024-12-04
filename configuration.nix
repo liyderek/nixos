@@ -26,6 +26,9 @@
       efiSupport = true;
       fsIdentifier = "label";
       devices = [ "nodev" ];
+      gfxmodeEfi = "2560x1600";
+      font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNerdFont-Regular.ttf";
+      fontSize = 36;
       extraEntries = ''
         menuentry "Reboot" {
             reboot
