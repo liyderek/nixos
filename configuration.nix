@@ -122,6 +122,10 @@
     enable = true;
     wayland = true;
   };
+  services.xserver.displayManager.autoLogin = {
+    enable = true;
+    user = "derek";
+  };
 
   # set sudo stuff
   security.sudo.wheelNeedsPassword = false;
