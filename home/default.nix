@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  catppuccin,
   ...
 }:
 
@@ -36,6 +37,7 @@
   ];
 
   imports = [
+    catppuccin.homeManagerModules.catppuccin
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })

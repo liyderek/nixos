@@ -18,16 +18,23 @@
       url = "github:catppuccin/starship";
       flake = false;
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+    inputs@{
+      nixpkgs,
+      catppuccin,
+      home-manager,
+      ...
+    }:
     {
       nixosConfigurations = {
         dereknixos = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = [
             ./configuration.nix
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -37,7 +44,7 @@
               home-manager.users.derek = import ./home;
 
               home-manager.extraSpecialArgs = {
-                inherit inputs nixpkgs;
+                inherit inputs nixpkgs catppuccin;
               };
             }
           ];
