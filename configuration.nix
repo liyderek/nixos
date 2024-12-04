@@ -17,29 +17,30 @@
     (import ./system { inherit pkgs; })
   ];
 
-  boot.loader = {
-    grub = {
-      enable = true;
-      useOSProber = true;
-      copyKernels = true;
-      efiInstallAsRemovable = true;
-      efiSupport = true;
-      fsIdentifier = "label";
-      devices = [ "nodev" ];
-      gfxmodeEfi = "2560x1600";
-      # font = lib.mkForce "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNerdFont-Regular.ttf";
-      fontSize = 72;
-      extraEntries = ''
-        menuentry "Reboot" {
-            reboot
-        }
-        menuentry "Poweroff" {
-            halt
-        }
-      '';
-      catppuccin.enable = true;
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        useOSProber = true;
+        copyKernels = true;
+        efiInstallAsRemovable = true;
+        efiSupport = true;
+        fsIdentifier = "label";
+        devices = [ "nodev" ];
+        gfxmodeEfi = "2560x1600";
+        # font = lib.mkForce "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNerdFont-Regular.ttf";
+        fontSize = 72;
+        extraEntries = ''
+          menuentry "Reboot" {
+              reboot
+          }
+          menuentry "Poweroff" {
+              halt
+          }
+        '';
+        catppuccin.enable = true;
+      };
     };
-
     plymouth = {
       enable = true;
       theme = "rings";
