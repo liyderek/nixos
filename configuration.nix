@@ -69,6 +69,7 @@
     # It will just not appear on screen unless a key is pressed
     # loader.timeout = 0;
   };
+  boot.initrd.systemd.enable = true;
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
