@@ -305,8 +305,9 @@
     };
 
     extraConfig = "
-      monitor=DVI-I-1, preferred, 0x0, 1
-      monitor=eDP-1, preferred, 2560x640, 2
+      # monitor=DVI-I-1, preferred, 0x0, 1
+      # monitor=eDP-1, preferred, 2560x640, 2
+      monitor=eDP-1, preferred, 0x0, 1
 
       xwayland {
         # force_zero_scaling = true
