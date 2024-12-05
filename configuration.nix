@@ -79,6 +79,8 @@
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   # unfree
   nixpkgs.config.allowUnfree = true;
