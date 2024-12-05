@@ -43,7 +43,7 @@
           GRUB_TIMEOUT_STYLE=hidden
         '';
       };
-      # timeout = 0;
+      timeout = 0;
     };
     plymouth = {
       enable = true;
@@ -125,10 +125,11 @@
   time.timeZone = "America/Los_Angeles";
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
+  # services.xserver.displayManager.gdm = {
+  #   enable = true;
+  #   wayland = true;
+  # };
+  services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.autoLogin = {
     enable = true;
     user = "derek";
