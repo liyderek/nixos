@@ -42,8 +42,8 @@
         extraConfig = ''
           GRUB_TIMEOUT_STYLE=hidden
         '';
-        timeout = 0;
       };
+      timeout = 0;
     };
     plymouth = {
       enable = true;
