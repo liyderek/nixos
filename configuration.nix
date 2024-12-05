@@ -129,10 +129,19 @@
   #   enable = true;
   #   wayland = true;
   # };
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.autoLogin = {
+  # services.xserver.displayManager.autoLogin = {
+  #   enable = true;
+  #   user = "derek";
+  # };
+  services.greetd = {
     enable = true;
-    user = "derek";
+    settings = rec {
+      initial_session = {
+        command = "${pkgs.hyprland}/bin/Hyprland";
+        user = "derek";
+      };
+      default_session = initial_session;
+    };
   };
 
   # set sudo stuff
