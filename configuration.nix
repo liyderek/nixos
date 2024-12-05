@@ -54,6 +54,9 @@
       #     selected_themes = [ "rings" ];
       #   })
       # ];
+      extraConfig = ''
+        ShowDelay=0
+      '';
     };
 
     # Enable "Silent Boot"
@@ -63,13 +66,9 @@
       # systemd.enable = true;
     };
     kernelParams = [
-      "logo.nologo"
-      "fbcon=nodefer"
-      "bgrt_disable"
-      "vt.global_cursor_default=0"
       "quiet"
-      "systemd.show_status=false"
-      "rd.udev.log_level=3"
+      "loglevel=3"
+      "udev.log-priority=3"
       "splash"
     ];
     # Hide the OS choice for bootloaders.
