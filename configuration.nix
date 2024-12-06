@@ -143,6 +143,10 @@
       default_session = initial_session;
     };
   };
+  systemd.services.greetd = {
+    serviceConfig.Type = "idle";
+    unitConfig.After = [ "docker.service" ];
+  };
 
   # set sudo stuff
   security.sudo.wheelNeedsPassword = false;
