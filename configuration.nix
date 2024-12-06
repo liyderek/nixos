@@ -145,6 +145,7 @@
   };
   systemd.services.greetd = {
     serviceConfig.Type = "idle";
+    serviceConfig.ExecStartPre = "sleep 2";
     unitConfig.After = [ "dlm.service" ];
   };
 
