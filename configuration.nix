@@ -145,7 +145,7 @@
   };
   systemd.services.greetd = {
     serviceConfig.Type = "idle";
-    unitConfig.After = [ "docker.service" ];
+    unitConfig.After = [ "dlm.service" ];
   };
 
   # set sudo stuff
