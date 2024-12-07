@@ -133,21 +133,25 @@
   #   enable = true;
   #   user = "derek";
   # };
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "derek";
-      };
-      default_session = initial_session;
-    };
-  };
-  systemd.services.greetd = {
-    serviceConfig.Type = "idle";
-    serviceConfig.ExecStartPre = "/run/current-system/sw/bin/sleep 2";
-    unitConfig.After = [ "dlm.service" ];
-  };
+
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+
+  # services.greetd = {
+  #   enable = true;
+  #   settings = rec {
+  #     initial_session = {
+  #       command = "${pkgs.hyprland}/bin/Hyprland";
+  #       user = "derek";
+  #     };
+  #     default_session = initial_session;
+  #   };
+  # };
+  # systemd.services.greetd = {
+  #   serviceConfig.Type = "idle";
+  #   serviceConfig.ExecStartPre = "/run/current-system/sw/bin/sleep 2";
+  #   unitConfig.After = [ "dlm.service" ];
+  # };
 
   # set sudo stuff
   security.sudo.wheelNeedsPassword = false;
