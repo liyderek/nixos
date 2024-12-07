@@ -19,8 +19,6 @@
       flake = false;
     };
     catppuccin.url = "github:catppuccin/nix";
-
-    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs =
@@ -28,7 +26,6 @@
       nixpkgs,
       catppuccin,
       home-manager,
-      nixos-cosmic,
       ...
     }:
     {
@@ -38,13 +35,6 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
-            {
-              nix.settings = {
-                substituters = [ "https://cosmic.cachix.org/" ];
-                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-              };
-            }
-            nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
