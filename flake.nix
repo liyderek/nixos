@@ -39,7 +39,7 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
-            inputs.nix-doom-emacs-unstraightened.hmModule
+            # inputs.nix-doom-emacs-unstraightened.hmModule
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
