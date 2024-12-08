@@ -39,9 +39,11 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
-            # inputs.nix-doom-emacs-unstraightened.hmModule
             home-manager.nixosModules.home-manager
             {
+              home-manager.modules = [
+                inputs.nix-doom-emacs-unstraightened.hmModule
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
