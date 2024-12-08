@@ -19,6 +19,8 @@
         light = "One Light";
         dark = "Catppuccin Mocha";
       };
+      ui_font_family = "JetBrainsMono Nerd Font";
+      buffer_font_family = "JetBrainsMono Nerd Font";
     };
   };
 }
