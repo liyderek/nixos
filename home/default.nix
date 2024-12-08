@@ -35,6 +35,7 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
+    lutris
   ];
 
   imports = [
