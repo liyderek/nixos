@@ -3,7 +3,6 @@
   config,
   pkgs,
   catppuccin,
-  nix-doom-emacs-unstraightened,
   ...
 }:
 
@@ -42,14 +41,12 @@
 
   imports = [
     catppuccin.homeManagerModules.catppuccin
-    nix-doom-emacs-unstraightened.hmModule
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })
     (import ./misc { inherit pkgs config; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
-    (import ./emacs { inherit inputs pkgs; })
   ];
 
   home.stateVersion = "24.11";
