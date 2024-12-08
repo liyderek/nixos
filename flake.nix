@@ -30,6 +30,7 @@
       nixpkgs,
       catppuccin,
       home-manager,
+      nix-doom-emacs-unstraightened,
       ...
     }:
     {
@@ -39,7 +40,6 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
-            inputs.nix-doom-emacs-unstraightened.hmModule
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -49,7 +49,12 @@
               home-manager.users.derek = import ./home;
 
               home-manager.extraSpecialArgs = {
-                inherit inputs nixpkgs catppuccin;
+                inherit
+                  inputs
+                  nixpkgs
+                  catppuccin
+                  nix-doom-emacs-unstraightened
+                  ;
               };
             }
           ];
