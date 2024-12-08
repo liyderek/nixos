@@ -84,6 +84,18 @@
         "type": "github"
       }
     },
+    "doom-config": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-BOtoLo7r4Jk06uVSo996Cd96WSFgpaMjQmfPDSS8Lu8=",
+        "type": "file",
+        "url": "https://github.com/danielkrajnik/doom-emacs-configuration"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/danielkrajnik/doom-emacs-configuration"
+      }
+    },
     "doomemacs": {
       "flake": false,
       "locked": {
@@ -504,6 +516,7 @@
         "apple-silicon-support": "apple-silicon-support",
         "catppuccin": "catppuccin",
         "catppuccin-starship": "catppuccin-starship",
+        "doom-config": "doom-config",
         "home-manager": "home-manager",
         "hypr-contrib": "hypr-contrib",
         "hyprland": "hyprland",
