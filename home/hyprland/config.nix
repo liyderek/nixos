@@ -133,6 +133,10 @@
         ];
       };
 
+      render = {
+        explicit_sync = 0;
+      };
+
       bind = [
         # show keybinds list
         "$mainMod, F1, exec, show-keybinds"
