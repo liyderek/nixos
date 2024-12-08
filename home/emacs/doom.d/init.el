@@ -20,11 +20,11 @@
        :ui
        doom
        doom-dashboard
-       modeline
-       nav-flash
-       ophints
-       (popup +defaults)
-       window-select
+       ;; modeline
+       ;; nav-flash
+       ;; ophints
+       ;; (popup +defaults)
+       ;; window-select
 
        :editor
        evil
@@ -33,16 +33,16 @@
        undo
 
        :term
-       eshell
-       vterm
+       ;; eshell
+       ;; vterm
 
        :os
-       (:if (featurep :system 'macos) macos)
-       (tty +osc)
+       ;; (:if (featurep :system 'macos) macos)
+       ;; (tty +osc)
 
        :lang
-       emacs-lisp
-       (nix +lsp)
+       ;; emacs-lisp
+       ;; (nix +lsp)
 
        :config
        (default +bindings +smartparens))
