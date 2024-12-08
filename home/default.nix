@@ -35,7 +35,7 @@
     graphviz
     distrobox
     zed-editor
-    clangd
+    llvmPackages_19.clang-tools
   ];
 
   imports = [
