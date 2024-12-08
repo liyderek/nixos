@@ -298,7 +298,7 @@
         "float,title:^(branchdialog)$"
         "float,title:^(Confirm to replace files)$"
         "float,title:^(File Operation Progress)$"
-        "float,title:^(Legcord)$"
+        "float,title:^(legcord)$"
 
         "opacity 0.0 override,class:^(xwaylandvideobridge)$"
         "noanim,class:^(xwaylandvideobridge)$"
