@@ -196,6 +196,7 @@
     gparted
     ryujinx # nintendo
     mkosi
+    ripgrep
   ];
 
   system.stateVersion = "24.11"; # dont change
