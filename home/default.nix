@@ -35,6 +35,7 @@
     graphviz
     distrobox
     zed-editor
+    clangd
   ];
 
   imports = [
