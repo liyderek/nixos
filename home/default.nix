@@ -35,7 +35,7 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
-    python310
+    python3
     nodejs
   ];
 
