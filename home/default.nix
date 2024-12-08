@@ -36,6 +36,7 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
+    python314
   ];
 
   imports = [
