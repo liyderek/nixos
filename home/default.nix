@@ -40,7 +40,7 @@
 
   imports = [
     catppuccin.homeManagerModules.catppuccin
-    (import nix-doom-emacs-unstraightened.hmModule { inherit inputs; })
+    nix-doom-emacs-unstraightened.hmModule
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })
