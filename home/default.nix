@@ -34,6 +34,7 @@
     nix-du
     graphviz
     distrobox
+    zed-editor
   ];
 
   imports = [
