@@ -11,6 +11,7 @@
     pkgs.twemoji-color-font
     pkgs.noto-fonts-emoji
     pkgs.meslo-lg
+    pkgs.symbola
   ];
 
   gtk = {
