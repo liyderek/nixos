@@ -117,8 +117,8 @@
 
         animation = [
           # Windows
-          "windowsIn, 1, 3, easeOutCubic, popin 30%" # window open
-          "windowsOut, 1, 3, fluent_decel, popin 70%" # window close.
+          "windowsIn, 1, 3, easeOutCubic, popin 80%" # window open
+          "windowsOut, 1, 3, fluent_decel, popin 80%" # window close.
           "windowsMove, 1, 2, easeinoutsine, slide" # everything in between, moving, dragging, resizing.
 
           # Fade
