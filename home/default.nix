@@ -37,6 +37,7 @@
     distrobox
     llvmPackages_19.clang-tools
     python310
+    nodejs
   ];
 
   imports = [
