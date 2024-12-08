@@ -2,7 +2,7 @@
 {
   programs.doom-emacs = {
     enable = true;
-    doomDir = ./doom.d;
+    doomDir = inputs.doom-config;
     emacs = pkgs.emacs30-pgtk;
   };
 }

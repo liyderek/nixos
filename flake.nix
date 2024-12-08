@@ -23,6 +23,9 @@
     # doom emacs
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
+
+    doom-config.url = "https://github.com/danielkrajnik/doom-emacs-configuration";
+    doom-config.flake = false;
   };
 
   outputs =
