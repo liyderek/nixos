@@ -17,7 +17,4 @@
 (doom!
        :ui
        doom
-       doom-dashboard
-       
-       :config
-       (default +bindings +smartparens))
+       doom-dashboard)
