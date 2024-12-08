@@ -44,6 +44,7 @@
     (import ./waybar { inherit inputs config pkgs; })
     (import ./misc { inherit pkgs config; })
     (import ./scripts { inherit pkgs; })
+    (import ./swaync { inherit pkgs; })
   ];
 
   home.stateVersion = "24.11";
