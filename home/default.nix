@@ -34,7 +34,6 @@
     nix-du
     graphviz
     distrobox
-    zed-editor
     llvmPackages_19.clang-tools
   ];
 
