@@ -35,7 +35,6 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
-    lutris
   ];
 
   imports = [
@@ -46,6 +45,7 @@
     (import ./misc { inherit pkgs config; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
+    (import ./emacs { inherit inputs pkgs; })
   ];
 
   home.stateVersion = "24.11";

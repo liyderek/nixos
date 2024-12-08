@@ -19,6 +19,10 @@
       flake = false;
     };
     catppuccin.url = "github:catppuccin/nix";
+
+    # doom emacs
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
+    nix-doom-emacs-unstraightened.inputs.nixpkgs.follows = "";
   };
 
   outputs =
@@ -35,6 +39,7 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
+            inputs.nix-doom-emacs-unstraightened.hmModule
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
