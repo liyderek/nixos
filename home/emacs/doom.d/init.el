@@ -17,4 +17,5 @@
 (doom!
         :ui
        doom
-       doom-dashboard)
+       ;; doom-dashboard
+       )
