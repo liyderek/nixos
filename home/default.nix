@@ -39,7 +39,7 @@
     nodejs
     obs-studio
 
-    emacs
+    emacsPgtk
     ripgrep
     coreutils
     fd
