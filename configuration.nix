@@ -188,7 +188,10 @@
   # emacs
   nixpkgs.overlays = [
     (import (
-      builtins.fetchTarball "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"
+      builtins.fetchTarball {
+        url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+        sha256 = "";
+      }
     ))
   ];
 
