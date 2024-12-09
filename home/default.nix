@@ -38,6 +38,12 @@
     python3
     nodejs
     obs-studio
+
+    emacs
+    ripgrep
+    coreutils
+    fd
+    clang
   ];
 
   imports = [
