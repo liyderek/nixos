@@ -37,6 +37,7 @@
     llvmPackages_19.clang-tools
     python3
     nodejs
+    obs-studio
   ];
 
   imports = [
