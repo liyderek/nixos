@@ -103,6 +103,14 @@
           "formatting" = {
             "command" = [ "nixfmt" ];
           };
+          "options" = {
+            "nixos" = {
+              "expr" = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.<name>.options";
+            };
+            "home-manager" = {
+              "expr" = "(builtins.getFlake \"/etc/nixos\").homeConfigurations.<name>.options";
+            };
+          };
         };
       };
 
