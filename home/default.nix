@@ -18,7 +18,6 @@
     libgcc
     gdb
     lldb
-    nil
     nixfmt-rfc-style
     fzf
     pfetch
@@ -39,6 +38,8 @@
     nodejs
     obs-studio
     lunarvim
+    nixd
+    lazygit
   ];
 
   imports = [
