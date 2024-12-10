@@ -40,6 +40,7 @@
     obs-studio
     tree-sitter
     python312Packages.pynvim
+    fd
   ];
 
   imports = [
