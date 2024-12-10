@@ -39,6 +39,7 @@
     nodejs
     obs-studio
     tree-sitter
+    python312Packages.pynvim
   ];
 
   imports = [
