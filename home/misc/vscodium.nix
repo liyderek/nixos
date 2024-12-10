@@ -107,9 +107,6 @@
             "nixos" = {
               "expr" = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.dereknixos.options";
             };
-            "home-manager" = {
-              "expr" = "(builtins.getFlake \"/etc/nixos\").homeConfigurations.dereknixos.options";
-            };
           };
         };
       };
