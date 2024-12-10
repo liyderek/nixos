@@ -41,6 +41,7 @@
     tree-sitter
     python312Packages.pynvim
     fd
+    gnumake
   ];
 
   imports = [
