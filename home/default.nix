@@ -38,7 +38,7 @@
     python3
     nodejs
     obs-studio
-    tree-sitter-cli
+    tree-sitter
   ];
 
   imports = [
