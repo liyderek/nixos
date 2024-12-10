@@ -98,7 +98,7 @@
       "nix.enableLanguageServer" = true;
 
       "nix.serverSettings" = {
-        "nil" = {
+        "nixd" = {
           "formatting" = {
             "command" = [ "nixfmt" ];
           };
