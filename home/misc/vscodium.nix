@@ -96,6 +96,7 @@
 
       # nix ide
       "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nixd";
 
       "nix.serverSettings" = {
         "nixd" = {
