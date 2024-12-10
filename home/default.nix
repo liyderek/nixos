@@ -38,10 +38,7 @@
     python3
     nodejs
     obs-studio
-    tree-sitter
-    python312Packages.pynvim
-    fd
-    gnumake
+    lunarvim
   ];
 
   imports = [

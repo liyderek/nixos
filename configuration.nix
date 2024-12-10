@@ -185,16 +185,6 @@
     shell = pkgs.zsh;
   };
 
-  # emacs
-  nixpkgs.overlays = [
-    (import (
-      builtins.fetchTarball {
-        url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-        sha256 = "08vvifnqdpmg3pswd5x439gy17s0lw6rv6wc627lnla38hyxlxva";
-      }
-    ))
-  ];
-
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -207,7 +197,6 @@
     ryujinx # nintendo
     mkosi
     ripgrep
-    emacsGcc
   ];
 
   system.stateVersion = "24.11"; # dont change
