@@ -310,8 +310,8 @@
     };
 
     extraConfig = "
-      monitor=, 2560x1440@144, 0x0, 1
-      monitor=, 3840x2160@60, 2560x0, 2
+      monitor=DVI-I-2, 2560x1440@144, 0x0, 1
+      monitor=DVI-I-1, 3840x2160@60, 2560x0, 2
       # monitor=eDP-1, preferred, 2560x640, 2
       monitor=eDP-1, disable
 
