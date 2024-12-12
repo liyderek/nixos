@@ -41,6 +41,7 @@
     nixd
     lazygit
     pyenv
+    make
   ];
 
   imports = [
