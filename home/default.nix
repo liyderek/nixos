@@ -41,7 +41,7 @@
     nixd
     lazygit
     pyenv
-    make
+    gnumake
   ];
 
   imports = [
