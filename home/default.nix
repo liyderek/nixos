@@ -42,6 +42,7 @@
     lazygit
     pyenv
     gnumake
+    pkg-config
   ];
 
   imports = [
