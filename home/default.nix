@@ -40,6 +40,7 @@
     lunarvim
     nixd
     lazygit
+    pyenv
   ];
 
   imports = [
