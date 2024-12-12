@@ -43,6 +43,7 @@
     gnumake
     pkg-config
     ninja
+    python312Packages.spacy
   ];
 
   imports = [
