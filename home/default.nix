@@ -40,9 +40,9 @@
     lunarvim
     nixd
     lazygit
-    pyenv
     gnumake
     pkg-config
+    ninja
   ];
 
   imports = [
