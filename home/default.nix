@@ -44,6 +44,7 @@
     pkg-config
     ninja
     python312Packages.spacy
+    brave
   ];
 
   imports = [
