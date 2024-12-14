@@ -12,6 +12,7 @@
     ./muvm.nix
     ./git.nix
     ./qt.nix
+    ./helix.nix
     # ./sway.nix
   ];
 }
