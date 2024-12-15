@@ -19,7 +19,7 @@
     enable = true;
     font = {
       name = "SFProDisplay Nerd Font";
-      size = 11;
+      size = 10;
     };
     iconTheme = {
       name = "Adwaita";
