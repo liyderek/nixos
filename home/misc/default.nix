@@ -1,7 +1,12 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 {
   imports = [
-    ./gtk.nix
+    (import ./gtk.nix { inherit inputs; })
     ./kitty.nix
     ./vscodium.nix
     ./rofi.nix

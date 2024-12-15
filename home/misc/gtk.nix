@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   fonts.fontconfig.enable = true;
   home.packages = [
@@ -12,14 +12,15 @@
     pkgs.noto-fonts-emoji
     pkgs.meslo-lg
     pkgs.symbola
+    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
   ];
 
   gtk = {
     enable = true;
-    # font = {
-    #   name = "JetBrainsMono Nerd Font";
-    #   size = 11;
-    # };
+    font = {
+      name = "SFProDisplay Nerd Font";
+      size = 11;
+    };
     iconTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;

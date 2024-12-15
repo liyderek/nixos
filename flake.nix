@@ -19,6 +19,8 @@
       flake = false;
     };
     catppuccin.url = "github:catppuccin/nix";
+
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
   };
 
   outputs =

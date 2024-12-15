@@ -52,7 +52,7 @@
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })
-    (import ./misc { inherit pkgs config; })
+    (import ./misc { inherit pkgs config inputs; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
   ];
