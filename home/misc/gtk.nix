@@ -16,10 +16,10 @@
 
   gtk = {
     enable = true;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 11;
-    };
+    # font = {
+    #   name = "JetBrainsMono Nerd Font";
+    #   size = 11;
+    # };
     iconTheme = {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
