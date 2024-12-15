@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    (import ./gtk.nix { inherit inputs; })
+    ./gtk.nix
     ./kitty.nix
     ./vscodium.nix
     ./rofi.nix
