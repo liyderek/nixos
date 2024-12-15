@@ -316,7 +316,7 @@
       monitor=eDP-1, disable
 
       xwayland {
-        # force_zero_scaling = true
+        force_zero_scaling = true
       }
     ";
   };
