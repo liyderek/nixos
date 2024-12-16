@@ -18,7 +18,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "SFProDisplay Nerd Font";
+      name = "SFProText Nerd Font";
       size = 10;
     };
     iconTheme = {
