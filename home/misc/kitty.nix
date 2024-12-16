@@ -6,7 +6,7 @@
     theme = "Catppuccin-Mocha";
 
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "SFMono Nerd Font";
       size = 13;
     };
 

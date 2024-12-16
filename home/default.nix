@@ -45,6 +45,7 @@
     ninja
     python312Packages.spacy
     brave
+    inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
   ];
 
   imports = [
