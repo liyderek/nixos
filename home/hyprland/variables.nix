@@ -25,6 +25,6 @@
     CLUTTER_BACKEND = "wayland";
     GTK_THEME = "Catppuccin-Mocha-Compact-Lavender-Dark";
     GDK_SCALE = 2;
-    XCURSOR_SIZE = 22;
+    XCURSOR_SIZE = 25;
   };
 }

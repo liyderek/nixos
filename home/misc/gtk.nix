@@ -35,13 +35,13 @@
     cursorTheme = {
       name = "macOS";
       package = pkgs.apple-cursor;
-      size = 22;
+      size = 25;
     };
   };
 
   home.pointerCursor = {
     name = "macOS";
     package = pkgs.apple-cursor;
-    size = 22;
+    size = 25;
   };
 }
