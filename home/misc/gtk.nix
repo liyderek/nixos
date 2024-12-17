@@ -33,15 +33,15 @@
       };
     };
     cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
+      name = "macOS";
+      package = pkgs.apple-cursor;
       size = 22;
     };
   };
 
   home.pointerCursor = {
-    name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors;
+    name = "macOS";
+    package = pkgs.apple-cursor;
     size = 22;
   };
 }
