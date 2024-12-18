@@ -14,6 +14,11 @@ return {
 						require('mason-nvim-dap').default_setup(config)
 					end,
 					codelldb = function(source_name)
+						dap.adapters.lldb = {
+							type = 'executable',
+							command = '/etc/profiles/per-user/derek/bin/lldb',
+							name = 'lldb',
+						}
 						dap.adapters.codelldb = {
 							type = 'server',
 							port = '12345',
