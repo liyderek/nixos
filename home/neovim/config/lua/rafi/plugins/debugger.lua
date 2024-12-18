@@ -14,6 +14,7 @@ return {
 						require('mason-nvim-dap').default_setup(config)
 					end,
 					codelldb = function(source_name)
+						print('c++ config')
 						dap.adapters.lldb = {
 							type = 'executable',
 							command = '/etc/profiles/per-user/derek/bin/lldb',
