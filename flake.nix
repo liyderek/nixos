@@ -42,6 +42,7 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
+            inputs.nixvim.nixosModules.nixvim
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
