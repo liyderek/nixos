@@ -9,7 +9,7 @@ require('dapui').setup()
 -- 	port = 12345,
 -- }
 dap.adapters.codelldb = function(cb, config)
-	vim.fn.system({
+	local command = {
 		'/run/current-system/sw/bin/g++',
 		'fdiagnostics-color=always',
 		'-g',
@@ -18,7 +18,9 @@ dap.adapters.codelldb = function(cb, config)
 		vim.fn.getcwd() .. '/main',
 		'-D',
 		'DEBUG',
-	})
+	}
+	vim.fn.system(command)
+	print(command)
 
 	cb({
 		type = 'server',
