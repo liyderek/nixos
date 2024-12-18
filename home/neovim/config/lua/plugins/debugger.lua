@@ -1,3 +1,5 @@
+print('i liike men 1')
+
 return {
 	{
 		'mfussenegger/nvim-dap',
