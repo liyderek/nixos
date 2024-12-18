@@ -1,7 +1,6 @@
 return {
-	'mfussenegger/nvim-dap',
 	{
-		'jay-babu/mason-nvim-dap.nvim',
+		'mfussenegger/nvim-dap',
 		config = function()
 			local dap = require('dap')
 			require('dapui').setup()
