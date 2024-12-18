@@ -12,7 +12,6 @@
 
   home.packages = with pkgs; [
     firefox
-    neovim
     legcord
     cloudflare-warp
     libgcc
