@@ -1,5 +1,3 @@
-print("Setting up dap")
-
 local dap = require("dap")
 require("dapui").setup()
 
