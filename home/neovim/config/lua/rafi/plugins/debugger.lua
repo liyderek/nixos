@@ -15,10 +15,12 @@ return {
 					end,
 					codelldb = function(source_name)
 						print('c++ config')
-						dap.adapters.lldb = {
+						dap.adapters.executable = {
 							type = 'executable',
 							command = '/etc/profiles/per-user/derek/bin/lldb',
 							name = 'lldb',
+							host = '127.0.0.1',
+							port = 12345,
 						}
 						dap.adapters.codelldb = {
 							type = 'server',
