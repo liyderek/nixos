@@ -1,14 +1,13 @@
 local dap = require('dap')
 require('dapui').setup()
 
-print('i like men')
-dap.adapters.lldb = {
-	type = 'executable',
-	command = '/etc/profiles/per-user/derek/bin/lldb',
-	name = 'lldb',
-	host = '127.0.0.1',
-	port = 12345,
-}
+-- dap.adapters.lldb = {
+-- 	type = 'executable',
+-- 	command = '/etc/profiles/per-user/derek/bin/lldb',
+-- 	name = 'lldb',
+-- 	host = '127.0.0.1',
+-- 	port = 12345,
+-- }
 dap.adapters.codelldb = {
 	type = 'server',
 	port = '12345',
