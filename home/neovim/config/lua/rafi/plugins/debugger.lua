@@ -15,7 +15,7 @@ return {
 					end,
 					codelldb = function(source_name)
 						print('c++ config')
-						dap.adapters.executable = {
+						dap.adapters.lldb = {
 							type = 'executable',
 							command = '/etc/profiles/per-user/derek/bin/lldb',
 							name = 'lldb',
