@@ -5,7 +5,7 @@ let
       url = "https://github.com/nix-community/nixvim";
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       ref = "main";
-      # rev = "4f1fe403b18c45614d6b81423038a34cff371244";
+      rev = "4f1fe403b18c45614d6b81423038a34cff371244";
     }
   );
 in
