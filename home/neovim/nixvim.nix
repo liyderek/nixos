@@ -12,14 +12,14 @@
     #inputs.nixvim.nixDarwinModules.nixvim
 
     # Plugins
-    # ./plugins/gitsigns.nix
-    # ./plugins/which-key.nix
-    # ./plugins/telescope.nix
-    # ./plugins/conform.nix
-    # ./plugins/lsp.nix
-    # ./plugins/nvim-cmp.nix
-    # ./plugins/mini.nix
-    # ./plugins/treesitter.nix
+    ./plugins/gitsigns.nix
+    ./plugins/which-key.nix
+    ./plugins/telescope.nix
+    ./plugins/conform.nix
+    ./plugins/lsp.nix
+    ./plugins/nvim-cmp.nix
+    ./plugins/mini.nix
+    ./plugins/treesitter.nix
 
     # NOTE: Add/Configure additional plugins for Kickstart.nixvim
     #
