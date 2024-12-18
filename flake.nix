@@ -21,6 +21,11 @@
     catppuccin.url = "github:catppuccin/nix";
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

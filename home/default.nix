@@ -36,7 +36,6 @@
     llvmPackages_19.clang-tools
     python3
     nodejs
-    lunarvim
     nixd
     lazygit
     gnumake
@@ -50,12 +49,14 @@
 
   imports = [
     catppuccin.homeManagerModules.catppuccin
+    inputs.nixvim.homeManagerModules.nixvim
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })
     (import ./misc { inherit pkgs config inputs; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
+    (import ./neovim { inherit pkgs; })
   ];
 
   home.stateVersion = "24.11";
