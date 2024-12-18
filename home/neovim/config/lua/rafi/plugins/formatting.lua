@@ -84,7 +84,6 @@ return {
 			}
 			return opts
 		end,
-		config = M.setup,
 	},
 
 	-- Lightweight yet powerful formatter plugin
