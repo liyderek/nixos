@@ -56,7 +56,7 @@
     (import ./misc { inherit pkgs config inputs; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
-    (import ./neovim { inherit pkgs; })
+    (import ./neovim { inherit pkgs inputs; })
   ];
 
   home.stateVersion = "24.11";
