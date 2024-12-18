@@ -5,6 +5,7 @@ let
       url = "https://github.com/nix-community/nixvim";
       # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
       # ref = "nixos-24.11";
+      rev = "";
     }
   );
 in
