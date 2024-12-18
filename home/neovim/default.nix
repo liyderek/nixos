@@ -8,6 +8,8 @@
     php
     php84Packages.composer
     cargo
+    unzip
+    fd
   ];
 
   home.file.".config/nvim" = {
