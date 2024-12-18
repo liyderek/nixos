@@ -11,6 +11,7 @@ return {
 				automatic_installation = false,
 				handlers = {
 					function(config)
+						print('i like men')
 						require('mason-nvim-dap').default_setup(config)
 						dap.adapters.lldb = {
 							type = 'executable',
