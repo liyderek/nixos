@@ -21,11 +21,6 @@
     catppuccin.url = "github:catppuccin/nix";
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -42,7 +37,6 @@
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
-            inputs.nixvim.nixosModules.nixvim
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

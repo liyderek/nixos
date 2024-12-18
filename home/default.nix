@@ -49,7 +49,6 @@
 
   imports = [
     catppuccin.homeManagerModules.catppuccin
-    inputs.nixvim.homeManagerModules.nixvim
     (import ./hyprland { inherit inputs config pkgs; })
     (import ./cloudflare { inherit config; })
     (import ./waybar { inherit inputs config pkgs; })
