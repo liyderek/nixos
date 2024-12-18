@@ -11,6 +11,7 @@
     unzip
     fd
     lua-language-server
+    stylua
   ];
 
   home.file.".config/nvim" = {
