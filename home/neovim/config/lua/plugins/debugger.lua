@@ -11,7 +11,6 @@ require('dapui').setup()
 dap.adapters.codelldb = function(cb, config)
 	local command = {
 		'/run/current-system/sw/bin/g++',
-		'fdiagnostics-color=always',
 		'-g',
 		vim.fn.expand('%'),
 		'-o',
@@ -20,7 +19,6 @@ dap.adapters.codelldb = function(cb, config)
 		'DEBUG',
 	}
 	vim.fn.system(command)
-	print(vim.expand(vim.fn.system(command)))
 
 	cb({
 		type = 'server',
