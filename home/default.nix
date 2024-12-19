@@ -44,7 +44,7 @@
     brave
     inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
     aseprite
-    python3Packages.pip
+    python3Packages.six
   ];
 
   imports = [
