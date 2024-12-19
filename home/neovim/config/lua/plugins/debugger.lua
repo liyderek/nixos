@@ -20,7 +20,7 @@ dap.adapters.codelldb = function(cb, config)
 		'DEBUG',
 	}
 	vim.fn.system(command)
-	print(vim.inspect(command))
+	print(vim.expand(vim.fn.system(command)))
 
 	cb({
 		type = 'server',
