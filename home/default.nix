@@ -45,6 +45,7 @@
     inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
     aseprite
     python3Packages.six
+    alejandra
   ];
 
   imports = [
