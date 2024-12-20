@@ -203,7 +203,7 @@ return {
 								nixos = {
 									expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dereknixos.options',
 								},
-								['home-manager'] = {
+								home_manager = {
 									expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dereknixos.options.home-manager.users.type.getSubOptions []',
 								},
 							},
