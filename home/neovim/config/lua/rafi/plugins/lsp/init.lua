@@ -110,7 +110,6 @@ return {
 							},
 						},
 					},
-
 				},
 				-- you can do any additional lsp server setup here
 				-- return true if you don't want this server to be setup with lspconfig
@@ -136,7 +135,6 @@ return {
 			LazyVim.lsp.on_attach(function(client, buffer)
 				require('rafi.plugins.lsp.keymaps').on_attach(client, buffer)
 			end)
-
 
 			LazyVim.lsp.setup()
 			LazyVim.lsp.on_dynamic_capability(
@@ -191,7 +189,27 @@ return {
 						end
 					)
 				end
-				require('lspconfig').clangd.setup{}
+
+				local lspconfig = require('lspconfig')
+				lspconfig.clangd.setup({})
+
+				lspconfig.nixd.setup({
+					cmd = { 'nixd' },
+					settings = {
+						nixd = {
+							nixpkgs = { expr = 'import <nixpkgs> { }' },
+							formatting = { command = 'alejandra' },
+							options = {
+								nixos = {
+									expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dereknixos.options',
+								},
+								home_manager = {
+									expr = '(builtins.getFlake "/etc/nixos").nixosConfigurations.dereknixos.options.home-manager.users.type.getSubOptions []',
+								},
+							},
+						},
+					},
+				})
 			end
 
 			if
