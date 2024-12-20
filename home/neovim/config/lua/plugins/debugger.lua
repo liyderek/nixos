@@ -18,8 +18,9 @@ dap.adapters.codelldb = function(cb, config)
 		'-D',
 		'DEBUG',
 	}
-	vim.fn.system(command)
-	print(vim.inspect(command))
+	local output = 'stdout: ' .. vim.system(command):wait()
+	print(output.stdout)
+	print(output.stderr)
 
 	cb({
 		type = 'server',
