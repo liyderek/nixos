@@ -31,12 +31,6 @@
 
   hardware.graphics.enable = true;
 
-  # setup the displaylink
-  services.xserver.videoDrivers = [
-    "displaylink"
-    "modesetting"
-  ];
-
   # hyprland
   programs.hyprland = {
     enable = true;
