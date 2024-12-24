@@ -13,78 +13,15 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.apple-silicon-support.nixosModules.apple-silicon-support
     (import ./system { inherit pkgs; })
   ];
 
-  boot = {
-    loader = {
-      grub = {
-        enable = true;
-        useOSProber = true;
-        copyKernels = true;
-        efiInstallAsRemovable = true;
-        efiSupport = true;
-        fsIdentifier = "label";
-        devices = [ "nodev" ];
-        gfxmodeEfi = "2560x1600";
-        # font = lib.mkForce "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNerdFont-Regular.ttf";
-        fontSize = 72;
-        extraEntries = ''
-          menuentry "Reboot" {
-              reboot
-          }
-          menuentry "Poweroff" {
-              halt
-          }
-        '';
-        catppuccin.enable = true;
-        extraConfig = ''
-          GRUB_TIMEOUT_STYLE=hidden
-        '';
-      };
-      timeout = 0;
-    };
-    plymouth = {
-      enable = true;
-      theme = "rings";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "rings" ];
-        })
-      ];
-      extraConfig = ''
-        ShowDelay=0
-      '';
-    };
-
-    # Enable "Silent Boot"
-    consoleLogLevel = 3;
-    initrd = {
-      verbose = false;
-      # systemd.enable = true;
-    };
-    kernelParams = [
-      "quiet"
-      "loglevel=3"
-      "udev.log-priority=3"
-      "splash"
-    ];
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
-    # loader.timeout = 0;
-  };
   # Use the systemd-boot EFI boot loader.
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # unfree
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.allowUnsupportedSystem = true;
 
   # flakes
   nix.settings.experimental-features = [
@@ -92,14 +29,6 @@
     "flakes"
   ];
 
-  # asahi stuff
-  hardware.asahi = {
-    peripheralFirmwareDirectory = ./firmware;
-    withRust = true;
-    useExperimentalGPUDriver = true;
-    experimentalGPUInstallMode = "replace";
-    setupAsahiSound = true;
-  };
   hardware.graphics.enable = true;
 
   # setup the displaylink
@@ -108,31 +37,63 @@
     "modesetting"
   ];
 
-  # vpn
-  services.cloudflare-warp = {
-    enable = true;
-  };
-
   # hyprland
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
 
-  networking.hostName = "dereknixos"; # Define your hostname.
+  networking.hostName = "nixos"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
   services.xserver.enable = true;
-  # services.xserver.displayManager.gdm = {
-  #   enable = true;
-  #   wayland = true;
-  # };
-  # services.xserver.displayManager.autoLogin = {
-  #   enable = true;
-  #   user = "derek";
-  # };
+  # Enable the X11 windowing system.
+  # You can disable this if you're only using the Wayland session.
+  services.xserver.enable = true;
+
+  # Enable the KDE Plasma Desktop Environment.
+  # services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  services.printing.enable = true;
+
+  # Enable sound with pipewire.
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment this
+    #jack.enable = true;
+
+    # use the example session manager (no others are packaged yet so this is enabled by default,
+    # no need to redefine it in your config for now)
+    #media-session.enable = true;
+  };
 
   services.greetd = {
     enable = true;
@@ -144,44 +105,19 @@
       default_session = initial_session;
     };
   };
-  systemd.services.greetd = {
-    serviceConfig.Type = "idle";
-    serviceConfig.ExecStartPre = "/run/current-system/sw/bin/sleep 2";
-    unitConfig.After = [ "dlm.service" ];
-  };
 
   # set sudo stuff
   security.sudo.wheelNeedsPassword = false;
 
-  # iwd
-  networking.wireless.iwd = {
-    enable = true;
-    settings = {
-      Network = {
-        EnableIPv6 = true;
-      };
-      General = {
-        Autoconnect = true;
-        EnableNetworkConfiguration = true;
-        AddressRandomization = "once";
-        AddressRandomizationRange = "full";
-      };
-    };
-  };
-
-  networking.networkmanager.wifi.backend = "iwd";
-  networking.networkmanager.insertNameservers = [
-    "1.1.1.1"
-    "8.8.8.8"
-  ];
-  networking.networkmanager.wifi.macAddress = "random";
+  # network
+  networking.networkmanager.enable = true;
 
   programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 

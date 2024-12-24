@@ -5,9 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    apple-silicon-support = {
-      url = "github:oliverbestmann/nixos-apple-silicon";
-    };
 
     hyprland = {
       url = "github:hyprwm/hyprland";
@@ -32,8 +29,8 @@
     }:
     {
       nixosConfigurations = {
-        dereknixos = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+        nixos = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
             ./configuration.nix
             catppuccin.nixosModules.catppuccin

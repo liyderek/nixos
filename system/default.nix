@@ -5,11 +5,11 @@
     ./polkit.nix
     ./chinese.nix
     ./distrobox.nix
-    ./binfmt.nix
+    # ./binfmt.nix
     ./systemd.nix
   ];
 
   nixpkgs.overlays = [
-    (import ./asahiwidevine.nix)
+    # (import ./asahiwidevine.nix)
   ];
 }
