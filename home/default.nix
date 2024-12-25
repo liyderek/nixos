@@ -45,6 +45,7 @@
     python3Packages.six
     alejandra
     lunar-client
+    jetbrains.pycharm-professional
   ];
 
   imports = [
