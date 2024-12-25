@@ -45,6 +45,7 @@
     alejandra
     lunar-client
     jetbrains.pycharm-professional
+    steam
   ];
 
   imports = [
