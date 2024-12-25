@@ -10,6 +10,10 @@
       url = "github:hyprwm/hyprland";
     };
     hypr-contrib.url = "github:hyprwm/contrib";
+    split-monitor-workspaces = {
+      url = "github:Duckonaut/split-monitor-workspaces";
+      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    };
 
     catppuccin-starship = {
       url = "github:catppuccin/starship";
