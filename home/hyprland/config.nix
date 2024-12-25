@@ -301,6 +301,7 @@
         "float,title:^(Confirm to replace files)$"
         "float,title:^(File Operation Progress)$"
         "float,class:^(legcord)$"
+        "float,class:^(discord)$"
 
         "opacity 0.0 override,class:^(xwaylandvideobridge)$"
         "noanim,class:^(xwaylandvideobridge)$"
