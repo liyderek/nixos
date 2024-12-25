@@ -44,6 +44,7 @@
     aseprite
     python3Packages.six
     alejandra
+    lunar-client
   ];
 
   imports = [
