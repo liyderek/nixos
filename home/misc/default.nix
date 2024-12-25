@@ -19,5 +19,7 @@
     ./qt.nix
     # ./helix.nix
     # ./sway.nix
+    ./discord.nix
+    ./spotify.nix
   ];
 }

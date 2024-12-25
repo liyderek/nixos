@@ -18,6 +18,9 @@
     catppuccin.url = "github:catppuccin/nix";
 
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
+    spicetify-nix.url = "github:gerg-l/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

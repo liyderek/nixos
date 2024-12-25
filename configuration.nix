@@ -110,7 +110,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
 

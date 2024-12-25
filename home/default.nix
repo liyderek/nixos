@@ -12,8 +12,6 @@
 
   home.packages = with pkgs; [
     firefox
-    legcord
-    cloudflare-warp
     libgcc
     gdb
     lldb
