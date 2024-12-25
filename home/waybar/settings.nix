@@ -37,8 +37,6 @@
       format-alt = " {:%d/%m}";
     };
     "hyprland/workspaces" = {
-      active-only = false;
-      disable-scroll = true;
       format = "{icon}";
       on-click = "activate";
       format-icons = {
