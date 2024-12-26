@@ -315,7 +315,7 @@
       ];
 
       misc = {
-        no_vfr = false;
+        vrr = 1;
       };
 
     };
