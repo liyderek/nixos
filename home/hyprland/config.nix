@@ -303,6 +303,9 @@
         "float,class:^(legcord)$"
         "float,class:^(discord)$"
         "size 1280 720,class:^(discord)$"
+        "float,title:^(float_kitty)$"
+        "center,title:^(float_kitty)$"
+        "size 950 600,title:^(float_kitty)$"
 
         "opacity 0.0 override,class:^(xwaylandvideobridge)$"
         "noanim,class:^(xwaylandvideobridge)$"
@@ -311,11 +314,15 @@
         "noblur,class:^(xwaylandvideobridge)$"
       ];
 
+      misc = {
+        no_vfr = false;
+      };
+
     };
 
     extraConfig = "
-      monitor=DVI-I-2, 2560x1440@144, 0x0, 1
-      monitor=DVI-I-1, 3840x2160@60, 2560x0, 1.6
+      monitor=DP-1, 2560x1440@179.95, 0x0, 1
+      monitor=HDMI-A-1, 3840x2160@60, 2560x0, 1.6
       # monitor=eDP-1, preferred, 2560x640, 2
       monitor=eDP-1, disable
 
