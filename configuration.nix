@@ -132,6 +132,7 @@
     ryujinx # nintendo
     mkosi
     ripgrep
+    ntfs3g
   ];
 
   system.stateVersion = "24.11"; # dont change
