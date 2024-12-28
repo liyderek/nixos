@@ -47,6 +47,7 @@
     jetbrains.pycharm-professional
     steam
     ollama-rocm
+    lutris
   ];
 
   imports = [
