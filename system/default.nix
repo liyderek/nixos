@@ -7,6 +7,7 @@
     ./distrobox.nix
     # ./binfmt.nix
     ./systemd.nix
+    ./genshin.nix
   ];
 
   nixpkgs.overlays = [

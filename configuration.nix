@@ -14,6 +14,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     (import ./system { inherit pkgs; })
+    ./cachix.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
