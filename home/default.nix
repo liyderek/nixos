@@ -49,6 +49,7 @@
     ollama-rocm
     lutris
     wine
+    prismlauncher
   ];
 
   imports = [
