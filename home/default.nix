@@ -48,6 +48,8 @@
     steam
     ollama-rocm
     lutris
+    wine
+    wineWowPackages.stable
   ];
 
   imports = [
