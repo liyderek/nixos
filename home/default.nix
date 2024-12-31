@@ -62,6 +62,7 @@
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
     (import ./neovim { inherit pkgs inputs; })
+    (import ./sway { inherit pkgs; })
   ];
 
   home.stateVersion = "24.11";

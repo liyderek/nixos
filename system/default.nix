@@ -8,6 +8,7 @@
     # ./binfmt.nix
     ./systemd.nix
     ./genshin.nix
+    ./sway.nix
   ];
 
   nixpkgs.overlays = [
