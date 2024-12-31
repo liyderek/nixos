@@ -63,7 +63,11 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+    displayManager.gdm.enable = true;
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   # services.displayManager.sddm.enable = true;
@@ -92,16 +96,16 @@
     #media-session.enable = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland";
-        user = "derek";
-      };
-      default_session = initial_session;
-    };
-  };
+  # services.greetd = {
+  #   enable = true;
+  #   settings = rec {
+  #     initial_session = {
+  #       command = "${pkgs.hyprland}/bin/Hyprland";
+  #       user = "derek";
+  #     };
+  #     default_session = initial_session;
+  #   };
+  # };
 
   # set sudo stuff
   security.sudo.wheelNeedsPassword = false;
