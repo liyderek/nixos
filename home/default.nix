@@ -50,6 +50,7 @@
     lutris
     wine
     prismlauncher
+    i3blocks
   ];
 
   imports = [
