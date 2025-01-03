@@ -51,6 +51,7 @@
     wine
     prismlauncher
     i3blocks
+    zoom-us
   ];
 
   imports = [
