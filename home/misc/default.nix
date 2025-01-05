@@ -21,5 +21,6 @@
     # ./sway.nix
     ./discord.nix
     ./spotify.nix
+    ./tmux.nix
   ];
 }
