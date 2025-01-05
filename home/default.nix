@@ -52,6 +52,7 @@
     prismlauncher
     i3blocks
     zoom-us
+    neovide
   ];
 
   imports = [
