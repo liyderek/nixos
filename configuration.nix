@@ -24,7 +24,6 @@
         enable = true;
         useOSProber = true;
         copyKernels = true;
-        efiInstallAsRemovable = true;
         efiSupport = true;
         fsIdentifier = "label";
         devices = [ "nodev" ];
@@ -77,7 +76,7 @@
     # It will just not appear on screen unless a key is pressed
     # loader.timeout = 0;
   };
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # unfree
   nixpkgs.config.allowUnfree = true;
