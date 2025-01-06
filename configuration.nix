@@ -77,7 +77,7 @@
     # It will just not appear on screen unless a key is pressed
     # loader.timeout = 0;
   };
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = false;
 
   # unfree
   nixpkgs.config.allowUnfree = true;
