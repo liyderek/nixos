@@ -43,7 +43,7 @@
           GRUB_TIMEOUT_STYLE=hidden
         '';
       };
-      timeout = 0;
+      timeout = 3;
     };
     plymouth = {
       enable = true;
