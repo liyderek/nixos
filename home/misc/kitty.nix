@@ -28,6 +28,7 @@
       active_tab_background = "#cba6f7";
       inactive_tab_foreground = "#bac2de";
       inactive_tab_background = "#313244";
+      allow_remote_control = true;
     };
 
     keybindings = {
