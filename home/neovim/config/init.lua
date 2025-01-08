@@ -6,6 +6,10 @@
 local stdconfig = vim.fn.stdpath('config') --[[@as string]]
 local lazy_override = stdconfig .. '/lua/config/lazy.lua'
 
+if vim.g.neovide then
+	vim.o.guifont = 'SFMono Nerd Font:h14'
+end
+
 vim.uv = vim.uv or vim.loop
 
 if vim.uv.fs_stat(lazy_override) then
