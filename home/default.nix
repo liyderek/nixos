@@ -53,6 +53,7 @@
     i3blocks
     zoom-us
     neovide
+    alacritty
   ];
 
   imports = [
