@@ -54,6 +54,7 @@
     zoom-us
     neovide
     redis
+    qbittorrent-enhanced
   ];
 
   imports = [
