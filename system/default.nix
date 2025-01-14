@@ -9,6 +9,7 @@
     ./systemd.nix
     ./genshin.nix
     ./sway.nix
+    ./mongodb.nix
   ];
 
   nixpkgs.overlays = [
