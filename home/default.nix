@@ -54,7 +54,7 @@
     zoom-us
     neovide
     redis
-    qbittorrent-enhanced
+    mongodb
   ];
 
   imports = [
