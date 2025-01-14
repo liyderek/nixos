@@ -22,5 +22,6 @@
     ./discord.nix
     ./spotify.nix
     ./tmux.nix
+    ./mongodb.nix
   ];
 }

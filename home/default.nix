@@ -54,7 +54,6 @@
     zoom-us
     neovide
     redis
-    mongodb
   ];
 
   imports = [
