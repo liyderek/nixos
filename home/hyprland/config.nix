@@ -46,8 +46,8 @@
         gaps_in = 8;
         gaps_out = 10;
         border_size = 1;
-        "col.active_border" = "rgb(cba6f7) rgb(94e2d5) 45deg";
-        "col.inactive_border" = "0xFF555555";
+        "col.active_border" = "rgb(cba6f7) rgb(b4befe) 45deg";
+        "col.inactive_border" = "0xFF11111b";
         border_part_of_window = false;
         no_border_on_floating = false;
       };
