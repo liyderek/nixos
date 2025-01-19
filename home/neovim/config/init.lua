@@ -7,7 +7,7 @@ local stdconfig = vim.fn.stdpath('config') --[[@as string]]
 local lazy_override = stdconfig .. '/lua/config/lazy.lua'
 
 if vim.g.neovide then
-	vim.o.guifont = 'SFMono Nerd Font:h14'
+	vim.o.guifont = 'SFMono Nerd Font:h12'
 	vim.keymap.set('i', '<C-V>', '"+p')
 end
 
