@@ -2,6 +2,7 @@ return {
 	{
 		'xeluxee/competitest.nvim',
 		dependencies = 'MunifTanjim/nui.nvim',
+		lazy = false,
 		config = function()
 			require('competitest').setup({
 				local_config_file_name = '.competitest.lua',
