@@ -157,7 +157,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland &> /dev/null";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
         user = "derek";
       };
       default_session = initial_session;
