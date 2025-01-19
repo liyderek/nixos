@@ -138,6 +138,13 @@ return {
 				open_received_contests = true,
 				replace_received_testcases = false,
 			})
+			-- bind space+r to :CompetiTest run
+			vim.keymap.set(
+				'n',
+				'<leader>r',
+				'<cmd>:CompetiTest run<cr>',
+				{ noremap = true, silent = true }
+			)
 		end,
 	},
 }
