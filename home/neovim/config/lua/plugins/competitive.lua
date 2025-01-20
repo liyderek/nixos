@@ -89,23 +89,23 @@ return {
 
 				save_current_file = true,
 				save_all_files = false,
-				compile_directory = './compile',
+				compile_directory = '.',
 				compile_command = {
 					c = {
 						exec = 'gcc',
-						args = { '-Wall', '$(FNAME)', '-o', '$(FNOEXT)' },
+						args = { '-Wall', '$(FNAME)', '-o', './compile/$(FNOEXT)' },
 					},
 					cpp = {
 						exec = 'g++',
-						args = { '-Wall', '$(FNAME)', '-o', '$(FNOEXT)' },
+						args = { '-Wall', '$(FNAME)', '-o', './compile/$(FNOEXT)' },
 					},
 					rust = { exec = 'rustc', args = { '$(FNAME)' } },
 					java = { exec = 'javac', args = { '$(FNAME)' } },
 				},
-				running_directory = './compile',
+				running_directory = '.',
 				run_command = {
-					c = { exec = './$(FNOEXT)' },
-					cpp = { exec = './$(FNOEXT)' },
+					c = { exec = './compile/$(FNOEXT)' },
+					cpp = { exec = './compile/$(FNOEXT)' },
 					rust = { exec = './$(FNOEXT)' },
 					python = { exec = 'python', args = { '$(FNAME)' } },
 					java = { exec = 'java', args = { '$(FNOEXT)' } },
