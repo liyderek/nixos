@@ -125,7 +125,7 @@ return {
 				companion_port = 27121,
 				receive_print_message = true,
 				template_file = '~/Documents/codeforces/template.$(FEXT)',
-				evaluate_template_modifiers = false,
+				evaluate_template_modifiers = true,
 				date_format = '%c',
 				received_files_extension = 'cpp',
 				received_problems_path = '$(CWD)/$(PROBLEM).$(FEXT)',
