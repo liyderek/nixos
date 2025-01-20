@@ -89,7 +89,7 @@ return {
 
 				save_current_file = true,
 				save_all_files = false,
-				compile_directory = '.',
+				compile_directory = './compile',
 				compile_command = {
 					c = {
 						exec = 'gcc',
@@ -102,7 +102,7 @@ return {
 					rust = { exec = 'rustc', args = { '$(FNAME)' } },
 					java = { exec = 'javac', args = { '$(FNAME)' } },
 				},
-				running_directory = '.',
+				running_directory = './compile',
 				run_command = {
 					c = { exec = './$(FNOEXT)' },
 					cpp = { exec = './$(FNOEXT)' },
@@ -115,8 +115,8 @@ return {
 				output_compare_method = 'squish',
 				view_output_diff = false,
 
-				testcases_directory = '.',
-				testcases_use_single_file = false,
+				testcases_directory = './tcs',
+				testcases_use_single_file = true,
 				testcases_auto_detect_storage = true,
 				testcases_single_file_format = '$(FNOEXT).testcases',
 				testcases_input_file_format = '$(FNOEXT)_input$(TCNUM).txt',
@@ -124,7 +124,7 @@ return {
 
 				companion_port = 27121,
 				receive_print_message = true,
-				template_file = false,
+				template_file = '~/Documents/codeforces/template.$(FEXT)',
 				evaluate_template_modifiers = false,
 				date_format = '%c',
 				received_files_extension = 'cpp',
