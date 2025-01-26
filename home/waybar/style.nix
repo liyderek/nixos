@@ -26,7 +26,7 @@ in
     }
 
     window#waybar {
-        background: rgba(18, 18, 25, 0.65);
+        background: rgba(18, 18, 25, 0.85);
     }
 
     #workspaces {
