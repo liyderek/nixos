@@ -54,6 +54,7 @@
     zoom-us
     neovide
     redis
+    obs-studio
   ];
 
   imports = [
