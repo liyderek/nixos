@@ -55,6 +55,7 @@
     neovide
     redis
     obs-studio
+    libnotify
   ];
 
   imports = [
