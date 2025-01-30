@@ -326,6 +326,9 @@
       # monitor=eDP-1, preferred, 2560x640, 2
       monitor=eDP-1, disable
 
+      workspace = 1, monitor:DP-1
+      workspace=5, monitor:HDMI-A-1
+
       xwayland {
         force_zero_scaling = true
       }
