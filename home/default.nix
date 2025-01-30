@@ -46,7 +46,6 @@
     lunar-client
     jetbrains.pycharm-professional
     steam
-    ollama-rocm
     lutris
     wine
     prismlauncher
