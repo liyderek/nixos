@@ -55,6 +55,7 @@
     redis
     obs-studio
     libnotify
+    mongodb-compass
   ];
 
   imports = [
