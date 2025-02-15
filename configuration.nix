@@ -187,7 +187,16 @@
   programs.zsh.enable = true;
 
   # nix ld
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      alsa-lib
+      at-spi2-atk
+      at-spi2-core
+      atk
+      cairo
+    ];
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
