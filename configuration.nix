@@ -195,6 +195,7 @@
       at-spi2-core
       atk
       cairo
+      libjpeg
     ];
   };
 
