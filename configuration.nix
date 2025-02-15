@@ -196,6 +196,7 @@
       atk
       cairo
       libjpeg
+      libjpeg8
     ];
   };
 
