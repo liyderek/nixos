@@ -198,6 +198,12 @@
       libjpeg
       libjpeg8
       libpng
+      fontconfig
+      freetype
+      libxml2
+      glib
+      glibc
+      libz
     ];
   };
 
