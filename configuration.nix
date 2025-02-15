@@ -186,6 +186,9 @@
 
   programs.zsh.enable = true;
 
+  # nix ld
+  programs.nix-ld.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
