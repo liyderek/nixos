@@ -197,6 +197,7 @@
       cairo
       libjpeg
       libjpeg8
+      libpng
     ];
   };
 
