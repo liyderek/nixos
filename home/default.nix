@@ -48,6 +48,8 @@
     steam
     lutris
     wine
+    winetricks
+    mono
     prismlauncher
     i3blocks
     zoom-us
