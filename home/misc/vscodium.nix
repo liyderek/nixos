@@ -26,6 +26,8 @@
 
       # lldb debugging
       vadimcn.vscode-lldb
+
+      james-yu.latex-workshop
     ];
     userSettings = {
       "update.mode" = "none";
@@ -108,7 +110,8 @@
               "expr" = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.dereknixos.options";
             };
             "home-manager" = {
-              "expr" = "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.dereknixos.options.home-manager.users.type.getSubOptions []";
+              "expr" =
+                "(builtins.getFlake \"/etc/nixos\").nixosConfigurations.dereknixos.options.home-manager.users.type.getSubOptions []";
             };
           };
         };

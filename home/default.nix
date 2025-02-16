@@ -49,7 +49,6 @@
     lutris
     wine
     winetricks
-    mono
     prismlauncher
     i3blocks
     zoom-us
@@ -58,6 +57,7 @@
     obs-studio
     libnotify
     mongodb-compass
+    texliveFull
   ];
 
   imports = [
