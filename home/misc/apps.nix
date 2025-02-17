@@ -20,7 +20,6 @@
         "IDE"
       ];
       startupNotify = true;
-      startupWMClass = "vscodium";
       type = "Application";
       version = "1.4";
     };
