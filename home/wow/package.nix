@@ -17,11 +17,6 @@ in
 pkgs.appimageTools.wrapType2 rec {
   inherit pname version src;
 
-  extraInstallCommands = ''
-    substituteInPlace $out/share/applications/${pname}.desktop \
-      --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
-  '';
-
   meta = {
     description = "Ascension Launcher";
     homepage = "https://ascension.gg";
