@@ -21,7 +21,6 @@
       ];
       startupNotify = true;
       type = "Application";
-      version = "1.4";
     };
   };
 }
