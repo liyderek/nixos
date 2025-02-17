@@ -8,11 +8,6 @@ let
   pname = "ascension-launcher";
 
   src = ./ascension-launcher-145.AppImage;
-
-  appimageContents = pkgs.appimageTools.extractType1 {
-    inherit src;
-    name = "ascension";
-  };
 in
 pkgs.appimageTools.wrapType2 rec {
   inherit pname version src;

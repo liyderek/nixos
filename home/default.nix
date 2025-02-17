@@ -59,6 +59,7 @@
     libnotify
     mongodb-compass
     texliveFull
+    appimage-run
   ];
 
   imports = [
