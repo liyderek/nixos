@@ -13,7 +13,6 @@
       genericName = "Text Editor";
       exec = "codium --ozone-platform-hint=auto %F";
       icon = "vscodium";
-      keywords = [ "vscode" ];
       categories = [
         "Utility"
         "TextEditor"
