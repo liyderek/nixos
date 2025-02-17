@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   config,
   pkgs,
@@ -70,7 +71,7 @@
     (import ./swaync { inherit pkgs; })
     (import ./neovim { inherit pkgs inputs; })
     (import ./sway { inherit pkgs; })
-    (import ./wow { inherit pkgs; })
+    (import ./wow { inherit lib pkgs; })
   ];
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";

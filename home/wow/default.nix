@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 let
-  ascension-launcher = import ./package.nix { inherit pkgs; };
+  ascension-launcher = import ./package.nix { inherit lib pkgs; };
 in
 {
   home.packages = [
