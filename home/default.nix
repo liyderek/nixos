@@ -70,6 +70,7 @@
     (import ./swaync { inherit pkgs; })
     (import ./neovim { inherit pkgs inputs; })
     (import ./sway { inherit pkgs; })
+    (import ./wow { inherit pkgs; })
   ];
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";
