@@ -1,7 +1,10 @@
 { pkgs, ... }:
 let
   aagl = import (
-    builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz"
+    builtins.fetchTarball {
+      url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz";
+      sha256 = "";
+    }
   );
 in
 {
