@@ -7,7 +7,7 @@
     ./distrobox.nix
     # ./binfmt.nix
     ./systemd.nix
-    # ./genshin.nix
+    ./genshin.nix
     ./sway.nix
     ./mongodb.nix
   ];
