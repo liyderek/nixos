@@ -4,7 +4,7 @@
 }:
 
 let
-  version = "1.4.0";
+  version = "1.4.6";
   pname = "ascension-launcher";
 
   src = pkgs.fetchurl {
@@ -24,4 +24,28 @@ pkgs.appimageTools.wrapType2 rec {
     maintainers = [ ];
     platforms = [ "x86_64-linux" ];
   };
+
+  extraPkgs = with pkgs; [
+    glib
+    glibc
+    gtk3
+    libX11
+    libXcomposite
+    libXcursor
+    libXdamage
+    libXext
+    libXfixes
+    libXi
+    libXrandr
+    libXrender
+    libXtst
+    libappindicator-gtk3
+    libasound
+    libnotify
+    libnss
+    libxkbcommon
+    libxkbcommon-x11
+    pango
+    zlib
+  ];
 }
