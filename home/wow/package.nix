@@ -7,7 +7,9 @@ let
   version = "1.4.0";
   pname = "ascension-launcher";
 
-  src = ./ascension-launcher-145.AppImage;
+  src = pkgs.fetchurl {
+    url = "https://ascension.gg/launcher/Ascension-Launcher-${version}.AppImage";
+  };
 in
 pkgs.appimageTools.wrapType2 rec {
   inherit pname version src;
