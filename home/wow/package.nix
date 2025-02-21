@@ -8,7 +8,7 @@ let
   pname = "ascension-launcher";
 
   src = pkgs.fetchurl {
-    url = "https://ascension.gg/launcher/Ascension-Launcher-${version}.AppImage";
+    url = "https://api.ascension.gg/api/bootstrap/launcher/latest?unix";
   };
 in
 pkgs.appimageTools.wrapType2 rec {
