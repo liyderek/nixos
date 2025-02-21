@@ -9,6 +9,7 @@ let
 
   src = pkgs.fetchurl {
     url = "https://api.ascension.gg/api/bootstrap/launcher/latest?unix";
+    sha256 = "sha256-Ul67zJFpdLXeT5d0RC2ZyEeyQQBtQkYqoLykT4aVNCU=";
   };
 in
 pkgs.appimageTools.wrapType2 rec {
