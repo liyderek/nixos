@@ -60,7 +60,6 @@
     mongodb-compass
     texliveFull
     appimage-run
-    spotify-tui
   ];
 
   imports = [
