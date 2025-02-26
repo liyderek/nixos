@@ -60,6 +60,7 @@
     mongodb-compass
     texliveFull
     appimage-run
+    mupdf
   ];
 
   imports = [
