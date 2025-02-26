@@ -329,8 +329,12 @@
       workspace = 1, monitor:DP-1
       workspace = 2, monitor:DP-1
       workspace = 3, monitor:DP-1
-      workspace = 4, monitor:HDMI-A-1
-      workspace = 5, monitor:HDMI-A-1
+      workspace = 4, monitor:DP-1
+      workspace = 5, monitor:DP-1
+      workspace = 6, monitor:DP-1
+      workspace = 7, monitor:HDMI-A-1
+      workspace = 8, monitor:HDMI-A-1
+      workspace = 9, monitor:HDMI-A-1
 
       xwayland {
         force_zero_scaling = true
