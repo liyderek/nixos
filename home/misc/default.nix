@@ -14,7 +14,7 @@
     ./zsh.nix
     ./starship.nix
     ./apps.nix
-    ./muvm.nix
+    # ./muvm.nix
     ./git.nix
     ./qt.nix
     # ./helix.nix
