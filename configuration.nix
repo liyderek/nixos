@@ -230,6 +230,7 @@
     mkosi
     ripgrep
     ntfs3g
+    mullvad-vpn
   ];
 
   system.stateVersion = "24.11"; # dont change
