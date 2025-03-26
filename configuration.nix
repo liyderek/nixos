@@ -249,6 +249,7 @@
     mkosi
     ripgrep
     ntfs3g
+    exfatprogs
   ];
 
   system.stateVersion = "24.11"; # dont change
