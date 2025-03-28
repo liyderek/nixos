@@ -61,6 +61,7 @@
     texliveFull
     appimage-run
     mupdf
+    qbittorrent
   ];
 
   imports = [
