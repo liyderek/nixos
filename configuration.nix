@@ -250,6 +250,7 @@
     ripgrep
     ntfs3g
     exfatprogs
+    gamemode
   ];
 
   system.stateVersion = "24.11"; # dont change
