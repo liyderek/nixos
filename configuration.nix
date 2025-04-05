@@ -246,7 +246,6 @@
     chromium
     gparted
     ryujinx # nintendo
-    mkosi
     ripgrep
     ntfs3g
     exfatprogs
