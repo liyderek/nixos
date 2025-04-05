@@ -39,10 +39,8 @@
     gnumake
     pkg-config
     ninja
-    python312Packages.spacy
     inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
     aseprite
-    python3Packages.six
     alejandra
     lunar-client
     jetbrains.pycharm-professional
