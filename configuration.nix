@@ -250,6 +250,7 @@
     ntfs3g
     exfatprogs
     gamemode
+    sunshine
   ];
 
   system.stateVersion = "24.11"; # dont change
