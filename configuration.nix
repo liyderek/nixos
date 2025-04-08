@@ -278,6 +278,7 @@
     exfatprogs
     gamemode
     sunshine
+    amf
   ];
 
   system.stateVersion = "24.11"; # dont change

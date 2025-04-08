@@ -53,11 +53,7 @@
     zoom-us
     neovide
     redis
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        obs-vaapi
-      ];
-    })
+    obs-studio
     libnotify
     mongodb-compass
     texliveFull
