@@ -54,7 +54,7 @@
     neovide
     redis
     obs-studio
-    obs-studio-plugins.obs_vaapi
+    obs-studio-plugins.obs-vaapi
     libnotify
     mongodb-compass
     texliveFull
