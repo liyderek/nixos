@@ -279,6 +279,9 @@
     gamemode
     sunshine
     amf
+    libreoffice-qt
+    hunspell
+    hunspellDicts.en_US
   ];
 
   system.stateVersion = "24.11"; # dont change
