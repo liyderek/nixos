@@ -60,6 +60,7 @@
     appimage-run
     mupdf
     qbittorrent
+    gamescope
   ];
 
   imports = [
