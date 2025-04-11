@@ -61,6 +61,7 @@
     mupdf
     qbittorrent
     gamescope
+    adwsteamgtk
   ];
 
   imports = [
