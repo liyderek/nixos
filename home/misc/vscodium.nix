@@ -36,8 +36,8 @@
 
       "window.menuBarVisibility" = "toggle";
       "editor.fontFamily" = "'SFMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
-      "terminal.integrated.fontFamily" = "'SFMono Nerd Font', 'SymbolsNerdFont'";
-      "editor.fontSize" = 16;
+      "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
+      "editor.fontSize" = 13;
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "catppuccin.accentColor" = "lavender";
