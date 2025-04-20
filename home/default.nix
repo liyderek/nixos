@@ -62,6 +62,7 @@
     qbittorrent
     gamescope
     adwsteamgtk
+    mailspring
   ];
 
   imports = [
