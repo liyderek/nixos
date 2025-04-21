@@ -63,6 +63,7 @@
     gamescope
     adwsteamgtk
     mailspring
+    google-chrome
   ];
 
   imports = [
