@@ -64,6 +64,7 @@
     adwsteamgtk
     mailspring
     google-chrome
+    ollama-rocm
   ];
 
   imports = [
