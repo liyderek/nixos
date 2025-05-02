@@ -11,7 +11,7 @@
         "nm-applet &"
         "wl-clip-persist --clipboard both"
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        "hyprctl setcursor macOS 25 &"
+        "hyprctl setcursor Bibata-Modern-Classic 25 &"
         "poweralertd &"
         "waybar &"
         "swaync &"

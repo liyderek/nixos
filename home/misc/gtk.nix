@@ -30,14 +30,14 @@
     };
     cursorTheme = {
       name = "macOS";
-      package = pkgs.apple-cursor;
+      package = pkgs.bibata-cursors;
       size = 25;
     };
   };
 
   home.pointerCursor = {
     name = "macOS";
-    package = pkgs.apple-cursor;
+    package = pkgs.bibata-cursors;
     size = 25;
   };
 }
