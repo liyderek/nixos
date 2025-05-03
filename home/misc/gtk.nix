@@ -29,14 +29,14 @@
       };
     };
     cursorTheme = {
-      name = "macOS";
+      name = "Bibata-Modern-Classic";
       package = pkgs.bibata-cursors;
       size = 25;
     };
   };
 
   home.pointerCursor = {
-    name = "macOS";
+    name = "Bibata-Modern-Classic";
     package = pkgs.bibata-cursors;
     size = 25;
   };
