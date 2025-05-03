@@ -65,6 +65,7 @@
     mailspring
     google-chrome
     ollama-rocm
+    cemu
   ];
 
   imports = [
