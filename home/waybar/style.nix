@@ -1,7 +1,7 @@
 { ... }:
 let
   custom = {
-    font = "SFMono Nerd Font";
+    font = "JetBrainsMono Nerd Font";
     font_size = "15px";
     font_weight = "bold";
     text_color = "#cdd6f4";
