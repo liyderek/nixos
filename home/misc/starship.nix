@@ -30,6 +30,6 @@
       };
 
       palette = "gruvbox_dark";
-    } // builtins.fromTOML (builtins.readFile "/etc/nixos/home/misc/gruvbox.toml");
+    } // builtins.fromTOML (builtins.readFile ./gruvbox.toml);
   };
 }
