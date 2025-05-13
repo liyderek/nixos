@@ -66,6 +66,7 @@
     google-chrome
     ollama-rocm
     cemu
+    alacritty
   ];
 
   imports = [
