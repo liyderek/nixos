@@ -36,15 +36,15 @@
       };
     };
     cursorTheme = {
-      name = "Bibata-Modern-Classic";
-      package = pkgs.bibata-cursors;
+      name = "OpenZone-Black";
+      package = pkgs.openzone-cursors;
       size = 25;
     };
   };
 
   home.pointerCursor = {
-    name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors;
+    name = "OpenZone-Black";
+    package = pkgs.openzone-cursors;
     size = 25;
   };
 }
