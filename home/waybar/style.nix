@@ -3,7 +3,7 @@ let
   custom = {
     font = "JetBrainsMono Nerd Font";
     font_size = "15px";
-    font_weight = "regular";
+    font_weight = "normal";
     text_color = "#cdd6f4";
     secondary_accent = "98971a";
     tertiary_accent = "d79921";
