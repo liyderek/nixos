@@ -10,6 +10,7 @@
     pkgs.symbola
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
     pkgs.cantarell-fonts
+    pkgs.maple-mono-NF
   ];
 
   gtk = {
