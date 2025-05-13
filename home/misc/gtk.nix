@@ -23,10 +23,15 @@
       package = pkgs.adwaita-icon-theme;
     };
     theme = {
-      name = "catppuccin-mocha-lavender-standard";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "lavender" ];
-        variant = "mocha";
+      name = "Colloid-Green-Dark-Gruvbox";
+      package = pkgs.colloid-gtk-theme.override {
+        colorVariants = [ "dark" ];
+        themeVariants = [ "green" ];
+        tweaks = [
+          "gruvbox"
+          # "rimless"
+          # "float"
+        ];
       };
     };
     cursorTheme = {
