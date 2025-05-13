@@ -4,7 +4,7 @@ let
     font = "JetBrainsMono Nerd Font";
     font_size = "15px";
     font_weight = "normal";
-    text_color = "#cdd6f4";
+    text_color = "#ebdbb2";
     secondary_accent = "98971a";
     tertiary_accent = "d79921";
     background = "1d2021";
