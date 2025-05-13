@@ -30,6 +30,6 @@
       };
 
       palette = "gruvbox_dark";
-    } // builtins.fromTOML (builtins.readFile "${inputs.catppuccin-starship}/themes/mocha.toml");
+    } // builtins.fromTOML (builtins.readFile "gruvbox.toml");
   };
 }
