@@ -5,9 +5,9 @@ let
     font_size = "15px";
     font_weight = "bold";
     text_color = "#cdd6f4";
-    secondary_accent = "89b4fa";
-    tertiary_accent = "f5f5f5";
-    background = "11111B";
+    secondary_accent = "98971a";
+    tertiary_accent = "d79921";
+    background = "1d2021";
     opacity = "0.98";
   };
 in
@@ -26,7 +26,7 @@ in
     }
 
     window#waybar {
-        background: rgba(18, 18, 25, 0.85);
+        background: rgba(29, 32, 33, 1.00);
     }
 
     #workspaces {
