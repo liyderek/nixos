@@ -17,17 +17,17 @@
         inner-pad = 5;
       };
       colors = {
-        background = "1e1e2ecc";
-        text = "cdd6f4ff";
-        match = "f38ba8ff";
-        selection = "b4befeaa";
-        selection-match = "f38ba8ff";
-        selection-text = "cdd6f4ff";
-        border = "b4befeff";
+        background = "282828ff";
+        text = "ebdbb2ff";
+        match = "b16286ff";
+        selection = "d79921ff";
+        selection-match = "b16286ff";
+        selection-text = "fabd2fff";
+        border = "d79921ff";
       };
       border = {
-        radius = 15;
-        width = 3;
+        radius = 0;
+        width = 1;
       };
     };
   };
