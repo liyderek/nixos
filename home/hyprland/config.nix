@@ -43,8 +43,11 @@
       general = {
         "$mainMod" = "SUPER";
         layout = "dwindle";
-        gaps_in = 8;
-        gaps_out = 10;
+        # gaps_in = 8;
+        # gaps_out = 10;
+        gaps_in = 0;
+        gaps_out = 0;
+
         border_size = 1;
         "col.active_border" = "rgb(cba6f7) rgb(b4befe) 45deg";
         "col.inactive_border" = "0xFF6C7086";
@@ -76,13 +79,15 @@
       };
 
       decoration = {
-        rounding = 10;
-        active_opacity = 0.94;
-        inactive_opacity = 0.94;
-        fullscreen_opacity = 1.0;
+        # rounding = 10;
+        rounding = 0;
+        # active_opacity = 0.94;
+        # inactive_opacity = 0.94;
+        # fullscreen_opacity = 1.0;
 
         blur = {
-          enabled = true;
+          # enabled = true;
+          enabled = false;
           #           size = 1;
           #           passes = 1;
           size = 5;
@@ -106,7 +111,7 @@
       };
 
       animations = {
-        enabled = true;
+        enabled = false;
 
         bezier = [
           "fluent_decel, 0, 0.2, 0.4, 1"
