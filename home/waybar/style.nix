@@ -40,10 +40,10 @@ in
         padding-right: 6px;
     }
     #workspaces button.empty {
-        color: #6c7086;
+        color: #a89984;
     }
     #workspaces button.active {
-        color: #b4befe;
+        color: #ebdbb2;
     }
 
     #tray, #pulseaudio, #network, #cpu, #memory, #disk, #clock, #battery, #custom-notification {

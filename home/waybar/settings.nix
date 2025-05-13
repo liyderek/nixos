@@ -43,7 +43,7 @@
         "1" = "󰈹 fun";
         "2" = " work";
         "3" = "󰘙 school";
-        "7" = "󰙯 gamse";
+        "7" = "󰙯 games";
         "8" = " music";
         "4" = " other";
         urgent = "";
