@@ -16,7 +16,7 @@
   gtk = {
     enable = true;
     font = {
-      name = "Cantarell";
+      name = "Maple Mono NF";
       size = 10;
     };
     iconTheme = {
