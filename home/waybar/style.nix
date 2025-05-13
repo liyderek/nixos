@@ -96,7 +96,7 @@ in
 
     #custom-launcher {
         font-size: 20px;
-        color: #b4befe;
+        color: #ebdbb2;
         font-weight: ${custom.font_weight};
         padding-left: 10px;
         padding-right: 15px;

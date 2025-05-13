@@ -28,7 +28,7 @@
     clock = {
       calendar = {
         format = {
-          today = "<span color='#b4befe'><b><u>{}</u></b></span>";
+          today = "<span color='#ebdbb2'><b><u>{}</u></b></span>";
         };
       };
       format = " {:%I:%M %p}";
