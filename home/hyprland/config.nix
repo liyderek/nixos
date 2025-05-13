@@ -51,8 +51,8 @@
         border_size = 1;
         # "col.active_border" = "rgb(cba6f7) rgb(b4befe) 45deg";
         # "col.inactive_border" = "0xFF6C7086";
-        "col.active_border" = "rgb(0xFB4934)";
-        "col.inactive_border" = "rgb(0x928374)";
+        "col.active_border" = "0xFB4934";
+        "col.inactive_border" = "0x928374";
         no_border_on_floating = false;
       };
 
