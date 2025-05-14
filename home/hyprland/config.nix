@@ -103,7 +103,8 @@
         };
 
         shadow = {
-          enabled = true;
+          # enabled = true;
+          enabled = false;
           ignore_window = true;
           offset = "0 2";
           range = 20;
