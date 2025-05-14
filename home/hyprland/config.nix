@@ -11,7 +11,7 @@
         "nm-applet &"
         "wl-clip-persist --clipboard both"
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        "hyprctl setcursor OpenZone_Black 50 &"
+        "hyprctl setcursor macOS 25 &"
         "poweralertd &"
         "waybar &"
         "swaync &"
@@ -23,7 +23,7 @@
       ];
 
       env = [
-        "XCURSOR_SIZE,50"
+        "XCURSOR_SIZE,25"
       ];
 
       input = {

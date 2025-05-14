@@ -36,15 +36,15 @@
       };
     };
     cursorTheme = {
-      name = "OpenZone_Black";
-      package = pkgs.openzone-cursors;
+      name = "macOS";
+      package = pkgs.apple-cursor;
       size = 25;
     };
   };
 
   home.pointerCursor = {
-    name = "OpenZone_Black";
-    package = pkgs.openzone-cursors;
+    name = "macOS";
+    package = pkgs.apple-cursor;
     size = 25;
   };
 }
