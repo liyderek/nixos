@@ -6,15 +6,15 @@
     settings = {
       font = {
         normal = {
-          family = "Maple Mono";
+          family = "Maple Mono NF";
           style = "Regular";
         };
         bold = {
-          family = "Maple Mono";
+          family = "Maple Mono NF";
           style = "Bold";
         };
         italic = {
-          family = "Maple Mono";
+          family = "Maple Mono NF";
           style = "Italic";
         };
         size = 14;
