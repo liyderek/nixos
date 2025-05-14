@@ -23,7 +23,7 @@
       ];
 
       env = [
-        "XCURSOR_SIZE,25"
+        "XCURSOR_SIZE,50"
       ];
 
       input = {
