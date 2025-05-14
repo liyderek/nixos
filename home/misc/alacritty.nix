@@ -17,7 +17,7 @@
           family = "Maple Mono NF";
           style = "Italic";
         };
-        size = 14;
+        size = 12;
       };
     };
   };
