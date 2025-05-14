@@ -11,7 +11,7 @@
         "nm-applet &"
         "wl-clip-persist --clipboard both"
         "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
-        "hyprctl setcursor OpenZone-Black 25 &"
+        "hyprctl setcursor OpenZone_Black 25 &"
         "poweralertd &"
         "waybar &"
         "swaync &"

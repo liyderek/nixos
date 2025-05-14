@@ -36,14 +36,14 @@
       };
     };
     cursorTheme = {
-      name = "OpenZone-Black";
+      name = "OpenZone_Black";
       package = pkgs.openzone-cursors;
       size = 25;
     };
   };
 
   home.pointerCursor = {
-    name = "OpenZone-Black";
+    name = "OpenZone_Black";
     package = pkgs.openzone-cursors;
     size = 25;
   };
