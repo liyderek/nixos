@@ -11,6 +11,10 @@
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
     pkgs.cantarell-fonts
     pkgs.maple-mono.NF
+    pkgs.noto-fonts
+    pkgs.noto-fonts-extra
+    pkgs.noto-fonts-cjk
+    pkgs.noto-fonts-cjk-serif
   ];
 
   gtk = {
