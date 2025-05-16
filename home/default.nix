@@ -68,6 +68,7 @@
     cemu
     alacritty
     docker
+    docker-compose
   ];
 
   imports = [
