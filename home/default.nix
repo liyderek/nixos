@@ -67,6 +67,7 @@
     ollama-rocm
     cemu
     alacritty
+    docker
   ];
 
   imports = [
