@@ -54,6 +54,8 @@
         "col.active_border" = "0xFFD79921";
         "col.inactive_border" = "0xFF928374";
         no_border_on_floating = false;
+
+        allow_tearing = true;
       };
 
       misc = {
