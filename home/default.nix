@@ -69,6 +69,7 @@
     alacritty
     docker
     docker-compose
+    python312Packages.pymupdf
   ];
 
   imports = [
