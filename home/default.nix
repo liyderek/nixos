@@ -32,11 +32,8 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
-    (pkgs.python3.withPackages (
-      python-pkgs: with python-pkgs; [
-        pymupdf
-      ]
-    ))
+    python3
+    python3packages.pymupdf
     nodejs
     nixd
     lazygit
