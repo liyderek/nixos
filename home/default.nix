@@ -33,7 +33,7 @@
     distrobox
     llvmPackages_19.clang-tools
     python3
-    python3packages.pymupdf
+    python3Packages.pymupdf
     nodejs
     nixd
     lazygit
