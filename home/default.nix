@@ -32,7 +32,11 @@
     graphviz
     distrobox
     llvmPackages_19.clang-tools
-    python3
+    (pkgs.python3.withPackages (
+      python-pkgs: with python-pkgs; [
+        pymupdf
+      ]
+    ))
     nodejs
     nixd
     lazygit
@@ -69,7 +73,6 @@
     alacritty
     docker
     docker-compose
-    python312Packages.pymupdf
   ];
 
   imports = [
