@@ -288,6 +288,7 @@
     libreoffice-qt
     hunspell
     hunspellDicts.en_US
+    perf-tools
   ];
 
   system.stateVersion = "24.11"; # dont change
