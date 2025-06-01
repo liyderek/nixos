@@ -259,6 +259,9 @@
     };
   };
 
+  boot.kernel.sysctl."kernel.perf_event_paranoid" = 2;
+  boot.kernel.sysctl."kernel.kptr_restrict" = 0;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
