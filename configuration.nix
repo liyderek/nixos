@@ -292,6 +292,7 @@
     hunspell
     hunspellDicts.en_US
     linuxPackages_latest.perf
+    valgrind
   ];
 
   system.stateVersion = "24.11"; # dont change
