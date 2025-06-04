@@ -70,6 +70,7 @@
     docker
     docker-compose
     librechat
+    badlion-client
   ];
 
   imports = [
