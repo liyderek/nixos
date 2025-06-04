@@ -293,7 +293,6 @@
     hunspellDicts.en_US
     linuxPackages_latest.perf
     valgrind
-    xorg.libxshmfence
   ];
 
   system.stateVersion = "24.11"; # dont change
