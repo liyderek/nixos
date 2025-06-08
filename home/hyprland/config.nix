@@ -51,7 +51,8 @@
         border_size = 1;
         # "col.active_border" = "rgb(cba6f7) rgb(b4befe) 45deg";
         # "col.inactive_border" = "0xFF6C7086";
-        "col.active_border" = "0xFFD79921";
+        # "col.active_border" = "0xFFD79921";
+        "col.active_border" = "0xFFF5C2E7";
         "col.inactive_border" = "0xFF928374";
         no_border_on_floating = false;
 
