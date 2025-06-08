@@ -146,6 +146,8 @@
 
       render = {
         explicit_sync = 0;
+        direct_scanout = 1;
+
       };
 
       cursor = {
