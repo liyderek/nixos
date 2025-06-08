@@ -148,6 +148,10 @@
         explicit_sync = 0;
       };
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
       bind = [
         # show keybinds list
         "$mainMod, F1, exec, show-keybinds"
