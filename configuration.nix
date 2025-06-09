@@ -304,6 +304,7 @@
     xorg.libxshmfence
     libvirt
     qemu_kvm
+    swtpm
   ];
 
   system.stateVersion = "24.11"; # dont change
