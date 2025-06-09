@@ -267,7 +267,6 @@
   virtualisation.spiceUSBRedirection.enable = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
-  virtualisation.tpm.enable = true;
   virtualisation.libvirtd.qemu.swtpm.enable = true;
 
   users.groups.libvirtd.members = [ "derek" ];
@@ -307,6 +306,7 @@
     libvirt
     qemu_kvm
     swtpm
+    virglrenderer
   ];
 
   system.stateVersion = "24.11"; # dont change
