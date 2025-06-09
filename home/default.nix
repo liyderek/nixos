@@ -71,9 +71,6 @@
     docker-compose
     librechat
     badlion-client
-    virt-manager
-    qemu
-    libvirt
   ];
 
   imports = [

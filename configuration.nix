@@ -262,6 +262,12 @@
   boot.kernel.sysctl."kernel.perf_event_paranoid" = 2;
   boot.kernel.sysctl."kernel.kptr_restrict" = 0;
 
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  users.groups.libvirtd.members = [ "derek" ];
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
@@ -294,6 +300,8 @@
     linuxPackages_latest.perf
     valgrind
     xorg.libxshmfence
+    libvirt
+    qemu_kvm
   ];
 
   system.stateVersion = "24.11"; # dont change
