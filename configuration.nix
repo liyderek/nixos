@@ -267,7 +267,7 @@
   virtualisation.spiceUSBRedirection.enable = true;
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
-  virtualisation.libvirt.qemu.swtpm.enable = true;
+  virtualisation.libvirtd.qemu.swtpm.enable = true;
 
   users.groups.libvirtd.members = [ "derek" ];
 
