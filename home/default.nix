@@ -73,6 +73,7 @@
     badlion-client
     virt-manager
     qemu
+    libvirt
   ];
 
   imports = [
