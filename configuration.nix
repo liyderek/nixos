@@ -268,7 +268,6 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
   virtualisation.libvirtd.qemu.swtpm.enable = true;
-  virtualization.vmware.guest.enable = true;
 
   users.groups.libvirtd.members = [ "derek" ];
 
@@ -308,6 +307,7 @@
     qemu_kvm
     swtpm
     virglrenderer
+    vmware-workstation
   ];
 
   system.stateVersion = "24.11"; # dont change
