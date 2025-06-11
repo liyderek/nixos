@@ -87,7 +87,12 @@ return {
 					theme = theme,
 					globalstatus = vim.o.laststatus == 3,
 					disabled_filetypes = {
-						statusline = { 'dashboard', 'alpha', 'ministarter', 'snacks_dashboard' },
+						statusline = {
+							'dashboard',
+							'alpha',
+							'ministarter',
+							'snacks_dashboard',
+						},
 					},
 				},
 				extensions = {
@@ -150,7 +155,7 @@ return {
 						{
 							LazyVim.lualine.pretty_path({ length = 5 }),
 							color = { fg = '#D7D7BC' },
-							separator = '',
+							separator = '|',
 							cond = is_file_window,
 							on_click = function()
 								vim.g.trouble_lualine = not vim.g.trouble_lualine
@@ -188,7 +193,9 @@ return {
 							require('rafi.util').lualine.trails(),
 							cond = is_file_window,
 							padding = { left = 1, right = 0 },
-							color = function() return { fg = Snacks.util.color('Identifier') } end,
+							color = function()
+								return { fg = Snacks.util.color('Identifier') }
+							end,
 						},
 
 						{
@@ -266,7 +273,9 @@ return {
 									---@diagnostic disable-next-line: undefined-field
 									and require('noice').api.status.command.has()
 							end,
-							color = function() return { fg = Snacks.util.color('Statement') } end,
+							color = function()
+								return { fg = Snacks.util.color('Statement') }
+							end,
 						},
 						-- showmode
 						{
@@ -279,7 +288,9 @@ return {
 									---@diagnostic disable-next-line: undefined-field
 									and require('noice').api.status.mode.has()
 							end,
-							color = function() return { fg = Snacks.util.color('Constant') } end,
+							color = function()
+								return { fg = Snacks.util.color('Constant') }
+							end,
 						},
 						-- dap status
 						-- stylua: ignore
@@ -292,7 +303,9 @@ return {
 						{
 							require('lazy.status').updates,
 							cond = require('lazy.status').has_updates,
-							color = function() return { fg = Snacks.util.color('Comment') } end,
+							color = function()
+								return { fg = Snacks.util.color('Comment') }
+							end,
 							on_click = function()
 								vim.cmd([[Lazy]])
 							end,
