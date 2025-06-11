@@ -309,6 +309,7 @@
     swtpm
     virglrenderer
     vmware-workstation
+    cmake-lint
   ];
 
   system.stateVersion = "24.11"; # dont change
