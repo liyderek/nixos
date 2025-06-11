@@ -190,23 +190,23 @@ return {
 					)
 				end
 
-				local lspconfig = require('lspconfig')
-				lspconfig.clangd.setup({
-					root_dir = function(fname)
-						local disabled_projects = {
-							['/home/derek/CLionProjects/dooger'] = true,
-						}
-
-						local util = require('lspconfig.util')
-						local root = util.root_pattern('.clangd')(fname)
-
-						if (not root) or disabled_projects[root] then
-							return nil -- Returning nil disables clangd in this root
-						end
-
-						return root
-					end,
-				})
+				-- local lspconfig = require('lspconfig')
+				-- lspconfig.clangd.setup({
+				-- 	root_dir = function(fname)
+				-- 		local disabled_projects = {
+				-- 			['/home/derek/CLionProjects/dooger'] = true,
+				-- 		}
+				--
+				-- 		local util = require('lspconfig.util')
+				-- 		local root = util.root_pattern('.clangd')(fname)
+				--
+				-- 		if (not root) or disabled_projects[root] then
+				-- 			return nil -- Returning nil disables clangd in this root
+				-- 		end
+				--
+				-- 		return root
+				-- 	end,
+				-- })
 
 				lspconfig.nixd.setup({
 					cmd = { 'nixd' },
