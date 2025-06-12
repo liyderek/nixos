@@ -13,5 +13,11 @@ return {
 				vim.cmd('edit') -- reload file to restart LSP with updated flags
 			end,
 		})
+		vim.keymap.set(
+			'n',
+			'<Space>cm',
+			':CMakeDebug<CR>',
+			{ noremap = true, silent = true }
+		)
 	end,
 }
