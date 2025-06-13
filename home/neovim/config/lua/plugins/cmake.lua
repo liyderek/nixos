@@ -1,6 +1,6 @@
 return {
 	'Civitasv/cmake-tools.nvim',
-	lazy = false,
+	lazy = true,
 	dependencies = { 'nvim-lua/plenary.nvim' },
 	config = function()
 		require('cmake-tools').setup({
@@ -19,5 +19,23 @@ return {
 			':CMakeDebug<CR>',
 			{ noremap = true, silent = true }
 		)
+	end,
+	init = function()
+		local loaded = false
+		local function check_cmake()
+			local cwd = vim.uv.cwd()
+			if vim.fn.filereadable(cwd .. '/CMakeLists.txt') == 1 then
+				require('lazy').load({ plugins = { 'cmake-tools.nvim' } })
+				loaded = true
+			end
+		end
+		check_cmake()
+		vim.api.nvim_create_autocmd('DirChanged', {
+			callback = function()
+				if not loaded then
+					check_cmake()
+				end
+			end,
+		})
 	end,
 }
