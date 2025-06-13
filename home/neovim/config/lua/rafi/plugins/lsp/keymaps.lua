@@ -24,6 +24,7 @@ function M.get()
 		{ 'gK', function() return vim.lsp.buf.signature_help() end, desc = 'Signature Help', has = 'signatureHelp' },
 
 		{ '<Leader>ca', vim.lsp.buf.code_action, mode = { 'n', 'x' }, has = 'codeAction', desc = 'Code Action' },
+		{ '<A-CR>', vim.lsp.buf.code_action, mode = { 'n', 'x' }, has = 'codeAction', desc = 'Code Action' },
 		{ '<leader>cc', vim.lsp.codelens.run, desc = 'Run Codelens', mode = { 'n', 'x' }, has = 'codeLens' },
 		{ '<leader>cC', vim.lsp.codelens.refresh, desc = 'Refresh & Display Codelens', mode = { 'n' }, has = 'codeLens' },
 		{ '<leader>cR', function() Snacks.rename.rename_file() end, desc = 'Rename File', mode = {'n'}, has = { 'workspace/didRenameFiles', 'workspace/willRenameFiles' }},
