@@ -1,39 +1,60 @@
-local function open_matching_in_split()
-	local current_buf = vim.api.nvim_get_current_buf()
-	local current_win = vim.api.nvim_get_current_win()
-	local wins = vim.api.nvim_tabpage_list_wins(0)
-
-	if #wins < 2 then
-		-- Only one window exists; create a vsplit
-		vim.cmd('vsplit')
+local function open_matching_in_other_split()
+	-- Only act on regular file buffers (ignore Neo-tree and special buffers)
+	if vim.bo.buftype ~= '' or not vim.bo.buflisted then
+		return
 	end
 
-	local other_win = nil
-	for _, win in ipairs(wins) do
-		if win ~= current_win then
-			other_win = win
-			break
-		end
-	end
-
-	local ext = vim.fn.expand('%:e') -- file extension
-	local base = vim.fn.expand('%:r') -- full path without extension
-	local alt = nil
+	local ext = vim.fn.expand('%:e')
+	local base = vim.fn.expand('%:r')
+	local alt
 
 	if ext == 'cpp' then
 		alt = base .. '.h'
 	elseif ext == 'h' then
 		alt = base .. '.cpp'
+	else
+		return
 	end
 
-	if alt and vim.fn.filereadable(alt) == 1 and other_win then
-		vim.api.nvim_win_set_buf(other_win, vim.fn.bufadd(alt))
-		vim.fn.bufload(alt)
+	-- Check if the alt file exists
+	if vim.fn.filereadable(alt) ~= 1 then
+		return
+	end
+
+	local current_win = vim.api.nvim_get_current_win()
+	local wins = vim.api.nvim_tabpage_list_wins(0)
+
+	-- Check if the file is already visible in another window
+	for _, win in ipairs(wins) do
+		if win ~= current_win then
+			local buf = vim.api.nvim_win_get_buf(win)
+			local name = vim.api.nvim_buf_get_name(buf)
+			if name == vim.fn.fnamemodify(alt, ':p') then
+				return -- already open, don't do anything
+			end
+		end
+	end
+
+	-- If there's already another window, reuse it
+	local target_win = nil
+	for _, win in ipairs(wins) do
+		if win ~= current_win then
+			target_win = win
+			break
+		end
+	end
+
+	if target_win then
+		local alt_buf = vim.fn.bufadd(alt)
+		vim.fn.bufload(alt_buf)
+		vim.api.nvim_win_set_buf(target_win, alt_buf)
+	else
+		-- No other window, split and open
+		vim.cmd('vsplit ' .. alt)
 	end
 end
 
--- Auto-run when you open a cpp/h file
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd('BufEnter', {
 	pattern = { '*.cpp', '*.h' },
-	callback = open_matching_in_split,
+	callback = open_matching_in_other_split,
 })
