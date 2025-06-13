@@ -5,7 +5,7 @@ return {
 
 	-----------------------------------------------------------------------------
 	-- Automatic indentation style detection
-	{ 'nmac427/guess-indent.nvim', lazy = false, priority = 50, opts = {} },
+	-- { 'nmac427/guess-indent.nvim', lazy = false, priority = 50, opts = {} },
 
 	-- Display vim version numbers in docs
 	{ 'tweekmonster/helpful.vim', cmd = 'HelpfulVersion' },
