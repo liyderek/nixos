@@ -176,6 +176,9 @@ opt.winminheight = 1 -- Minimum height for inactive window
 opt.pumblend = 10 -- Popup blend
 opt.pumheight = 10 -- Maximum number of items to show in the popup menu
 
+opt.number = true
+opt.relativenumber = false
+
 opt.showbreak = '⤷  ' -- ↪	⤷
 opt.listchars = {
 	tab = '  ',
