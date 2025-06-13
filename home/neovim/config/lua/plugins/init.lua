@@ -10,3 +10,5 @@ require('cmake-tools').setup(vim.tbl_deep_extend('force', {
 		return 'build/${variant:buildType}'
 	end,
 }, local_cfg))
+
+return {}
