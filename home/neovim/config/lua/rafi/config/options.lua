@@ -94,9 +94,9 @@ opt.wildmode = 'longest:full,full'
 opt.diffopt:append({ 'indent-heuristic', 'algorithm:patience' })
 
 opt.textwidth = 80     -- Text width maximum chars before wrapping
-opt.tabstop = 2        -- The number of spaces a tab is
+opt.tabstop = 4        -- The number of spaces a tab is
 opt.smartindent = true -- Smart autoindenting on new lines
-opt.shiftwidth = 2     -- Number of spaces to use in auto(indent)
+opt.shiftwidth = 4     -- Number of spaces to use in auto(indent)
 opt.shiftround = true  -- Round indent to multiple of 'shiftwidth'
 
 -- What to save for views and sessions
