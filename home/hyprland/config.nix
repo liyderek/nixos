@@ -286,6 +286,7 @@
         "move 40 55%, title:^(Volume Control)$"
         "pseudo, class:^fcitx$"
         "float, title:^(game)$"
+        "rounding 10, floating:1"
       ];
 
       # windowrulev2
