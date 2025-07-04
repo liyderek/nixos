@@ -52,8 +52,8 @@
         # "col.active_border" = "rgb(cba6f7) rgb(b4befe) 45deg";
         # "col.inactive_border" = "0xFF6C7086";
         # "col.active_border" = "0xFFD79921";
-        "col.active_border" = "0xFF000000";
-        "col.inactive_border" = "0xFFA89984";
+        "col.active_border" = "0xFF7C6F64";
+        "col.inactive_border" = "0xFF665C54";
         no_border_on_floating = false;
 
         allow_tearing = true;
