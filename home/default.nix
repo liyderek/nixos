@@ -46,7 +46,7 @@
     jetbrains.pycharm-professional
     steam
     lutris
-    wine
+    wineWowPackages.waylandFull
     winetricks
     prismlauncher
     i3blocks
