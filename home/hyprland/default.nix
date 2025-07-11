@@ -11,7 +11,7 @@ in
 
   imports = [
     (import ./config.nix)
-    (import ./hyprlock.nix { inherit pkgs; })
+    # (import ./hyprlock.nix { inherit pkgs; })
     inputs.hyprland.homeManagerModules.default
   ];
 
