@@ -71,6 +71,7 @@
     docker-compose
     librechat
     badlion-client
+    tgpt
   ];
 
   imports = [
