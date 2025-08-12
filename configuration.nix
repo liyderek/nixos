@@ -291,7 +291,7 @@
     gcc14
     chromium
     gparted
-    ryujinx # nintendo
+    ryubing # nintendo
     ripgrep
     ntfs3g
     exfatprogs
