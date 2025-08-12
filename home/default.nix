@@ -73,6 +73,8 @@
     badlion-client
     tgpt
     runelite
+    flatpak
+    gnome-software
   ];
 
   imports = [
