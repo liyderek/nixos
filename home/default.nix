@@ -72,6 +72,7 @@
     librechat
     badlion-client
     tgpt
+    runelite
   ];
 
   imports = [
