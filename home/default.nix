@@ -73,8 +73,7 @@
     badlion-client
     tgpt
     runelite
-    flatpak
-    gnome-software
+    bolt-launcher
   ];
 
   imports = [
