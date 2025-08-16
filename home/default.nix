@@ -74,6 +74,7 @@
     tgpt
     runelite
     bolt-launcher
+    zulu8
   ];
 
   imports = [
