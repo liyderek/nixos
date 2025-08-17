@@ -75,6 +75,7 @@
     runelite
     bolt-launcher
     zulu24
+    jetbrains.idea-ultimate
   ];
 
   imports = [
