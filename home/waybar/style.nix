@@ -2,7 +2,7 @@
 let
   custom = {
     font = "Maple Mono NF";
-    font_size = "13px";
+    font_size = "14px";
     font_weight = "normal";
     text_color = "#ebdbb2";
     secondary_accent = "98971a";
@@ -30,7 +30,7 @@ in
     }
 
     #workspaces {
-        font-size: 18px;
+        font-size: 16px;
         padding-left: 15px;
 
     }
