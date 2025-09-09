@@ -76,7 +76,7 @@
     bolt-launcher
     zulu24
     jetbrains.idea-ultimate
-    moonlight
+    moonlight-qt
   ];
 
   imports = [

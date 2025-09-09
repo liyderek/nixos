@@ -1,10 +1,7 @@
 { pkgs, ... }:
 let
   aagl = import (
-    builtins.fetchTarball {
-      url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/main.tar.gz";
-      sha256 = "0v59frhfnyy7pbmbv7bdzssdp554bjsgmmm4dw31p5askysmlvib";
-    }
+    builtins.fetchTarball "https://github.com/ezKEa/aagl-gtk-on-nix/archive/release-25.05.tar.gz"
   );
 in
 {
@@ -13,5 +10,10 @@ in
   ];
 
   nix.settings = aagl.nixConfig;
-  programs.an-anime-game-launcher.enable = true;
+  programs.anime-game-launcher.enable = true;
+  programs.anime-games-launcher.enable = true;
+  programs.honkers-railway-launcher.enable = true;
+  programs.honkers-launcher.enable = true;
+  programs.wavey-launcher.enable = true;
+  programs.sleepy-launcher.enable = true;
 }
