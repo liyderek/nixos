@@ -33,6 +33,7 @@
     distrobox
     llvmPackages_19.clang-tools
     python3
+    python3Packages.pynput
     nodejs
     nixd
     lazygit
