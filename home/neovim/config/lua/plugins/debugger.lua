@@ -34,7 +34,7 @@ dap.adapters.codelldb = function(cb, config)
 		type = 'server',
 		port = '12345',
 		executable = {
-			command = '/home/derek/.vscode-oss/extensions/vadimcn.vscode-lldb/adapter/codelldb',
+			command = '/home/derek/.vscode/extensions/vadimcn.vscode-lldb-1.11.5/adapter/codelldb',
 			args = { '--port', '12345' },
 		},
 	})
