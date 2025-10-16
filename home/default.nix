@@ -78,7 +78,7 @@
     zulu24
     jetbrains.idea-ultimate
     moonlight-qt
-    xfce.thunar
+    slack
   ];
 
   imports = [

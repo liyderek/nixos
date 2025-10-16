@@ -272,6 +272,9 @@
 
   users.groups.libvirtd.members = [ "derek" ];
 
+  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.desktopManager.xfce.noDesktop = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
