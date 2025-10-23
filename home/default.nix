@@ -68,8 +68,6 @@
     ollama-rocm
     cemu
     alacritty
-    docker
-    docker-compose
     librechat
     badlion-client
     tgpt

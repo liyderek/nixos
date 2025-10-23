@@ -275,12 +275,26 @@
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.xfce.noDesktop = true;
 
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+
+  virtualisation.podman.enable = true;
+  virtualisation.podman.dockerSocket.enable = true;
+  virtualisation.podman.defaultNetwork.dnsname.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
     extraGroups = [
       "networkmanager"
       "wheel"
+      "docker"
+      "podman"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
@@ -313,6 +327,8 @@
     virglrenderer
     vmware-workstation
     cmake-lint
+    arion
+    docker-client
   ];
 
   system.stateVersion = "24.11"; # dont change
