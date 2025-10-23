@@ -283,10 +283,6 @@
     };
   };
 
-  virtualisation.podman.enable = true;
-  virtualisation.podman.dockerSocket.enable = true;
-  virtualisation.podman.defaultNetwork.dnsname.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
@@ -294,7 +290,6 @@
       "networkmanager"
       "wheel"
       "docker"
-      "podman"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };
