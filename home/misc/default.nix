@@ -8,7 +8,7 @@
   imports = [
     ./gtk.nix
     ./kitty.nix
-    ./vscodium.nix
+    # ./vscodium.nix
     ./rofi.nix
     ./fuzzel.nix
     ./zsh.nix

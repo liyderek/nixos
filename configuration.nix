@@ -323,7 +323,9 @@
     vmware-workstation
     cmake-lint
     arion
-    docker-client
+		docker-client
+		docker-compose
+		inputs.compose2nix.packages.x86_64-linux.default
   ];
 
   system.stateVersion = "24.11"; # dont change

@@ -5,7 +5,7 @@ return {
 
 	-----------------------------------------------------------------------------
 	-- Automatic indentation style detection
-	-- { 'nmac427/guess-indent.nvim', lazy = false, priority = 50, opts = {} },
+	{ 'nmac427/guess-indent.nvim', lazy = false, priority = 50, opts = {} },
 
 	-- Display vim version numbers in docs
 	{ 'tweekmonster/helpful.vim', cmd = 'HelpfulVersion' },
@@ -14,10 +14,30 @@ return {
 	{ 'lambdalisue/suda.vim', event = 'BufRead' },
 
 	-----------------------------------------------------------------------------
-	-- Simple lua plugin for automated session management
+	-- FZF picker
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/extras/editor/fzf.lua
 	{
-		'folke/persistence.nvim',
+		'fzf-lua',
+		optional = true,
+		opts = {
+			defaults = {
+				git_icons = vim.fn.executable('git') == 1,
+			},
+		},
+	},
+
+	-----------------------------------------------------------------------------
+	-- Simple lua plugin for automated session management
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/util.lua
+	{
+		'persistence.nvim',
 		event = 'VimEnter',
+		-- stylua: ignore
+		keys = {
+			{ '<localleader>s', "<cmd>lua require'persistence'.select()<CR>", desc = 'Sessions' },
+		},
 		opts = {
 			branch = false,
 			-- Enable to autoload session on startup, unless:
@@ -26,18 +46,11 @@ return {
 			-- * git commit/rebase session
 			autoload = true,
 		},
-		-- stylua: ignore
-		keys = {
-			{ '<leader>qs', function() require('persistence').load() end, desc = 'Restore Session' },
-			{ '<leader>qS', function() require('persistence').select() end, desc = 'Select Session' },
-			{ '<leader>ql', function() require('persistence').load({ last = true }) end, desc = 'Restore Last Session' },
-			{ '<leader>qd', function() require('persistence').stop() end, desc = 'Don\'t Save Current Session' },
-		},
 		init = function()
 			-- Detect if stdin has been provided.
 			vim.g.started_with_stdin = false
 			vim.api.nvim_create_autocmd('StdinReadPre', {
-				group = vim.api.nvim_create_augroup('rafi_persistence', {}),
+				group = vim.api.nvim_create_augroup('rafi.persistence', {}),
 				callback = function()
 					vim.g.started_with_stdin = true
 				end,
@@ -48,7 +61,7 @@ return {
 				'/private/tmp',
 			}
 			vim.api.nvim_create_autocmd('VimEnter', {
-				group = 'rafi_persistence',
+				group = 'rafi.persistence',
 				once = true,
 				nested = true,
 				callback = function()
@@ -85,19 +98,11 @@ return {
 	},
 
 	-----------------------------------------------------------------------------
-	-- Ultimate undo history visualizer
-	{
-		'mbbill/undotree',
-		cmd = 'UndotreeToggle',
-		keys = {
-			{ '<Leader>gu', '<cmd>UndotreeToggle<CR>', desc = 'Undo Tree' },
-		},
-	},
-
-	-----------------------------------------------------------------------------
 	-- Search labels, enhanced character motions
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/editor.lua
 	{
-		'folke/flash.nvim',
+		'flash.nvim',
 		event = 'VeryLazy',
 		vscode = true,
 		---@type Flash.Config
@@ -110,83 +115,82 @@ return {
 		},
 		-- stylua: ignore
 		keys = {
+			-- Disable LazyVim default 's' keymap, switch to 'ss'
+			{ 's', mode = { 'n', 'x', 'o' }, false },
 			{ 'ss', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash' },
-			{ 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter' },
-			{ 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash' },
-			{ 'R', mode = { 'x', 'o' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search' },
-			{ '<C-s>', mode = { 'c' }, function() require('flash').toggle() end, desc = 'Toggle Flash Search' },
+		},
+	},
+
+	-----------------------------------------------------------------------------
+	-- Create key bindings that stick
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/editor.lua
+	{
+		'which-key.nvim',
+		keys = {
+			-- Replace <leader>? with <leader>bk
+			{ '<leader>?', false },
+			{
+				'<leader>bk',
+				function()
+					require('which-key').show({ global = false })
+				end,
+				desc = 'Buffer Keymaps (which-key)',
+			},
+		},
+		-- stylua: ignore
+		opts = {
+			icons = {
+				breadcrumb = '»',
+				separator = '󰁔  ', -- ➜
+			},
+			delay = function(ctx)
+				return ctx.plugin and 0 or 400
+			end,
+			spec = {
+				{
+					{ 'gs', group = nil },
+					{ 'gz', group = 'surround', icon = { icon = '󱞹 ', color = 'cyan' } },
+					{ ';d', group = 'lsp' },
+					{ ';',  group = 'picker' },
+					{ '<leader>cl', group = 'calls' },
+					{ '<leader>ci', group = 'info' },
+					{ '<leader>fw', group = 'workspace' },
+					{ '<leader>ght', group = 'toggle' },
+					{ '<leader>ht', group = 'toggle' },
+					{ '<leader>m',  group = 'tools', icon = { icon = '󱁤 ', color = 'blue' } },
+					{ '<leader>md', group = 'diff', icon = { icon = ' ', color = 'green' } },
+					{ '<leader>z', group = 'notes' },
+					{ '<leader>w', group = nil },
+				},
+			},
+		},
+	},
+
+	-----------------------------------------------------------------------------
+	-- Pretty lists to help you solve all code diagnostics
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/editor.lua
+	{
+		'trouble.nvim',
+		-- stylua: ignore
+		keys = {
+			{ '<leader>cs', false },
+			{ '<leader>cS', false },
+
+			{ 'gR', function() require('trouble').open('lsp_references') end, desc = 'LSP References (Trouble)' },
+			{ '<leader>xs', '<cmd>Trouble symbols toggle<CR>', desc = 'Symbols (Trouble)' },
+			{ '<leader>xS', '<cmd>Trouble lsp toggle<CR>', desc = 'LSP references/definitions/... (Trouble)' },
 		},
 	},
 
 	-----------------------------------------------------------------------------
 	-- Highlight, list and search todo comments in your projects
+	-- NOTE: This extends
+	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/editor.lua
 	{
-		'folke/todo-comments.nvim',
-		event = 'LazyFile',
-		dependencies = { 'nvim-lua/plenary.nvim' },
-		-- stylua: ignore
-		keys = {
-			{ ']t', function() require('todo-comments').jump_next() end, desc = 'Next Todo Comment' },
-			{ '[t', function() require('todo-comments').jump_prev() end, desc = 'Previous Todo Comment' },
-			{ '<leader>xt', '<cmd>Trouble todo toggle<cr>', desc = 'Todo (Trouble)' },
-			{ '<leader>xT', '<cmd>Trouble todo toggle filter = {tag = {TODO,FIX,FIXME}}<cr>', desc = 'Todo/Fix/Fixme (Trouble)' },
-			{ '<leader>st', '<cmd>TodoTelescope<cr>', desc = 'Todo' },
-			{ '<leader>sT', '<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>', desc = 'Todo/Fix/Fixme' },
-		},
+		'todo-comments.nvim',
 		opts = { signs = false },
-	},
-
-	-----------------------------------------------------------------------------
-	-- Pretty lists to help you solve all code diagnostics
-	{
-		'folke/trouble.nvim',
-		cmd = { 'Trouble' },
-		opts = {
-			modes = {
-				lsp = {
-					win = { position = 'right' },
-				},
-			},
-		},
-		-- stylua: ignore
-		keys = {
-			{ '<Leader>xx', '<cmd>Trouble diagnostics toggle<CR>', desc = 'Diagnostics (Trouble)' },
-			{ '<Leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Buffer Diagnostics (Trouble)' },
-			{ '<Leader>xs', '<cmd>Trouble symbols toggle<CR>', desc = 'Symbols (Trouble)' },
-			{ '<Leader>xS', '<cmd>Trouble lsp toggle<CR>', desc = 'LSP references/definitions/... (Trouble)' },
-			{ '<leader>xL', '<cmd>Trouble loclist toggle<cr>', desc = 'Location List (Trouble)' },
-			{ '<leader>xQ', '<cmd>Trouble qflist toggle<cr>', desc = 'Quickfix List (Trouble)' },
-
-			{ 'gR', function() require('trouble').open('lsp_references') end, desc = 'LSP References (Trouble)' },
-			{
-				'[q',
-				function()
-					if require('trouble').is_open() then
-						require('trouble').previous({ skip_groups = true, jump = true })
-					else
-						local ok, err = pcall(vim.cmd.cprev)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
-				end,
-				desc = 'Previous Trouble/Quickfix Item',
-			},
-			{
-				']q',
-				function()
-					if require('trouble').is_open() then
-						require('trouble').next({ skip_groups = true, jump = true })
-					else
-						local ok, err = pcall(vim.cmd.cnext)
-						if not ok then
-							vim.notify(err, vim.log.levels.ERROR)
-						end
-					end
-				end,
-				desc = 'Next Trouble/Quickfix Item',
-			},
-		},
 	},
 
 	-----------------------------------------------------------------------------
@@ -218,6 +222,16 @@ return {
 			end
 			return opts
 		end,
+	},
+
+	-----------------------------------------------------------------------------
+	-- Ultimate undo history visualizer
+	{
+		'mbbill/undotree',
+		cmd = 'UndotreeToggle',
+		keys = {
+			{ '<leader>gu', '<cmd>UndotreeToggle<CR>', desc = 'Undo Tree' },
+		},
 	},
 
 	-----------------------------------------------------------------------------
@@ -269,12 +283,14 @@ return {
 	{
 		'dnlhc/glance.nvim',
 		cmd = 'Glance',
+		-- stylua: ignore
 		keys = {
-			{ 'gpd', '<cmd>Glance definitions<CR>' },
-			{ 'gpr', '<cmd>Glance references<CR>' },
-			{ 'gpy', '<cmd>Glance type_definitions<CR>' },
-			{ 'gpi', '<cmd>Glance implementations<CR>' },
-			{ 'gpu', '<cmd>Glance resume<CR>' },
+			{ '<leader>cg', '', desc = '+glance' },
+			{ '<leader>cgd', '<cmd>Glance definitions<CR>', desc = 'Glance Definitions' },
+			{ '<leader>cgr', '<cmd>Glance references<CR>', desc = 'Glance References' },
+			{ '<leader>cgy', '<cmd>Glance type_definitions<CR>', desc = 'Glance Type Definitions' },
+			{ '<leader>cgi', '<cmd>Glance implementations<CR>', desc = 'Glance implementations' },
+			{ '<leader>cgu', '<cmd>Glance resume<CR>', desc = 'Glance Resume' },
 		},
 		opts = function()
 			local actions = require('glance').actions
@@ -299,46 +315,6 @@ return {
 					},
 				},
 			}
-		end,
-	},
-
-	-----------------------------------------------------------------------------
-	-- Search/replace in multiple files
-	{
-		'MagicDuck/grug-far.nvim',
-		cmd = 'GrugFar',
-		opts = { headerMaxWidth = 80 },
-		keys = {
-			{
-				'<leader>sr',
-				function()
-					local grug = require('grug-far')
-					local ext = vim.bo.buftype == '' and vim.fn.expand('%:e')
-					grug.open({
-						transient = true,
-						prefills = {
-							filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
-						},
-					})
-				end,
-				mode = { 'n', 'v' },
-				desc = 'Search and Replace',
-			},
-		},
-	},
-
-	-----------------------------------------------------------------------------
-	{
-		import = 'lazyvim.plugins.extras.editor.fzf',
-		enabled = function()
-			return LazyVim.pick.want() == 'fzf'
-		end,
-	},
-
-	{
-		import = 'rafi.plugins.extras.editor.telescope',
-		enabled = function()
-			return LazyVim.pick.want() == 'telescope'
 		end,
 	},
 }

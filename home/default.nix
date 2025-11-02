@@ -26,7 +26,7 @@
     blueman
     irssi
     nix-init
-    jetbrains.clion
+    # jetbrains.clion
     renderdoc
     nix-du
     graphviz
@@ -77,6 +77,7 @@
     jetbrains.idea-ultimate
     moonlight-qt
     slack
+		librechat
   ];
 
   imports = [
@@ -87,7 +88,7 @@
     (import ./misc { inherit pkgs config inputs; })
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
-    (import ./neovim { inherit pkgs inputs; })
+    (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway { inherit pkgs; })
   ];
 

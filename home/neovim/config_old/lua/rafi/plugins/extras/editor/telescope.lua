@@ -151,9 +151,7 @@ return {
 		'nvim-telescope/telescope.nvim',
 		version = false,
 		cmd = 'Telescope',
-		enabled = function()
-			return LazyVim.pick.want() == 'telescope'
-		end,
+		enabled = true,
 		dependencies = {
 			'nvim-lua/plenary.nvim',
 			-- Telescope extension for Zoxide
@@ -293,7 +291,16 @@ return {
 
 			local function find_command()
 				if 1 == vim.fn.executable('rg') then
-					return { 'rg', '--files', '--color', 'never', '--no-ignore-vcs', '--smart-case', '-g', '!.git' }
+					return {
+						'rg',
+						'--files',
+						'--color',
+						'never',
+						'--no-ignore-vcs',
+						'--smart-case',
+						'-g',
+						'!.git',
+					}
 				elseif 1 == vim.fn.executable('fd') then
 					return { 'fd', '--type', 'f', '--color', 'never', '-E', '.git' }
 				elseif 1 == vim.fn.executable('fdfind') then

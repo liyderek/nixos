@@ -11,7 +11,7 @@ return {
 		},
 		config = function()
 			vim.api.nvim_create_autocmd('FileType', {
-				group = vim.api.nvim_create_augroup('rafi_fugitive', {}),
+				group = vim.api.nvim_create_augroup('rafi.fugitive', {}),
 				pattern = 'fugitiveblame',
 				callback = function()
 					vim.schedule(function()
@@ -28,6 +28,8 @@ return {
 		'junegunn/gv.vim',
 		dependencies = { 'tpope/vim-fugitive' },
 		cmd = 'GV',
+		keys = {
+			{ '<leader>gl', '<cmd>GV<CR>', desc = 'Git log viewer' },
+		},
 	},
-
 }

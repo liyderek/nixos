@@ -1,9 +1,8 @@
 return {
 
-	-- High-contrast, futuristic & vibrant colorsheme
+	-- High-contrast, futuristic & vibrant colorscheme
 	{
 		'scottmckendry/cyberdream.nvim',
-		priority = 1000,
 		opts = {
 			transparent = true,
 			italic_comments = true,
