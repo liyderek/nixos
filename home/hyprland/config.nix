@@ -90,8 +90,8 @@
         # fullscreen_opacity = 1.0;
 
         blur = {
-          # enabled = true;
-          enabled = false;
+          enabled = true;
+          # enabled = false;
           #           size = 1;
           #           passes = 1;
           size = 5;
@@ -243,6 +243,8 @@
 
         # clipboard manager
         "$mainMod, V, exec, cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"
+
+        "$mainMod, K, setprop, active alpha 0.94"
       ];
 
       # mouse binding

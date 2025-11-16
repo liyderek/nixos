@@ -16,7 +16,7 @@ vim.g.elite_mode = false
 vim.g.diffprg = 'bcompare'
 
 -- Disable LazyVim features.
-vim.g.autoformat = false      -- LazyVim auto format
+vim.g.autoformat = true      -- LazyVim auto format
 vim.g.snacks_animate = false  -- Globally disable all snacks animations
 vim.g.trouble_lualine = false -- Disable document symbols in statusline
 

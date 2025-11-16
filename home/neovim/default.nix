@@ -1,4 +1,9 @@
-{ pkgs, inputs, lib, ... }:
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}:
 {
   home.packages = with pkgs; [
     luarocks
@@ -12,6 +17,7 @@
     lua-language-server
     stylua
     tree-sitter
+    statix
   ];
 
   home.file.".config/nvim" = {
@@ -19,16 +25,33 @@
     recursive = true;
   };
 
-	programs.neovim = {
-		enable = true;
-		extraWrapperArgs = let
-			nvim-treesitter = pkgs.vimPlugins.nvim-treesitter;
-			nvim-treesitter-parsers =
-				builtins.map (grammar: nvim-treesitter.grammarToPlugin grammar) nvim-treesitter.allGrammars;
-		in [
-			"--set"
-			"NVIM_TREESITTER_PARSERS"
-			(lib.concatStringsSep "," nvim-treesitter-parsers)
-		];
-	};
+  # programs.neovim = {
+  #   enable = true;
+  #   extraWrapperArgs =
+  #     let
+  #       nvim-treesitter-parsers =
+  #         let
+  #           nvim-treesitter = pkgs.vimPlugins.nvim-treesitter;
+  #         in
+  #         builtins.map (grammar: nvim-treesitter.grammarToPlugin grammar) nvim-treesitter.allGrammars;
+  #     in
+  #     [
+  #       "--set"
+  #       "NVIM_TREESITTER_PARSERS"
+  #       (lib.concatStringsSep "," nvim-treesitter-parsers)
+  #     ];
+  # };
+
+  programs.neovim = {
+    enable = true;
+
+    extraWrapperArgs = [
+      "--prefix"
+      "PATH"
+      ":"
+      "${lib.makeBinPath [ pkgs.gcc ]}"
+    ];
+
+    # etc.
+  };
 }

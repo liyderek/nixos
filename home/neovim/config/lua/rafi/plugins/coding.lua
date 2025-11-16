@@ -90,7 +90,7 @@ return {
 	-----------------------------------------------------------------------------
 	-- Split and join arguments
 	{
-		'echasnovski/mini.splitjoin',
+		'nvim-mini/mini.splitjoin',
 		-- stylua: ignore
 		keys = {
 			{ 'sj', '<cmd>lua MiniSplitjoin.join()<CR>', mode = { 'n', 'x' }, desc = 'Join arguments' },
@@ -104,7 +104,7 @@ return {
 	-----------------------------------------------------------------------------
 	-- Trailing whitespace highlight and remove
 	{
-		'echasnovski/mini.trailspace',
+		'nvim-mini/mini.trailspace',
 		event = { 'BufReadPost', 'BufNewFile' },
 		-- stylua: ignore
 		keys = {

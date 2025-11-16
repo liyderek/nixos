@@ -77,7 +77,8 @@
     jetbrains.idea-ultimate
     moonlight-qt
     slack
-		librechat
+    librechat
+    jetbrains.clion
   ];
 
   imports = [
