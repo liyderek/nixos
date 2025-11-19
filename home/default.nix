@@ -79,6 +79,7 @@
     slack
     librechat
     jetbrains.clion
+    fontforge
   ];
 
   imports = [
@@ -90,7 +91,7 @@
     (import ./scripts { inherit pkgs; })
     (import ./swaync { inherit pkgs; })
     (import ./neovim { inherit pkgs inputs lib; })
-    (import ./sway { inherit pkgs; })
+    (import ./sway { inherit lib pkgs; })
   ];
 
   home.sessionVariables.NIXOS_OZONE_WL = "1";

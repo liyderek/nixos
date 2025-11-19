@@ -65,6 +65,7 @@ return {
 		---@type TSConfig
 		---@diagnostic disable: missing-fields
 		opts = {
+			compilers = { 'gcc' },
 			sync_install = has_git,
 			highlight = {
 				enable = true,

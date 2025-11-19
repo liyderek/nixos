@@ -171,7 +171,7 @@
     enable = true;
     settings = rec {
       initial_session = {
-        command = "${pkgs.hyprland}/bin/Hyprland &> /dev/null";
+        command = "${pkgs.sway}/bin/sway";
         user = "derek";
       };
       default_session = initial_session;
@@ -294,6 +294,19 @@
     shell = pkgs.zsh;
   };
 
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
+  fonts.fontconfig.allowBitmaps = true;
+  fonts.packages = with pkgs; [
+    termsyn
+  ];
+
+  console = {
+    packages = with pkgs; [
+      termsyn
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     wget
     git
@@ -323,9 +336,10 @@
     vmware-workstation
     cmake-lint
     arion
-		docker-client
-		docker-compose
-		inputs.compose2nix.packages.x86_64-linux.default
+    docker-client
+    docker-compose
+    inputs.compose2nix.packages.x86_64-linux.default
+    bat
   ];
 
   system.stateVersion = "24.11"; # dont change

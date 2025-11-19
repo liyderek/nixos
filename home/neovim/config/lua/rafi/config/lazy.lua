@@ -153,7 +153,6 @@ require('lazy').setup(vim.tbl_extend('keep', user_lazy_opts, {
 				'tutor',
 				'zipPlugin',
 			},
-			paths = { vim.env.NVIM_TREESITTER_PARSERS },
 		},
 	},
 }))

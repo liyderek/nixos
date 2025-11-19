@@ -44,14 +44,5 @@
 
   programs.neovim = {
     enable = true;
-
-    extraWrapperArgs = [
-      "--prefix"
-      "PATH"
-      ":"
-      "${lib.makeBinPath [ pkgs.gcc ]}"
-    ];
-
-    # etc.
   };
 }

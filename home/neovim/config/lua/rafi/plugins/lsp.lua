@@ -42,6 +42,16 @@ return {
 							desc = 'List Workspace Folders',
 						},
 					},
+					clangd = {
+						cmd = { 'clangd', '--background-index', '--clang-tidy' },
+						root_dir = function(fname)
+							return require('lspconfig.util').root_pattern(
+								'compile_commands.json',
+								'compile_flags.txt',
+								'.git'
+							)(fname)
+						end,
+					},
 				},
 			},
 		},
