@@ -1,7 +1,4 @@
 { pkgs, inputs, ... }:
-let
-  termsynicon = import ./termsynicon.nix { inherit pkgs; };
-in
 {
   fonts.fontconfig.enable = true;
   home.packages = [
@@ -18,7 +15,6 @@ in
     pkgs.noto-fonts-extra
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
-    termsynicon
   ];
 
   gtk = {

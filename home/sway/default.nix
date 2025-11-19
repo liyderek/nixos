@@ -223,14 +223,13 @@ in
           {
             position = "top";
             statusCommand = "i3status -c ~/.config/i3status/config";
-            # fonts = {
-            #   names = [
-            #     "Termsynu"
-            #     "Termsyn.Icons"
-            #   ];
-            #   size = 11.0;
-            #   style = "Regular";
-            # };
+            fonts = {
+              names = [
+                "termsyn-icon"
+              ];
+              size = 11.0;
+              style = "Regular";
+            };
             colors = {
               background = "#202023";
               statusline = "#888888";
@@ -266,9 +265,6 @@ in
           { command = "firefox"; }
         ];
       };
-      extraConfig = ''
-        # font -misc-termsyn.icons-medium-r-normal--13-120-75-75-c-60-iso8859-1
-      '';
     };
 
   programs.i3status = {

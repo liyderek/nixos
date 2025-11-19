@@ -9,6 +9,9 @@
   inputs,
   ...
 }:
+let
+  myfont = import ./home/misc/termsynicon.nix { inherit pkgs; };
+in
 {
   imports = [
     # Include the results of the hardware scan.
@@ -297,8 +300,8 @@
   fonts.fontDir.enable = true;
   fonts.fontconfig.enable = true;
   fonts.fontconfig.allowBitmaps = true;
-  fonts.packages = with pkgs; [
-    termsyn
+  fonts.packages = [
+    myfont
   ];
 
   console = {
