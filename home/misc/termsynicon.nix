@@ -1,5 +1,9 @@
 { pkgs }:
-pkgs.runCommand "myfont" { } ''
-  mkdir -p $out/share/fonts/truetype
-  cp ${./termsynicon/termsynicon.ttf} $out/share/fonts/truetype/
-''
+pkgs.stdenv.mkDerivation {
+  name = "termsynicon";
+  src = ./termsynicon.tar.xz;
+  installPhase = ''
+    mkdir -p $out/share/fonts/truetype/
+    install -Dm644 termsynicon.ttf $out/share/fonts/truetype/
+  '';
+}

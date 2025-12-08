@@ -42,16 +42,16 @@ return {
 							desc = 'List Workspace Folders',
 						},
 					},
-					clangd = {
-						cmd = { 'clangd', '--background-index', '--clang-tidy' },
-						root_dir = function(fname)
-							return require('lspconfig.util').root_pattern(
-								'compile_commands.json',
-								'compile_flags.txt',
-								'.git'
-							)(fname)
-						end,
-					},
+				},
+				clangd = {
+					cmd = { 'clangd', '--background-index', '--clang-tidy' },
+					root_dir = function(fname)
+						return require('lspconfig.util').root_pattern(
+							'compile_commands.json',
+							'compile_flags.txt',
+							'.git'
+						)(fname)
+					end,
 				},
 			},
 		},
@@ -63,6 +63,7 @@ return {
 	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/lsp/init.lua
 	{
 		'mason.nvim',
+		enabled = false,
 		opts = {
 			ui = {
 				border = 'rounded',

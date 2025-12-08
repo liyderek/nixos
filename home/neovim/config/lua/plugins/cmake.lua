@@ -15,7 +15,7 @@ return {
 		})
 		vim.keymap.set(
 			'n',
-			'<Space>cm',
+			'<Space>ch',
 			':CMakeDebug<CR>',
 			{ noremap = true, silent = true }
 		)

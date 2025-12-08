@@ -10,7 +10,7 @@
   ...
 }:
 let
-  myfont = import ./home/misc/termsynicon.nix { inherit pkgs; };
+  myfont = pkgs.callPackage ./home/misc/termsynicon.nix { };
 in
 {
   imports = [

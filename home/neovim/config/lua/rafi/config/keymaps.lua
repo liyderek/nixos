@@ -410,6 +410,9 @@ map('n', 'sx', function()
 	vim.cmd.enew()
 end, { desc = 'Delete buffer and open new' })
 
+-- DEREK
+vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, { desc = 'LSP Code Actions' })
+
 -- }}}
 
 -- FUNCTIONS

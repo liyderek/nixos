@@ -8,7 +8,7 @@
   imports = [
     ./gtk.nix
     ./kitty.nix
-    # ./vscodium.nix
+    ./vscodium.nix
     ./rofi.nix
     ./fuzzel.nix
     ./zsh.nix
@@ -23,5 +23,6 @@
     ./spotify.nix
     ./tmux.nix
     ./alacritty.nix
+    ./mongodb.nix
   ];
 }

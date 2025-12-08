@@ -20,10 +20,6 @@ let
     order += "volume master"
     order += "load"
     order += "cpu_usage"
-    order += "cpu_temperature 0"
-    order += "cpu_temperature 1"
-    order += "cpu_temperature 2"
-    order += "cpu_temperature 3"
     order += "disk /"
     order += "disk /mnt/media"
     order += "ethernet enp5s0"
@@ -129,6 +125,15 @@ in
       yw = "#ccdc90";
       gn = "#97A824";
       rd = "#e89393";
+
+      w1 = "1 ê";
+      w2 = "2 ý";
+      w3 = "3 Ç";
+      w4 = "4 Â";
+      w5 = "5 ¨";
+      w6 = "6 ©";
+      w7 = "7 ©";
+      w8 = "8 ©";
     in
     {
       enable = true;
@@ -139,66 +144,95 @@ in
         input = {
           "*" = {
             natural_scroll = "enabled";
+            repeat_delay = "300";
+            repeat_rate = "30";
           };
         };
+
+        focus.followMouse = false;
+        focus.mouseWarping = false;
+
+        startup = [
+          {
+            command = "mako &";
+          }
+        ];
 
         keybindings =
           let
             mod = modifier;
           in
           {
-            "${mod}+1" = "workspace 1";
-            "${mod}+2" = "workspace 2";
-            "${mod}+3" = "workspace 3";
-            "${mod}+4" = "workspace 4";
-            "${mod}+5" = "workspace 5";
-            "${mod}+6" = "workspace 6";
-            "${mod}+7" = "workspace 7";
-            "${mod}+8" = "workspace 8";
-            "${mod}+9" = "workspace 9";
+            "${mod}+1" = "workspace ${w1}";
+            "${mod}+2" = "workspace ${w2}";
+            "${mod}+3" = "workspace ${w3}";
+            "${mod}+4" = "workspace ${w4}";
+            "${mod}+5" = "workspace ${w5}";
+            "${mod}+6" = "workspace ${w6}";
+            "${mod}+7" = "workspace ${w7}";
+            "${mod}+8" = "workspace ${w8}";
 
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
             "${mod}+q" = "kill";
             "${mod}+Left" = "workspace prev_on_output";
             "${mod}+Right" = "workspace next_on_output";
+
+            "${mod}+space" = "floating toggle";
+            "${mod}+f" = "fullscreen toggle";
+
+            "${mod}+Shift+d" = "exec discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            "${mod}+Shift+s" = "exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            "${mod}+Return" = "exec ${terminal}";
+            "${mod}+e" = "exec thunar";
+
+            # printscreen for screenshots
+            "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";
           };
+
+        window = {
+          commands = [
+            {
+              criteria = {
+                title = "Game";
+              };
+              command = "floating enable";
+            }
+          ];
+        };
 
         workspaceOutputAssign = [
           {
-            workspace = "1";
-            output = "DP‑1";
+            workspace = w1;
+            output = "DP-1";
           }
           {
-            workspace = "2";
-            output = "DP‑1";
+            workspace = w2;
+            output = "DP-1";
           }
           {
-            workspace = "3";
-            output = "DP‑1";
+            workspace = w3;
+            output = "DP-1";
           }
           {
-            workspace = "4";
-            output = "DP‑1";
+            workspace = w4;
+            output = "DP-1";
           }
           {
-            workspace = "5";
-            output = "DP‑1";
+            workspace = w5;
+            output = "DP-1";
+          }
+
+          {
+            workspace = w6;
+            output = "HDMI-A-1";
           }
           {
-            workspace = "6";
-            output = "HDMI‑A‑1";
+            workspace = w7;
+            output = "HDMI-A-1";
           }
           {
-            workspace = "7";
-            output = "HDMI‑A‑1";
-          }
-          {
-            workspace = "8";
-            output = "HDMI‑A‑1";
-          }
-          {
-            workspace = "9";
-            output = "HDMI‑A‑1";
+            workspace = w8;
+            output = "HDMI-A-1";
           }
         ];
 
@@ -225,9 +259,9 @@ in
             statusCommand = "i3status -c ~/.config/i3status/config";
             fonts = {
               names = [
-                "termsyn-icon"
+                "termsynicon.ttf"
               ];
-              size = 11.0;
+              size = 10.0;
               style = "Regular";
             };
             colors = {
@@ -260,11 +294,17 @@ in
             };
           }
         ];
-
-        startup = [
-          { command = "firefox"; }
-        ];
       };
+      extraConfig = ''
+        set $w1 1 ê
+        set $w2 2 ý
+        set $w3 3 Ç
+        set $w4 4 Â
+        set $w5 5 ¨
+        set $w6 6 ©
+        set $w7 7 ©
+        set $w8 8 ©
+      '';
     };
 
   programs.i3status = {
@@ -272,4 +312,10 @@ in
   };
 
   xdg.configFile."i3status/config".text = lib.mkForce i3statusConf;
+
+  home.packages = with pkgs; [
+    mako
+    grim
+    slurp
+  ];
 }

@@ -42,7 +42,7 @@ return {
 	-- See: https://github.com/nvim-neo-tree/neo-tree.nvim
 	opts = {
 		enable_git_status = has_git,
-		close_if_last_window = true,
+		close_if_last_window = false,
 		popup_border_style = 'rounded',
 		sort_case_insensitive = true,
 
@@ -58,11 +58,19 @@ return {
 		},
 
 		event_handlers = {
-			-- Close neo-tree when opening a file.
+			-- -- Close neo-tree when opening a file.
+			-- {
+			-- 	event = 'file_opened',
+			-- 	handler = function()
+			-- 		require('neo-tree').close_all()
+			-- 	end,
+			-- },
 			{
-				event = 'file_opened',
-				handler = function()
-					-- require('neo-tree').close_all()
+				event = 'neo_tree_window_after_open',
+				handler = function(args)
+					if args.position == 'current' then
+						vim.cmd('vertical resize 999')
+					end
 				end,
 			},
 		},
@@ -102,7 +110,8 @@ return {
 		},
 
 		window = {
-			width = 30, -- Default 40
+			width = '100%',
+			position = 'float',
 			mappings = {
 				['q'] = 'close_window',
 				['?'] = 'noop',
