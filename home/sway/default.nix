@@ -125,6 +125,7 @@ in
       yw = "#ccdc90";
       gn = "#97A824";
       rd = "#e89393";
+      pk = "#ff77aa";
 
       w1 = "1 ê";
       w2 = "2 ý";
@@ -184,6 +185,8 @@ in
             "${mod}+Shift+s" = "exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland";
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+e" = "exec thunar";
+
+            "${mod}+w" = "exec networkmanager_dmenu";
 
             # printscreen for screenshots
             "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";
@@ -269,15 +272,15 @@ in
               statusline = "#888888";
               separator = "#444448";
               focusedWorkspace = {
-                border = gn;
+                border = pk;
                 background = bg;
-                text = gn;
+                text = pk;
               };
 
               activeWorkspace = {
                 border = bg;
                 background = bg;
-                text = gn;
+                text = pk;
               };
 
               inactiveWorkspace = {
@@ -295,6 +298,7 @@ in
           }
         ];
       };
+
       extraConfig = ''
         set $w1 1 ê
         set $w2 2 ý
@@ -304,6 +308,10 @@ in
         set $w6 6 ©
         set $w7 7 ©
         set $w8 8 ©
+        client.focused          #ff77aa #ff77aa #000000 #ff77aa
+        client.focused_inactive #aa6688 #aa6688 #000000 #aa6688
+        client.unfocused        #663344 #663344 #000000 #663344
+        client.urgent           #ff5599 #ff5599 #000000 #ff5599
       '';
     };
 

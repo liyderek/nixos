@@ -278,13 +278,9 @@ in
   services.xserver.desktopManager.xfce.enable = true;
   services.xserver.desktopManager.xfce.noDesktop = true;
 
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
@@ -292,9 +288,19 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
+      "podman"
       "docker"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
+  };
+
+  virtualisation = {
+    containers.enable = true;
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+    };
   };
 
   fonts.fontDir.enable = true;
@@ -309,6 +315,24 @@ in
       termsyn
     ];
   };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--no-write-lock-file"
+      "-L" # print build logs
+    ];
+    dates = "02:00";
+    randomizedDelaySec = "45min";
+  };
+
+  services.udev.packages = [
+    pkgs.platformio-core
+    pkgs.openocd
+  ];
 
   environment.systemPackages = with pkgs; [
     wget
@@ -339,10 +363,9 @@ in
     vmware-workstation
     cmake-lint
     arion
-    docker-client
-    docker-compose
-    inputs.compose2nix.packages.x86_64-linux.default
     bat
+    podman
+    podman-compose
   ];
 
   system.stateVersion = "24.11"; # dont change

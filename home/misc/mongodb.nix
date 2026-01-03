@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.file."local/share/applications/mongodb-compass.desktop" = {
+  home.file.".local/share/applications/mongodb-compass.desktop" = {
     text = ''
       [Desktop Entry]
       Name=MongoDB Compass

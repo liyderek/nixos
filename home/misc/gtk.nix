@@ -5,14 +5,13 @@
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.nerd-fonts.noto
     pkgs.twemoji-color-font
-    pkgs.noto-fonts-emoji
+    pkgs.noto-fonts-color-emoji
     pkgs.meslo-lg
     pkgs.symbola
     inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
     pkgs.cantarell-fonts
     pkgs.maple-mono.NF
     pkgs.noto-fonts
-    pkgs.noto-fonts-extra
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
     pkgs.nerd-fonts.iosevka

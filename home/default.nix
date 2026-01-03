@@ -73,13 +73,24 @@
     tgpt
     runelite
     bolt-launcher
-    zulu24
+    zulu
     jetbrains.idea-ultimate
     moonlight-qt
     slack
     librechat
     jetbrains.clion
     fontforge
+    networkmanager_dmenu
+    bemenu
+    android-studio
+    winboat
+    arduino-ide
+    arduino-cli
+    platformio-core
+    mangohud
+    stremio
+    direnv
+    nix-direnv
   ];
 
   imports = [

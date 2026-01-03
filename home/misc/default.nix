@@ -24,5 +24,6 @@
     ./tmux.nix
     ./alacritty.nix
     ./mongodb.nix
+    ./direnv.nix
   ];
 }
