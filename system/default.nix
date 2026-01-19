@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./gnome.nix
     ./polkit.nix
@@ -10,6 +11,7 @@
     ./sway.nix
     ./mongodb.nix
     ./nix-ld.nix
+    ./nuviostream.nix
   ];
 
   nixpkgs.overlays = [
