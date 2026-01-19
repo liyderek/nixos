@@ -2,72 +2,66 @@
 -- https://github.com/rafi/vim-config
 
 return {
-
-	-----------------------------------------------------------------------------
-	-- Quickstart configurations for the Nvim LSP client
-	-- NOTE: This extends
-	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/lsp/init.lua
-	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/lsp/keymaps.lua
 	{
-		'nvim-lspconfig',
-		opts = {
-			servers = {
-				['*'] = {
-					keys = {
-						{ '<leader>cl', false },
-						{ '<c-k>', false, mode = 'i' },
-						{
-							'<leader>cli',
-							vim.lsp.buf.incoming_calls,
-							desc = 'Incoming calls',
-						},
-						{
-							'<leader>clo',
-							vim.lsp.buf.outgoing_calls,
-							desc = 'Outgoing calls',
-						},
-						{
-							'<leader>fwa',
-							vim.lsp.buf.add_workspace_folder,
-							desc = 'Show Workspace Folders',
-						},
-						{
-							'<leader>fwr',
-							vim.lsp.buf.remove_workspace_folder,
-							desc = 'Remove Workspace Folder',
-						},
-						{
-							'<leader>fwl',
-							'<cmd>lua =vim.lsp.buf.list_workspace_folders()<CR>',
-							desc = 'List Workspace Folders',
-						},
-					},
+		'neovim/nvim-lspconfig',
+		opts = function(_, opts)
+			opts = opts or {}
+			opts.servers = opts.servers or {}
+
+			-- Your custom LSP keymaps (works with LazyVim)
+			opts.keymaps = opts.keymaps or {}
+			opts.keymaps = vim.list_extend(opts.keymaps, {
+				{ '<leader>cl', false },
+				{ '<c-k>', false, mode = 'i' },
+
+				{ '<leader>cli', vim.lsp.buf.incoming_calls, desc = 'Incoming calls' },
+				{ '<leader>clo', vim.lsp.buf.outgoing_calls, desc = 'Outgoing calls' },
+
+				{
+					'<leader>fwa',
+					vim.lsp.buf.add_workspace_folder,
+					desc = 'Add Workspace Folder',
 				},
-				clangd = {
-					cmd = { 'clangd', '--background-index', '--clang-tidy' },
-					root_dir = function(fname)
-						return require('lspconfig.util').root_pattern(
-							'compile_commands.json',
-							'compile_flags.txt',
-							'.git'
-						)(fname)
+				{
+					'<leader>fwr',
+					vim.lsp.buf.remove_workspace_folder,
+					desc = 'Remove Workspace Folder',
+				},
+				{
+					'<leader>fwl',
+					function()
+						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 					end,
+					desc = 'List Workspace Folders',
 				},
-			},
-		},
+			})
+
+			-- clangd fix for NixOS: teach clangd where g++ lives so it finds libstdc++ headers
+			opts.servers.clangd = {
+				cmd = {
+					'clangd',
+					'--background-index',
+					'--clang-tidy',
+					'--query-driver=/nix/store/*-gcc-*/bin/g++,/run/current-system/sw/bin/g++',
+				},
+				root_dir = function(fname)
+					return require('lspconfig.util').root_pattern(
+						'compile_commands.json',
+						'compile_flags.txt',
+						'.git'
+					)(fname)
+				end,
+			}
+
+			return opts
+		end,
 	},
 
-	-----------------------------------------------------------------------------
-	-- Portable package manager for Neovim
-	-- NOTE: This extends
-	-- $XDG_DATA_HOME/nvim/lazy/LazyVim/lua/lazyvim/plugins/lsp/init.lua
 	{
-		'mason.nvim',
+		'williamboman/mason.nvim',
 		enabled = false,
 		opts = {
-			ui = {
-				border = 'rounded',
-			},
+			ui = { border = 'rounded' },
 		},
 	},
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./gnome.nix
     ./polkit.nix
@@ -7,7 +6,7 @@
     ./distrobox.nix
     # ./binfmt.nix
     ./systemd.nix
-    # ./genshin.nix
+    ./genshin.nix
     ./sway.nix
     ./mongodb.nix
     ./nix-ld.nix

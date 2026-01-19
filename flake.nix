@@ -3,6 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -24,10 +26,13 @@
     spicetify-nix.url = "github:gerg-l/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-		compose2nix = {
-			url = "github:aksiksi/compose2nix";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    compose2nix = {
+      url = "github:aksiksi/compose2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    neovim-flake.url = "git+https://codeberg.org/catderek/neovim-flake.git";
+    neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =

@@ -3,8 +3,7 @@
   inputs,
   lib,
   ...
-}:
-{
+}: {
   home.packages = with pkgs; [
     luarocks
     lua
