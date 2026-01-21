@@ -33,6 +33,8 @@
 
     neovim-flake.url = "git+https://codeberg.org/catderek/neovim-flake.git";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
+
+    iloader.url = "path:./system/iloader";
   };
 
   outputs =
