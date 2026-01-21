@@ -7,15 +7,13 @@
   pkgs,
   inputs,
   ...
-}:
-let
-  myfont = pkgs.callPackage ./home/misc/termsynicon.nix { };
-in
-{
+}: let
+  myfont = pkgs.callPackage ./home/misc/termsynicon.nix {};
+in {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    (import ./system { inherit pkgs; })
+    (import ./system {inherit pkgs;})
     ./cachix.nix
   ];
 
@@ -28,7 +26,7 @@ in
         copyKernels = true;
         efiSupport = true;
         fsIdentifier = "label";
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         gfxmodeEfi = "2560x1600";
         # font = lib.mkForce "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/JetBrainsMonoNerdFont-Regular.ttf";
         fontSize = 72;
@@ -53,7 +51,7 @@ in
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "rings" ];
+          selected_themes = ["rings"];
         })
       ];
       extraConfig = ''
@@ -246,7 +244,7 @@ in
     resolved = {
       enable = true;
       dnssec = "true";
-      domains = [ "~." ];
+      domains = ["~."];
       fallbackDns = [
         "1.1.1.1#one.one.one.one"
         "1.0.0.1#one.one.one.one"
@@ -302,7 +300,7 @@ in
     };
   };
 
-  users.groups.libvirtd.members = [ "derek" ];
+  users.groups.libvirtd.members = ["derek"];
 
   nixpkgs.config.permittedInsecurePackages = [
     "qtwebengine-5.15.19"
@@ -383,6 +381,8 @@ in
     podman
     podman-compose
     nil
+    usbmuxd
+    (import ./system/iloader/flake.nix).packages.x86_64-linux.iloader
   ];
 
   system.stateVersion = "24.11"; # dont change

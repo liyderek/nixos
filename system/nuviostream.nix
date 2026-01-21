@@ -9,10 +9,11 @@
       Type = "simple";
       User = "derek";
       WorkingDirectory = "/home/derek/NuvioStreamsAddon";
-      ExecStart = "${pkgs.nodejs}/bin/npm start";
+      ExecStart = "${pkgs.bash}/bin/bash -lc \"npm start\"";
       Restart = "always";
       Environment = [
         "NODE_ENV=production"
+        "PATH=${pkgs.nodejs}/bin:${pkgs.bash}/bin"
       ];
     };
   };
