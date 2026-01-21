@@ -8,7 +8,7 @@
     pkgs.noto-fonts-color-emoji
     pkgs.meslo-lg
     pkgs.symbola
-    inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+    inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-pro-nerd
     pkgs.cantarell-fonts
     pkgs.maple-mono.NF
     pkgs.noto-fonts

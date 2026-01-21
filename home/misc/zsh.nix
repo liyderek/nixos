@@ -1,6 +1,4 @@
-{
-  ...
-}:
+{ lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -15,7 +13,7 @@
       ];
       theme = "agnoster";
     };
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       DISABLE_MAGIC_FUNCTIONS=true
       export "MICRO_TRUECOLOR=1"
     '';

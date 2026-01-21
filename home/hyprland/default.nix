@@ -5,7 +5,7 @@
   ...
 }:
 let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+  hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 in
 {
 
@@ -18,7 +18,7 @@ in
   home.packages = with pkgs; [
     # swww
     swaybg
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
+    inputs.hypr-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
     hyprpicker
     grim
     slurp

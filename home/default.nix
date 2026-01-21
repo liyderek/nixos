@@ -5,18 +5,20 @@
   pkgs,
   catppuccin,
   ...
-}: let
+}:
+let
   pkgsMaster = import inputs.nixpkgs-master {
-    inherit (pkgs) system;
+    system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [];
+    overlays = pkgs.overlays or [ ];
   };
   pkgsStable = import inputs.nixpkgs-stable {
-    inherit (pkgs) system;
+    system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [];
+    overlays = pkgs.overlays or [ ];
   };
-in {
+in
+{
   home = {
     username = "derek";
     homeDirectory = "/home/derek";
@@ -26,7 +28,7 @@ in {
       libgcc
       gdb
       lldb
-      nixfmt-rfc-style
+      nixfmt
       fzf
       pfetch
       pamixer
@@ -50,11 +52,11 @@ in {
       gnumake
       pkg-config
       ninja
-      inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
+      inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd
       pkgsMaster.aseprite
       alejandra
       lunar-client
-      jetbrains.pycharm-professional
+      jetbrains.pycharm
       steam
       lutris
       wineWowPackages.waylandFull
@@ -83,7 +85,7 @@ in {
       runelite
       bolt-launcher
       zulu
-      jetbrains.idea-ultimate
+      jetbrains.idea
       moonlight-qt
       slack
       jetbrains.clion
@@ -99,7 +101,7 @@ in {
       pkgsStable.stremio
       direnv
       nix-direnv
-      inputs.neovim-flake.packages.${pkgs.system}.default
+      inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
       zed-editor
     ];
 
@@ -110,14 +112,14 @@ in {
 
   imports = [
     catppuccin.homeModules.catppuccin
-    (import ./hyprland {inherit inputs config pkgs;})
+    (import ./hyprland { inherit inputs config pkgs; })
     # (import ./cloudflare { inherit config; })
-    (import ./waybar {inherit inputs config pkgs;})
-    (import ./misc {inherit pkgs config inputs;})
-    (import ./scripts {inherit pkgs;})
-    (import ./swaync {inherit pkgs;})
+    (import ./waybar { inherit inputs config pkgs; })
+    (import ./misc { inherit pkgs config inputs; })
+    (import ./scripts { inherit pkgs; })
+    (import ./swaync { inherit pkgs; })
     # (import ./neovim { inherit pkgs inputs lib; })
-    (import ./sway {inherit lib pkgs;})
+    (import ./sway { inherit lib pkgs; })
   ];
 
   programs.home-manager.enable = true;
