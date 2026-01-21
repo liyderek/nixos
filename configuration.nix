@@ -384,7 +384,7 @@ in
     podman-compose
     nil
     usbmuxd
-    inputs.iloader.packages.x86_64-linux.iloader
+    (callPackage ./system/iloader { })
   ];
 
   system.stateVersion = "24.11"; # dont change
