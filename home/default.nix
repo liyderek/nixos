@@ -5,20 +5,18 @@
   pkgs,
   catppuccin,
   ...
-}:
-let
+}: let
   pkgsMaster = import inputs.nixpkgs-master {
     system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [ ];
+    overlays = pkgs.overlays or [];
   };
   pkgsStable = import inputs.nixpkgs-stable {
     system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [ ];
+    overlays = pkgs.overlays or [];
   };
-in
-{
+in {
   home = {
     username = "derek";
     homeDirectory = "/home/derek";
@@ -98,11 +96,12 @@ in
       arduino-cli
       platformio-core
       mangohud
-      pkgsStable.stremio
       direnv
       nix-direnv
       inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
       zed-editor
+      github-copilot-cli
+      opencode
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -112,14 +111,14 @@ in
 
   imports = [
     catppuccin.homeModules.catppuccin
-    (import ./hyprland { inherit inputs config pkgs; })
+    (import ./hyprland {inherit inputs config pkgs;})
     # (import ./cloudflare { inherit config; })
-    (import ./waybar { inherit inputs config pkgs; })
-    (import ./misc { inherit pkgs config inputs; })
-    (import ./scripts { inherit pkgs; })
-    (import ./swaync { inherit pkgs; })
+    (import ./waybar {inherit inputs config pkgs;})
+    (import ./misc {inherit pkgs config inputs;})
+    (import ./scripts {inherit pkgs;})
+    (import ./swaync {inherit pkgs;})
     # (import ./neovim { inherit pkgs inputs lib; })
-    (import ./sway { inherit lib pkgs; })
+    (import ./sway {inherit lib pkgs;})
   ];
 
   programs.home-manager.enable = true;

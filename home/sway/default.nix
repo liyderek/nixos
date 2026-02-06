@@ -135,6 +135,7 @@ in
       w6 = "6 ©";
       w7 = "7 ©";
       w8 = "8 ©";
+      w9 = "9";
     in
     {
       enable = true;
@@ -172,6 +173,16 @@ in
             "${mod}+6" = "workspace ${w6}";
             "${mod}+7" = "workspace ${w7}";
             "${mod}+8" = "workspace ${w8}";
+
+            "${mod}+Shift+1" = "move container to workspace ${w1}";
+            "${mod}+Shift+2" = "move container to workspace ${w2}";
+            "${mod}+Shift+3" = "move container to workspace ${w3}";
+            "${mod}+Shift+4" = "move container to workspace ${w4}";
+            "${mod}+Shift+5" = "move container to workspace ${w5}";
+            "${mod}+Shift+6" = "move container to workspace ${w6}";
+            "${mod}+Shift+7" = "move container to workspace ${w7}";
+            "${mod}+Shift+8" = "move container to workspace ${w8}";
+            "${mod}+Shift+9" = "move container to workspace ${w9}";
 
             "${mod}+d" = "exec ${pkgs.rofi}/bin/rofi -show drun";
             "${mod}+q" = "kill";
@@ -258,7 +269,7 @@ in
 
         bars = [
           {
-            position = "top";
+            position = "bottom";
             statusCommand = "i3status -c ~/.config/i3status/config";
             fonts = {
               names = [
