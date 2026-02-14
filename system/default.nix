@@ -25,6 +25,7 @@
     ./users.nix
     ./virtualisation.nix
     ./fonts.nix
+    ./flatpak.nix
   ];
 
   nixpkgs.overlays = [

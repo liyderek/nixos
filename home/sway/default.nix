@@ -108,7 +108,7 @@ in
     let
       # Colors
       active = "#536B3D";
-      border = "#313A28";
+      border = "#888888";
       text = "#BBC5B2";
       text2 = "#8f8f8f";
       text3 = "#8faf9f";
@@ -319,10 +319,10 @@ in
         set $w6 6 ©
         set $w7 7 ©
         set $w8 8 ©
-        client.focused          #ff77aa #ff77aa #000000 #ff77aa
-        client.focused_inactive #aa6688 #aa6688 #000000 #aa6688
-        client.unfocused        #663344 #663344 #000000 #663344
-        client.urgent           #ff5599 #ff5599 #000000 #ff5599
+        client.focused          #444444 #353535 #ffffff #444444
+        client.focused_inactive #2f2f2f #2a2a2a #ffffff #2f2f2f
+        client.unfocused        #1f1f1f #1c1c1c #ffffff #1f1f1f
+        client.urgent           #5a2a2a #4a2424 #ffffff #5a2a2a
       '';
     };
 

@@ -17,7 +17,7 @@
     # ./muvm.nix
     ./git.nix
     ./qt.nix
-    # ./helix.nix
+    ./helix.nix
     # ./sway.nix
     ./discord.nix
     ./spotify.nix

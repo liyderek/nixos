@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services = {
     # Enable the X11 windowing system.
     # You can disable this if you're only using the Wayland session.
@@ -62,16 +61,16 @@
     mullvad-vpn.enable = true;
     mullvad-vpn.package = pkgs.mullvad-vpn;
 
-    resolved = {
-      enable = true;
-      dnssec = "true";
-      domains = [ "~." ];
-      fallbackDns = [
-        "1.1.1.1#one.one.one.one"
-        "1.0.0.1#one.one.one.one"
-      ];
-      dnsovertls = "true";
-    };
+    # resolved = {
+    # enable = true;
+    # settings = {
+    # Domains = ["~."];
+    # FallbackDNS = [
+    # "1.1.1.1#one.one.one.one"
+    # "1.0.0.1#one.one.one.one"
+    # ];
+    # };
+    # };
 
     avahi.publish.enable = true;
     avahi.publish.userServices = true;

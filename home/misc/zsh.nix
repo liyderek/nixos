@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -33,6 +33,8 @@
       findw = "grep -rl";
       pdf = "tdf";
       open = "xdg-open";
+      nvim = "nix run --refresh /home/derek/neovim-flake#neovim";
+      java8 = "${pkgs.openjdk8}/bin/java";
 
       l = "eza --icons  -a --group-directories-first -1"; # EZA_ICON_SPACING=2
       ll = "eza --icons  -a --group-directories-first -1 --no-user --long";

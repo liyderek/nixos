@@ -102,6 +102,7 @@ in {
       zed-editor
       github-copilot-cli
       opencode
+      stremio
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
