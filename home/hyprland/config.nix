@@ -334,8 +334,8 @@
     };
 
     extraConfig = "
-      monitor=DP-1, 2560x1440@179.95, 0x0, 1
-      monitor=HDMI-A-1, 3840x2160@60, 2560x0, 1.6
+      monitor=DP-1, 2560x1440@179.952, 0x0, 1
+      monitor=HDMI-A-1, 3840x2160@60, 2560x0, 1.5
       # monitor=eDP-1, preferred, 2560x640, 2
       monitor=eDP-1, disable
 
@@ -344,10 +344,9 @@
       workspace = 3, monitor:DP-1
       workspace = 4, monitor:DP-1
       workspace = 5, monitor:DP-1
-      workspace = 6, monitor:DP-1
+      workspace = 6, monitor:HDMI-A-1
       workspace = 7, monitor:HDMI-A-1
       workspace = 8, monitor:HDMI-A-1
-      workspace = 9, monitor:HDMI-A-1
 
       xwayland {
         force_zero_scaling = true

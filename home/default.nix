@@ -19,114 +19,13 @@ let
   };
 in
 {
-  home = {
-    username = "derek";
-    homeDirectory = "/home/derek";
-
-    packages = with pkgs; [
-      firefox
-      libgcc
-      gdb
-      lldb
-      nixfmt
-      fzf
-      pfetch
-      pamixer
-      wl-clipboard
-      cliphist
-      dconf-editor
-      blueman
-      irssi
-      nix-init
-      # jetbrains.clion
-      renderdoc
-      nix-du
-      graphviz
-      distrobox
-      llvmPackages_19.clang-tools
-      python3
-      python3Packages.pynput
-      nodejs
-      nixd
-      lazygit
-      gnumake
-      pkg-config
-      ninja
-      inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd
-      pkgsMaster.aseprite
-      alejandra
-      lunar-client
-      jetbrains.pycharm
-      steam
-      lutris
-      wineWowPackages.waylandFull
-      winetricks
-      prismlauncher
-      i3blocks
-      zoom-us
-      neovide
-      redis
-      obs-studio
-      libnotify
-      mongodb-compass
-      texliveFull
-      appimage-run
-      mupdf
-      qbittorrent
-      gamescope
-      adwsteamgtk
-      mailspring
-      google-chrome
-      ollama-rocm
-      cemu
-      alacritty
-      badlion-client
-      tgpt
-      runelite
-      thunar-archive-plugin
-      file-roller
-      bolt-launcher
-      zulu
-      jetbrains.idea
-      moonlight-qt
-      slack
-      jetbrains.clion
-      fontforge
-      networkmanager_dmenu
-      bemenu
-      android-studio
-      winboat
-      arduino-ide
-      arduino-cli
-      platformio-core
-      mangohud
-      direnv
-      nix-direnv
-      inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
-      zed-editor
-      github-copilot-cli
-      opencode
-      stremio
-      emacs
-      copilot-language-server
-      libtool
-      ruff
-      lld
-      mold
-      prettier
-      waypipe
+  options.my.desktopProfile = lib.mkOption {
+    type = lib.types.enum [
+      "work"
+      "fun"
     ];
-
-    sessionVariables.NIXOS_OZONE_WL = "1";
-
-    stateVersion = "24.11";
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "inode/directory" = [ "thunar.desktop" ];
-    };
+    default = "work";
+    description = "Selects the Home Manager desktop profile.";
   };
 
   imports = [
@@ -139,7 +38,121 @@ in
     (import ./swaync { inherit pkgs; })
     # (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway { inherit lib pkgs; })
+    ./profiles/work.nix
+    ./profiles/fun.nix
   ];
 
-  programs.home-manager.enable = true;
+  config = {
+    home = {
+      username = "derek";
+      homeDirectory = "/home/derek";
+
+      packages = with pkgs; [
+        firefox
+        libgcc
+        gdb
+        lldb
+        nixfmt
+        fzf
+        pfetch
+        pamixer
+        wl-clipboard
+        cliphist
+        dconf-editor
+        blueman
+        irssi
+        nix-init
+        # jetbrains.clion
+        renderdoc
+        nix-du
+        graphviz
+        distrobox
+        llvmPackages_19.clang-tools
+        python3
+        python3Packages.pynput
+        nodejs
+        nixd
+        lazygit
+        gnumake
+        pkg-config
+        ninja
+        inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd
+        pkgsMaster.aseprite
+        alejandra
+        lunar-client
+        jetbrains.pycharm
+        steam
+        lutris
+        wineWowPackages.waylandFull
+        winetricks
+        prismlauncher
+        i3blocks
+        zoom-us
+        neovide
+        redis
+        obs-studio
+        libnotify
+        mongodb-compass
+        texliveFull
+        appimage-run
+        mupdf
+        qbittorrent
+        gamescope
+        adwsteamgtk
+        mailspring
+        google-chrome
+        ollama-rocm
+        cemu
+        alacritty
+        badlion-client
+        tgpt
+        runelite
+        thunar-archive-plugin
+        file-roller
+        bolt-launcher
+        zulu
+        jetbrains.idea
+        moonlight-qt
+        slack
+        jetbrains.clion
+        fontforge
+        networkmanager_dmenu
+        bemenu
+        android-studio
+        winboat
+        arduino-ide
+        arduino-cli
+        platformio-core
+        mangohud
+        direnv
+        nix-direnv
+        inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
+        zed-editor
+        github-copilot-cli
+        opencode
+        stremio
+        emacs
+        copilot-language-server
+        libtool
+        ruff
+        lld
+        mold
+        prettier
+        waypipe
+      ];
+
+      sessionVariables.NIXOS_OZONE_WL = "1";
+
+      stateVersion = "24.11";
+    };
+
+    xdg.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "inode/directory" = [ "thunar.desktop" ];
+      };
+    };
+
+    programs.home-manager.enable = true;
+  };
 }

@@ -15,4 +15,14 @@
     (import ./system { inherit pkgs; })
     ./cachix.nix
   ];
+
+  specialisation = {
+    work.configuration = {
+      home-manager.users.derek.my.desktopProfile = "work";
+    };
+
+    fun.configuration = {
+      home-manager.users.derek.my.desktopProfile = "fun";
+    };
+  };
 }
