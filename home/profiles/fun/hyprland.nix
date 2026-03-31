@@ -16,7 +16,7 @@ lib.mkIf (config.my.desktopProfile == "fun") {
       "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
       "nm-applet &"
       "wl-clip-persist --clipboard both"
-      "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
+      "swaybg -m fill -i /etc/nixos/temp/NixOS-master/modules/themes/wallpapers/kurzgesagt-galaxies.webp &"
       "hyprctl setcursor Bibata-Modern-Classic 24 &"
       "waybar &"
       "swaync &"
@@ -34,6 +34,7 @@ lib.mkIf (config.my.desktopProfile == "fun") {
       numlock_by_default = true;
       follow_mouse = 0;
       sensitivity = 0;
+      natural_scroll = true;
       touchpad.natural_scroll = true;
       repeat_delay = 300;
       repeat_rate = 30;
@@ -46,7 +47,6 @@ lib.mkIf (config.my.desktopProfile == "fun") {
       border_size = 2;
       "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
       "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
-      no_border_on_floating = false;
     };
 
     decoration = {
@@ -63,15 +63,39 @@ lib.mkIf (config.my.desktopProfile == "fun") {
 
     animations = {
       enabled = true;
+      # bezier = [
+      #   "md3_decel, 0.05, 0.7, 0.1, 1"
+      #   "easeOutExpo, 0.16, 1, 0.3, 1"
+      # ];
+      # animation = [
+      #   "windows, 1, 3, md3_decel, popin 60%"
+      #   "border, 1, 10, default"
+      #   "fade, 1, 2.5, md3_decel"
+      #   "workspaces, 1, 3.5, easeOutExpo, slide"
+      # ];
       bezier = [
-        "md3_decel, 0.05, 0.7, 0.1, 1"
-        "easeOutExpo, 0.16, 1, 0.3, 1"
+        "fluent_decel, 0, 0.2, 0.4, 1"
+        "easeOutCirc, 0, 0.55, 0.45, 1"
+        "easeOutCubic, 0.33, 1, 0.68, 1"
+        "easeinoutsine, 0.37, 0, 0.63, 1"
+        "menu_decel, 0.1, 1, 0, 1"
       ];
+
       animation = [
-        "windows, 1, 3, md3_decel, popin 60%"
-        "border, 1, 10, default"
-        "fade, 1, 2.5, md3_decel"
-        "workspaces, 1, 3.5, easeOutExpo, slide"
+        # Windows
+        "windowsIn, 1, 3, easeOutCubic, popin 80%" # window open
+        "windowsOut, 1, 3, fluent_decel, popin 80%" # window close.
+        "windowsMove, 1, 2, easeinoutsine, slide" # everything in between, moving, dragging, resizing.
+
+        # Fade
+        "fadeIn, 1, 3, easeOutCubic" # fade in (open) -> layers and windows
+        "fadeOut, 1, 2, easeOutCubic" # fade out (close) -> layers and windows
+        "fadeSwitch, 0, 1, easeOutCirc" # fade on changing activewindow and its opacity
+        "fadeShadow, 1, 10, easeOutCirc" # fade on changing activewindow for shadows
+        "fadeDim, 1, 4, fluent_decel" # the easing of the dimming of inactive windows
+        "border, 1, 2.7, easeOutCirc" # for animating the border's color switch speed
+        "borderangle, 1, 30, fluent_decel, once" # for animating the border's gradient angle - styles: once (default), loop
+        "workspaces, 1, 8, menu_decel, slidefade 10%" # styles: slide, slidevert, fade, slidefade, slidefadevert
       ];
     };
 
@@ -148,12 +172,6 @@ lib.mkIf (config.my.desktopProfile == "fun") {
       "$mainMod, mouse:273, resizewindow"
     ];
 
-    windowrulev2 = [
-      "float,class:^(pavucontrol)$"
-      "float,class:^(nm-connection-editor)$"
-      "float,title:^(Picture-in-Picture)$"
-      "pin,title:^(Picture-in-Picture)$"
-    ];
   };
 
   wayland.windowManager.hyprland.extraConfig = lib.mkForce ''
@@ -190,7 +208,7 @@ lib.mkIf (config.my.desktopProfile == "fun") {
 
       background {
         monitor =
-        path = ~/Pictures/wallpapers/others/galaxy.webp
+        path = /etc/nixos/temp/NixOS-master/modules/themes/wallpapers/kurzgesagt-galaxies.webp
         color = $base
         blur_passes = 2
       }

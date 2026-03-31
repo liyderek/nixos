@@ -10,7 +10,7 @@
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &"
         "nm-applet &"
         "wl-clip-persist --clipboard both"
-        "swaybg -m fill -i $(find ~/Pictures/wallpapers/ -maxdepth 1 -type f) &"
+        "swaybg -m fill -i /etc/nixos/wallpapers/wallpaper.png &"
         "hyprctl setcursor macOS 25 &"
         "poweralertd &"
         "waybar &"
@@ -53,7 +53,6 @@
         # "col.active_border" = "0xFFD79921";
         "col.active_border" = "0xFF7C6F64";
         "col.inactive_border" = "0xFF665C54";
-        no_border_on_floating = false;
 
         allow_tearing = true;
       };
@@ -282,10 +281,8 @@
         "pseudo, class:^fcitx$"
         "float, title:^(game)$"
         "rounding 10, floating:1"
-      ];
-
-      # windowrulev2
-      windowrulev2 = [
+      ]
+      ++ [
         "float, title:^(Picture-in-Picture)$"
         "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"

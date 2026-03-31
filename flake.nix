@@ -7,7 +7,6 @@
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager.url = "github:nix-community/home-manager";

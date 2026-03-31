@@ -192,7 +192,9 @@ lib.mkIf (config.my.desktopProfile == "fun") {
     '';
   };
 
-  programs.waybar.package = pkgs.waybar.overrideAttrs (old: {
-    mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
-  });
+  programs.waybar.package = lib.mkForce (
+    pkgs.waybar.overrideAttrs (old: {
+      mesonFlags = (old.mesonFlags or [ ]) ++ [ "-Dexperimental=true" ];
+    })
+  );
 }

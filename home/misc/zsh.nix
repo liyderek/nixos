@@ -45,7 +45,7 @@
       cdnix = "cd ~/nixos-config && codium ~/nixos-config";
       ns = "nh os switch /etc/nixos";
       ns1 = "sudo /run/current-system/specialisation/work/bin/switch-to-configuration switch";
-      ns2 = "sudo /run/current-system/specialisation/fun/bin/switch-to-configuration switch";
+      ns2 = "nh os switch /etc/nixos && sudo /run/current-system/specialisation/fun/bin/switch-to-configuration switch";
       nsu = "sudo nixos-rebuild switch --upgrade";
       nix-flake-update = "sudo nix flake update ~/nixos-config#";
       nix-clean = "nh clean all";
