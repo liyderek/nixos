@@ -43,10 +43,10 @@
 
       # Nixos
       cdnix = "cd ~/nixos-config && codium ~/nixos-config";
-      ns = "sudo nixos-rebuild switch";
+      ns = "nh os switch /etc/nixos";
       nsu = "sudo nixos-rebuild switch --upgrade";
       nix-flake-update = "sudo nix flake update ~/nixos-config#";
-      nix-clean = "sudo nix-collect-garbage && sudo nix-collect-garbage -d && sudo rm /nix/var/nix/gcroots/auto/* && nix-collect-garbage && nix-collect-garbage -d";
+      nix-clean = "nh clean all";
 
       # Git
       ga = "git add";
