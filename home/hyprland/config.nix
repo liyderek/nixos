@@ -2,6 +2,7 @@
 {
   wayland.windowManager.hyprland = {
     settings = {
+      "$mainMod" = "SUPER";
 
       # autostart
       exec-once = [
@@ -40,7 +41,6 @@
       };
 
       general = {
-        "$mainMod" = "SUPER";
         layout = "dwindle";
         # gaps_in = 8;
         # gaps_out = 10;
@@ -250,78 +250,6 @@
       bindm = [
         "$mainMod, mouse:272, movewindow"
         "$mainMod, mouse:273, resizewindow"
-      ];
-
-      # windowrule
-      windowrule = [
-        "float, class:^imv$"
-        "center, class:^imv$"
-        "size 1200 725, class:^imv$"
-        "float, class:^mpv$"
-        "center, class:^mpv$"
-        "tile, class:^Aseprite$"
-        "size 1200 725, class:^mpv$"
-        "float, title:^(float_kitty)$"
-        "center, title:^(float_kitty)$"
-        "size 950 600, title:^(float_kitty)$"
-        "float, class:^audacious$"
-        "workspace 8 silent, class:^audacious$"
-        # "pin, class:^wofi$"
-        # "float, class:^wofi$"
-        # "noborder, class:^wofi$"
-        "tile, class:^neovide$"
-        "idleinhibit focus, class:^mpv$"
-        "float, class:^udiskie$"
-        "float, title:^(Transmission)$"
-        "float, title:^(Volume Control)$"
-        "float, title:^(Firefox — Sharing Indicator)$"
-        "move 0 0, title:^(Firefox — Sharing Indicator)$"
-        "size 700 450, title:^(Volume Control)$"
-        "move 40 55%, title:^(Volume Control)$"
-        "pseudo, class:^fcitx$"
-        "float, title:^(game)$"
-        "rounding 10, floating:1"
-      ]
-      ++ [
-        "float, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(Picture-in-Picture)$"
-        "pin, title:^(Picture-in-Picture)$"
-        "opacity 1.0 override 1.0 override, title:^(.*imv.*)$"
-        "opacity 1.0 override 1.0 override, title:^(.*mpv.*)$"
-        "opacity 1.0 override 1.0 override, class:(Aseprite)"
-        "opacity 1.0 override 1.0 override, class:(Unity)"
-        "idleinhibit focus, class:^(mpv)$"
-        "idleinhibit fullscreen, class:^(firefox)$"
-        "float,class:^(zenity)$"
-        "center,class:^(zenity)$"
-        "size 850 500,class:^(zenity)$"
-        "float,class:^(pavucontrol)$"
-        "float,class:^(SoundWireServer)$"
-        "float,class:^(.sameboy-wrapped)$"
-        "float,class:^(file_progress)$"
-        "float,class:^(confirm)$"
-        "float,class:^(dialog)$"
-        "float,class:^(download)$"
-        "float,class:^(notification)$"
-        "float,class:^(error)$"
-        "float,class:^(confirmreset)$"
-        "float,title:^(Open File)$"
-        "float,title:^(branchdialog)$"
-        "float,title:^(Confirm to replace files)$"
-        "float,title:^(File Operation Progress)$"
-        "float,class:^(legcord)$"
-        "float,class:^(discord)$"
-        "size 1280 720,class:^(discord)$"
-        "float,title:^(float_kitty)$"
-        "center,title:^(float_kitty)$"
-        "size 950 600,title:^(float_kitty)$"
-
-        "opacity 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
-        "maxsize 1 1,class:^(xwaylandvideobridge)$"
-        "noblur,class:^(xwaylandvideobridge)$"
-        "immediate,title:^(Grim Dawn)$"
       ];
 
       misc = {
