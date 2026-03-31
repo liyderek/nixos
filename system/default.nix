@@ -17,7 +17,7 @@
     ./services.nix
     ./security.nix
     ./system.nix
-    ./genshin.nix
+    # ./genshin.nix
     ./sway.nix
     ./mongodb.nix
     ./nix-ld.nix
@@ -26,6 +26,7 @@
     ./virtualisation.nix
     ./fonts.nix
     ./flatpak.nix
+    ./nh.nix
   ];
 
   nixpkgs.overlays = [

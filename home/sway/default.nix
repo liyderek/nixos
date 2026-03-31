@@ -197,7 +197,9 @@ in
             "${mod}+Return" = "exec ${terminal}";
             "${mod}+e" = "exec thunar";
 
-            "${mod}+w" = "exec networkmanager_dmenu";
+            "${mod}+w" = "layout tabbed";
+            # mod + s for normal layout
+            "${mod}+s" = "layout splith";
 
             # printscreen for screenshots
             "Print" = "exec grim -g \"$(slurp)\" - | wl-copy";

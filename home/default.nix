@@ -5,18 +5,20 @@
   pkgs,
   catppuccin,
   ...
-}: let
+}:
+let
   pkgsMaster = import inputs.nixpkgs-master {
     system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [];
+    overlays = pkgs.overlays or [ ];
   };
   pkgsStable = import inputs.nixpkgs-stable {
     system = pkgs.stdenv.hostPlatform.system;
     inherit (pkgs) config;
-    overlays = pkgs.overlays or [];
+    overlays = pkgs.overlays or [ ];
   };
-in {
+in
+{
   home = {
     username = "derek";
     homeDirectory = "/home/derek";
@@ -81,6 +83,8 @@ in {
       badlion-client
       tgpt
       runelite
+      thunar-archive-plugin
+      file-roller
       bolt-launcher
       zulu
       jetbrains.idea
@@ -103,6 +107,14 @@ in {
       github-copilot-cli
       opencode
       stremio
+      emacs
+      copilot-language-server
+      libtool
+      ruff
+      lld
+      mold
+      prettier
+      waypipe
     ];
 
     sessionVariables.NIXOS_OZONE_WL = "1";
@@ -110,16 +122,23 @@ in {
     stateVersion = "24.11";
   };
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "inode/directory" = [ "thunar.desktop" ];
+    };
+  };
+
   imports = [
     catppuccin.homeModules.catppuccin
-    (import ./hyprland {inherit inputs config pkgs;})
+    (import ./hyprland { inherit inputs config pkgs; })
     # (import ./cloudflare { inherit config; })
-    (import ./waybar {inherit inputs config pkgs;})
-    (import ./misc {inherit pkgs config inputs;})
-    (import ./scripts {inherit pkgs;})
-    (import ./swaync {inherit pkgs;})
+    (import ./waybar { inherit inputs config pkgs; })
+    (import ./misc { inherit pkgs config inputs; })
+    (import ./scripts { inherit pkgs; })
+    (import ./swaync { inherit pkgs; })
     # (import ./neovim { inherit pkgs inputs lib; })
-    (import ./sway {inherit lib pkgs;})
+    (import ./sway { inherit lib pkgs; })
   ];
 
   programs.home-manager.enable = true;

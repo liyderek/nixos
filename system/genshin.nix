@@ -1,13 +1,11 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   aagl = import (
     builtins.fetchTarball {
       url = "https://github.com/ezKEa/aagl-gtk-on-nix/archive/release-25.11.tar.gz";
-      sha256 = "0qiqwr9c0akisvfmh5d9iahynp7xcay77csjvxw1saz0l6xspx1c";
+      sha256 = "146yy1mixjd7cl7mnca01s8siv0d4q8kzn5g7mrhws72gzfbyhl3";
     }
   );
-in
-{
+in {
   imports = [
     aagl.module
   ];
