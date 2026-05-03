@@ -36,6 +36,9 @@
 
     neovim-flake.url = "git+https://codeberg.org/catderek/neovim-flake.git";
     neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
+
+    jcode-nix.url = "github:hypervideo/jcode-nix";
+    jcode-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -50,6 +53,9 @@
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            {
+              nixpkgs.overlays = [ inputs.jcode-nix.overlays.default ];
+            }
             ./configuration.nix
             catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager

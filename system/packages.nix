@@ -33,6 +33,7 @@
     podman
     podman-compose
     nil
+    jcode
     (callPackage ./iloader { })
   ];
 }
