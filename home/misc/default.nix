@@ -25,5 +25,6 @@
     ./alacritty.nix
     ./mongodb.nix
     ./direnv.nix
+    ./fcitx5.nix
   ];
 }

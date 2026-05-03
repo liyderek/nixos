@@ -20,6 +20,7 @@ lib.mkIf (config.my.desktopProfile == "fun") {
       id = 0;
       name = "default";
       isDefault = true;
+      path = "iei1hatz.default";
       settings = {
         "extensions.activeThemeID" = "{8446b178-c865-4f5c-8ccc-1d7887811ae3}";
         "browser.theme.content-theme" = 0;

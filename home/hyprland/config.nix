@@ -171,7 +171,7 @@
         "$mainMod, C ,exec, hyprpicker -a"
         "$mainMod, H, exec, chromium --gtk-version=4"
         "$mainMod, W,exec, wallpaper-picker"
-        "$mainMod SHIFT, W, exec, vm-start"
+        "$mainMod SHIFT, W, exec, hyprctl dispatch exec '[float;size 1400 900] mathematica -new-notebook'"
         "$mainMod, R, exec, rofi -show drun"
 
         # screenshot
