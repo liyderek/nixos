@@ -34,9 +34,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-flake.url = "git+https://codeberg.org/catderek/neovim-flake.git";
-    neovim-flake.inputs.nixpkgs.follows = "nixpkgs";
-
     jcode-nix.url = "github:hypervideo/jcode-nix";
     jcode-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -54,7 +51,14 @@
           system = "x86_64-linux";
           modules = [
             {
-              nixpkgs.overlays = [ inputs.jcode-nix.overlays.default ];
+              nixpkgs.overlays = [
+                inputs.jcode-nix.overlays.default
+                (final: prev: {
+                  openldap = prev.openldap.overrideAttrs (_: {
+                    doCheck = false;
+                  });
+                })
+              ];
             }
             ./configuration.nix
             catppuccin.nixosModules.catppuccin

@@ -81,7 +81,7 @@ in {
           pkg-config
           ninja
           inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system}.sf-mono-nerd
-          pkgsMaster.aseprite
+          aseprite
           alejandra
           lunar-client
           jetbrains.pycharm
@@ -130,11 +130,10 @@ in {
           mangohud
           direnv
           nix-direnv
-          inputs.neovim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default
           zed-editor
           github-copilot-cli
           opencode
-          stremio
+          stremio-linux-shell
           emacs
           copilot-language-server
           libtool
@@ -151,6 +150,7 @@ in {
           basedpyright
           pandoc
           elan
+          jetbrains.datagrip
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";
