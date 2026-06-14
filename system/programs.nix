@@ -7,6 +7,8 @@
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
 
+    niri.enable = true;
+
     zsh.enable = true;
 
     # nix ld

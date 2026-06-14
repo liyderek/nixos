@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   fonts.fontconfig.enable = true;
   home.packages = [
     pkgs.nerd-fonts.jetbrains-mono
@@ -26,19 +29,23 @@
     };
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override { color = "black"; };
+      package = pkgs.papirus-icon-theme.override {color = "black";};
     };
+    # theme = {
+    #   name = "Colloid-Green-Dark-Gruvbox";
+    #   package = pkgs.colloid-gtk-theme.override {
+    #     colorVariants = [ "dark" ];
+    #     themeVariants = [ "green" ];
+    #     tweaks = [
+    #       "gruvbox"
+    #       # "rimless"
+    #       # "float"
+    #     ];
+    #   };
+    # };
     theme = {
-      name = "Colloid-Green-Dark-Gruvbox";
-      package = pkgs.colloid-gtk-theme.override {
-        colorVariants = [ "dark" ];
-        themeVariants = [ "green" ];
-        tweaks = [
-          "gruvbox"
-          # "rimless"
-          # "float"
-        ];
-      };
+      name = "adw-gtk3-dark";
+      package = pkgs.adw-gtk3;
     };
     cursorTheme = {
       name = "macOS";

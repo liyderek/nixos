@@ -28,6 +28,7 @@ in {
 
   imports = [
     catppuccin.homeModules.catppuccin
+    inputs.noctalia.homeModules.default
     (import ./hyprland {inherit inputs config pkgs;})
     # (import ./cloudflare { inherit config; })
     (import ./waybar {inherit inputs config pkgs;})
@@ -36,6 +37,7 @@ in {
     (import ./swaync {inherit pkgs;})
     # (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway {inherit lib pkgs;})
+    (import ./niri {inherit lib pkgs inputs config;})
     ./profiles/work.nix
     ./profiles/fun.nix
   ];
@@ -151,6 +153,7 @@ in {
           pandoc
           elan
           jetbrains.datagrip
+          distroshelf
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";

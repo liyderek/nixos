@@ -36,54 +36,57 @@
 
     jcode-nix.url = "github:hypervideo/jcode-nix";
     jcode-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    inputs@{
-      nixpkgs,
-      catppuccin,
-      home-manager,
-      ...
-    }:
-    {
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              nixpkgs.overlays = [
-                inputs.jcode-nix.overlays.default
-                (final: prev: {
-                  openldap = prev.openldap.overrideAttrs (_: {
-                    doCheck = false;
-                  });
-                })
-              ];
-            }
-            ./configuration.nix
-            catppuccin.nixosModules.catppuccin
-            home-manager.nixosModules.home-manager
-            inputs.nix-flatpak.nixosModules.nix-flatpak
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
+  outputs = inputs @ {
+    nixpkgs,
+    catppuccin,
+    home-manager,
+    ...
+  }: {
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = [
+              inputs.jcode-nix.overlays.default
+              (final: prev: {
+                openldap = prev.openldap.overrideAttrs (_: {
+                  doCheck = false;
+                });
+              })
+            ];
+          }
+          ./configuration.nix
+          catppuccin.nixosModules.catppuccin
+          home-manager.nixosModules.home-manager
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
 
-              home-manager.users.derek = import ./home;
+            home-manager.users.derek = import ./home;
 
-              home-manager.extraSpecialArgs = {
-                inherit
-                  inputs
-                  nixpkgs
-                  catppuccin
-                  ;
-              };
-            }
-          ];
-          specialArgs = {
-            inherit inputs nixpkgs;
-          };
+            home-manager.extraSpecialArgs = {
+              inherit
+                inputs
+                nixpkgs
+                catppuccin
+                ;
+            };
+          }
+        ];
+        specialArgs = {
+          inherit inputs nixpkgs;
         };
       };
     };
+  };
 }

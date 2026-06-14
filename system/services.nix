@@ -1,6 +1,9 @@
-{ pkgs, ... }:
-{
-  xdg.portal.enable = true;
+{pkgs, ...}: {
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [xdg-desktop-portal-cosmic];
+    config.common.default = ["cosmic"];
+  };
 
   services = {
     # Enable the X11 windowing system.
@@ -49,16 +52,25 @@
       #media-session.enable = true;
     };
     #
-    greetd = {
+    # greetd = {
+    #   enable = true;
+    #   settings = rec {
+    #     initial_session = {
+    #       command = "${pkgs.sway}/bin/sway";
+    #       user = "derek";
+    #     };
+    #     default_session = initial_session;
+    #   };
+    # };
+
+    desktopManager.cosmic.enable = true;
+    displayManager.cosmic-greeter.enable = true;
+    displayManager.autoLogin = {
       enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.sway}/bin/sway";
-          user = "derek";
-        };
-        default_session = initial_session;
-      };
+      user = "derek";
     };
+    displayManager.defaultSession = "niri";
+    system76-scheduler.enable = true;
 
     # vpn
     mullvad-vpn.enable = true;
