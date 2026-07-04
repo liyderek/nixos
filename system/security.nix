@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   security = {
     rtkit.enable = true;
 
@@ -12,5 +11,11 @@
       capabilities = "cap_sys_admin+p";
       source = "${pkgs.sunshine}/bin/sunshine";
     };
+
+    pki.certificateFiles = [
+      # Replace this with the EXACT path from Step 1!
+      # Note: You MUST use the absolute path (/home/...) do not use a tilde (~)
+      ./rootCA.pem
+    ];
   };
 }

@@ -1,6 +1,19 @@
 {
   description = "NixOS configuration";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://ezkea.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -34,9 +47,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    jcode-nix.url = "github:hypervideo/jcode-nix";
-    jcode-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +65,6 @@
         modules = [
           {
             nixpkgs.overlays = [
-              inputs.jcode-nix.overlays.default
               (final: prev: {
                 openldap = prev.openldap.overrideAttrs (_: {
                   doCheck = false;

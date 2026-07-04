@@ -37,7 +37,7 @@ in {
     (import ./swaync {inherit pkgs;})
     # (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway {inherit lib pkgs;})
-    (import ./niri {inherit lib pkgs inputs config;})
+    (import ./niri {inherit pkgs;})
     ./profiles/work.nix
     ./profiles/fun.nix
   ];
@@ -96,7 +96,6 @@ in {
           zoom-us
           neovide
           redis
-          obs-studio
           libnotify
           mongodb-compass
           texliveFull
@@ -118,7 +117,6 @@ in {
           bolt-launcher
           zulu
           jetbrains.idea
-          moonlight-qt
           slack
           jetbrains.clion
           fontforge
@@ -144,7 +142,7 @@ in {
           mold
           prettier
           waypipe
-          mathematica
+          # mathematica
           jetbrains.rust-rover
           anki
           obsidian
@@ -154,6 +152,10 @@ in {
           elan
           jetbrains.datagrip
           distroshelf
+          antigravity-cli
+          calibre
+          omnissa-horizon-client
+          xwayland-satellite
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";
@@ -174,6 +176,13 @@ in {
         "inode/directory" = ["thunar.desktop"];
         "x-directory/normal" = ["thunar.desktop"];
       };
+    };
+
+    # OBS with wlrobs plugin: captures screens via wlr-screencopy
+    # directly (no portal needed). Works natively with Niri.
+    programs.obs-studio = {
+      enable = true;
+      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
     };
 
     programs.home-manager.enable = true;

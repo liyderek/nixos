@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   fonts.fontconfig.enable = true;
@@ -21,32 +22,52 @@
     pkgs.nerd-fonts.monaspace
   ];
 
+  home.sessionVariables.ADW_COLOR_SCHEME = lib.mkForce "prefer-dark";
+  home.sessionVariables.GTK_THEME = lib.mkForce "Adwaita:dark";
+
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      font-name = "Maple Mono NF 10";
+      document-font-name = "Maple Mono NF 10";
+      monospace-font-name = "Maple Mono NF 10";
+    };
+  };
+
   gtk = {
     enable = true;
     font = {
       name = "Maple Mono NF";
       size = 10;
+      package = pkgs.maple-mono.NF;
     };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.papirus-icon-theme.override {color = "black";};
     };
-    # theme = {
-    #   name = "Colloid-Green-Dark-Gruvbox";
-    #   package = pkgs.colloid-gtk-theme.override {
-    #     colorVariants = [ "dark" ];
-    #     themeVariants = [ "green" ];
-    #     tweaks = [
-    #       "gruvbox"
-    #       # "rimless"
-    #       # "float"
-    #     ];
-    #   };
-    # };
     theme = {
-      name = "adw-gtk3-dark";
-      package = pkgs.adw-gtk3;
+      name = lib.mkDefault "Adwaita-dark";
+      package = lib.mkDefault pkgs.gnome-themes-extra;
     };
+    gtk2.extraConfig = ''
+      gtk-application-prefer-dark-theme = 1
+    '';
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk3.extraCss = ''
+      headerbar, .titlebar {
+        display: none;
+      }
+    '';
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+    gtk4.extraCss = ''
+      headerbar, .titlebar {
+        display: none;
+      }
+    '';
     cursorTheme = {
       name = "macOS";
       package = pkgs.apple-cursor;

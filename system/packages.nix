@@ -15,7 +15,6 @@
     gamemode
     sunshine
     amf
-    libreoffice-qt
     hunspell
     hunspellDicts.en_US
     perf
@@ -32,7 +31,6 @@
     podman
     podman-compose
     nil
-    jcode
     (callPackage ./iloader {})
     gst_all_1.gstreamer
     gst_all_1.gst-plugins-base

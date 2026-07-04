@@ -9,6 +9,8 @@
 
     niri.enable = true;
 
+    dconf.enable = true;
+
     zsh.enable = true;
 
     # nix ld

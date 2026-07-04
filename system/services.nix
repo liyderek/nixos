@@ -1,8 +1,31 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [xdg-desktop-portal-cosmic];
-    config.common.default = ["cosmic"];
+    # xdg-desktop-portal-wlr is unmaintained and broken with portal 1.18+.
+    # xdg-desktop-portal-hyprland is actively maintained, supports the
+    # new backend API, and uses wlr-screencopy — which Niri implements.
+    # Already installed by programs.hyprland.enable, but listed explicitly.
+    extraPortals = [
+      # xdg-desktop-portal-hyprland is already added by programs.hyprland.enable
+      # Adding it here causes a duplicate .service file conflict
+      pkgs.xdg-desktop-portal-gtk
+    ];
+
+    config = {
+      common.default = ["gtk"];
+
+      niri = {
+        # Override the niri module's default (which adds gnome) to just gtk
+        default = lib.mkForce ["gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["hyprland"];
+        "org.freedesktop.impl.portal.Screenshot" = ["hyprland"];
+        "org.freedesktop.impl.portal.RemoteDesktop" = ["hyprland"];
+      };
+    };
   };
 
   services = {
@@ -16,7 +39,7 @@
 
     # Enable the KDE Plasma Desktop Environment.
     # services.displayManager.sddm.enable = true;
-    desktopManager.plasma6.enable = true;
+    # desktopManager.plasma6.enable = true;
 
     xserver.xkb = {
       layout = "us";
@@ -44,6 +67,7 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      wireplumber.enable = true;
       # If you want to use JACK applications, uncomment this
       #jack.enable = true;
 
@@ -63,13 +87,17 @@
     #   };
     # };
 
-    desktopManager.cosmic.enable = true;
-    displayManager.cosmic-greeter.enable = true;
-    displayManager.autoLogin = {
+    greetd = {
       enable = true;
-      user = "derek";
+      settings = rec {
+        # Auto-login derek into niri without password
+        initial_session = {
+          command = "${pkgs.niri}/bin/niri-session";
+          user = "derek";
+        };
+        default_session = initial_session;
+      };
     };
-    displayManager.defaultSession = "niri";
     system76-scheduler.enable = true;
 
     # vpn

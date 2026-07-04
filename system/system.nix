@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   fileSystems."/run/media/derek/51D00F980942B197" = {
     device = "/dev/disk/by-uuid/51D00F980942B197";
     fsType = "ntfs";
@@ -50,9 +49,14 @@
 
   systemd.services.tailscale-udp-gro = {
     description = "Enable UDP GRO forwarding for Tailscale";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     serviceConfig.ExecStart = ''
       ${pkgs.ethtool}/bin/ethtool -K enp2s0 rx-udp-gro-forwarding on rx-gro-list off
     '';
+  };
+
+  systemd.user.services.xdg-desktop-portal-wlr.environment = {
+    WAYLAND_DISPLAY = "wayland-1";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 }
