@@ -25,5 +25,6 @@
     ./mongodb.nix
     ./direnv.nix
     ./fcitx5.nix
+    ./zathura.nix
   ];
 }

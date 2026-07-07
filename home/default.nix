@@ -37,7 +37,7 @@ in {
     (import ./swaync {inherit pkgs;})
     # (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway {inherit lib pkgs;})
-    (import ./niri {inherit pkgs;})
+    (import ./niri {inherit pkgs inputs;})
     ./profiles/work.nix
     ./profiles/fun.nix
   ];
@@ -156,6 +156,7 @@ in {
           calibre
           omnissa-horizon-client
           xwayland-satellite
+          zathura
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";
@@ -182,7 +183,7 @@ in {
     # directly (no portal needed). Works natively with Niri.
     programs.obs-studio = {
       enable = true;
-      plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+      plugins = [pkgs.obs-studio-plugins.wlrobs];
     };
 
     programs.home-manager.enable = true;

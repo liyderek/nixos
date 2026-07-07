@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   home.packages = with pkgs; [
     niri
     swaybg
@@ -7,6 +7,9 @@
     pamixer
     playerctl
     brightnessctl
+    grim
+    slurp
+    inputs.hypr-contrib.packages.${pkgs.stdenv.hostPlatform.system}.grimblast
   ];
 
   xdg.configFile."niri/config.kdl".text = ''
@@ -80,7 +83,7 @@
         Mod+W { spawn "wallpaper-picker"; }
         Mod+R { spawn "rofi" "-show" "drun"; }
 
-        Mod+Print { spawn "grimblast" "--notify" "--freeze" "save" "area"; }
+        Mod+Print { spawn-sh "mkdir -p ~/Pictures/Screenshots && grimblast --notify --freeze save area ~/Pictures/Screenshots/$(date +'%Y-%m-%d_%H-%M-%S').png"; }
         Print { spawn "grimblast" "--notify" "--freeze" "copy" "area"; }
 
         Mod+Left  { focus-column-left; }
