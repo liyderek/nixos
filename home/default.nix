@@ -37,7 +37,7 @@ in {
     (import ./swaync {inherit pkgs;})
     # (import ./neovim { inherit pkgs inputs lib; })
     (import ./sway {inherit lib pkgs;})
-    (import ./niri {inherit pkgs inputs;})
+    (import ./niri {inherit pkgs;})
     ./profiles/work.nix
     ./profiles/fun.nix
   ];
@@ -157,6 +157,8 @@ in {
           omnissa-horizon-client
           xwayland-satellite
           zathura
+          mpv
+          mpvScripts.uosc
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";
@@ -176,6 +178,16 @@ in {
 
         "inode/directory" = ["thunar.desktop"];
         "x-directory/normal" = ["thunar.desktop"];
+
+        "application/pdf" = ["org.pwmt.zathura.desktop"];
+        "application/x-pdf" = ["org.pwmt.zathura.desktop"];
+
+        "video/mp4" = ["mpv.desktop"];
+        "video/x-matroska" = ["mpv.desktop"];
+        "video/webm" = ["mpv.desktop"];
+        "video/quicktime" = ["mpv.desktop"];
+        "video/x-msvideo" = ["mpv.desktop"];
+        "video/mpeg" = ["mpv.desktop"];
       };
     };
 

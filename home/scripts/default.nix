@@ -8,6 +8,7 @@ let
     builtins.readFile ./scripts/shutdown-script.sh
   );
   show-keybinds = pkgs.writeScriptBin "show-keybinds" (builtins.readFile ./scripts/keybinds.sh);
+  screenshot = pkgs.writeShellScriptBin "screenshot" (builtins.readFile ./scripts/screenshot.sh);
 in
 {
   home.packages = with pkgs; [
@@ -17,5 +18,6 @@ in
     shutdown-script
 
     show-keybinds
+    screenshot
   ];
 }
