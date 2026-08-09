@@ -42,7 +42,9 @@ in {
     ./profiles/fun.nix
   ];
 
-  config = {
+  config = let
+    nimbalyst = pkgs.callPackage ../pkgs/nimbalyst.nix {};
+  in {
     home = {
       username = "derek";
       homeDirectory = "/home/derek";
@@ -157,8 +159,12 @@ in {
           omnissa-horizon-client
           xwayland-satellite
           zathura
-          mpv
-          mpvScripts.uosc
+          claude-code
+          (inputs.claude-desktop.packages.${system}.claude-desktop.override {
+            nodePackages = {inherit (pkgs) asar;};
+          })
+          pawn-appetit
+          nimbalyst
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";

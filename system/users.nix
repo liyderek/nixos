@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derek = {
     isNormalUser = true;
@@ -8,6 +7,8 @@
       "wheel"
       "podman"
       "docker"
+      "dialout"
+      "uucp"
     ]; # Enable ‘sudo’ for the user.
     shell = pkgs.zsh;
   };

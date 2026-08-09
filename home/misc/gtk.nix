@@ -20,6 +20,7 @@
     pkgs.noto-fonts-cjk-serif
     pkgs.nerd-fonts.iosevka
     pkgs.nerd-fonts.monaspace
+    pkgs.lmodern
   ];
 
   home.sessionVariables.ADW_COLOR_SCHEME = lib.mkForce "prefer-dark";
