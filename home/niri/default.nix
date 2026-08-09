@@ -168,6 +168,10 @@
     	open-floating true
     }
 
+         animations {
+          off
+         }
+
          debug {
         honor-xdg-activation-with-invalid-serial
          }
