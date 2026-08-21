@@ -1,23 +1,22 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     package = pkgs.alacritty;
     settings = {
       font = {
         normal = {
-          family = "Maple Mono NF";
+          family = "Terminus";
           style = "Regular";
         };
         bold = {
-          family = "Maple Mono NF";
-          style = "Bold";
+          family = "Terminus";
+          style = "Regular";
         };
         italic = {
-          family = "Maple Mono NF";
-          style = "Italic";
+          family = "Terminus";
+          style = "Regular";
         };
-        size = 11;
+        size = 12;
       };
     };
   };

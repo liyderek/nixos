@@ -164,7 +164,7 @@ in {
             nodePackages = {inherit (pkgs) asar;};
           })
           pawn-appetit
-          nimbalyst
+          vinegar
         ];
 
       sessionVariables.NIXOS_OZONE_WL = "1";

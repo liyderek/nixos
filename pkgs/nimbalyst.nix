@@ -9,7 +9,7 @@ appimageTools.wrapType2 {
 
   src = fetchurl {
     url = "https://github.com/nimbalyst/nimbalyst/releases/download/v0.72.8/Nimbalyst-Linux.AppImage";
-    hash = lib.fakeHash;
+    hash = "sha256-tTcjKhly9mUyS1mLWpvNCb4zXwAFfeb3QXGWWxrIOdA=";
   };
 
   meta = {

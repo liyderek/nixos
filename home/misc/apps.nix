@@ -1,6 +1,17 @@
 { pkgs, ... }:
 {
   xdg.desktopEntries = {
+    nimbalyst = {
+      name = "Nimbalyst";
+      genericName = "Visual Editor";
+      exec = "nimbalyst";
+      categories = [
+        "Development"
+        "IDE"
+      ];
+      startupNotify = true;
+      type = "Application";
+    };
     # renderdoc = {
     #   name = "Renderdoc";
     #   genericName = "renderdoc";

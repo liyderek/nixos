@@ -27,6 +27,7 @@
     ./fonts.nix
     ./flatpak.nix
     ./nh.nix
+    ./auto-update.nix
   ];
 
   nixpkgs.overlays = [
