@@ -28,6 +28,7 @@ in {
 
   imports = [
     catppuccin.homeModules.catppuccin
+    (import ./theming {inherit inputs config pkgs;})
     inputs.noctalia.homeModules.default
     (import ./hyprland {inherit inputs config pkgs;})
     # (import ./cloudflare { inherit config; })
@@ -125,7 +126,7 @@ in {
           networkmanager_dmenu
           bemenu
           android-studio
-          winboat
+          # winboat
           arduino-ide
           arduino-cli
           platformio-core

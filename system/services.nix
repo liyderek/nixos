@@ -101,8 +101,8 @@
     system76-scheduler.enable = true;
 
     # vpn
-    mullvad-vpn.enable = true;
-    mullvad-vpn.package = pkgs.mullvad-vpn;
+    # mullvad-vpn.enable = true;
+    # mullvad-vpn.package = pkgs.mullvad-vpn;
 
     # resolved = {
     # enable = true;
