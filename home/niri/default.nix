@@ -72,6 +72,7 @@
          binds {
           Mod+F1 { spawn "show-keybinds"; }
           Mod+Return { spawn "alacritty"; }
+          Mod+T { spawn "alacritty" "-o" "font.normal.family=\"Maple Mono NF\"" "-o" "font.bold.family=\"Maple Mono NF\"" "-o" "font.italic.family=\"Maple Mono NF\"" "-o" "font.bold_italic.family=\"Maple Mono NF\"" "-o" "font.size=24"; }
           Mod+Shift+Return { spawn "alacritty" "--title" "float_alacritty"; }
           Mod+B { spawn "floorp"; }
           Mod+Q { close-window; }

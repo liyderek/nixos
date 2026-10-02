@@ -1,6 +1,6 @@
-{ ... }:
-{
+{...}: {
   wayland.windowManager.hyprland = {
+    enable = false;
     settings = {
       "$mainMod" = "SUPER";
 
@@ -255,7 +255,6 @@
       misc = {
         vrr = 1;
       };
-
     };
 
     extraConfig = "

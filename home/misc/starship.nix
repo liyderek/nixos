@@ -1,5 +1,8 @@
-{ lib, inputs, ... }:
 {
+  lib,
+  inputs,
+  ...
+}: {
   programs.starship = {
     enable = true;
 
@@ -7,29 +10,31 @@
     enableZshIntegration = true;
     enableNushellIntegration = true;
 
-    settings = {
-      # right_format = "$cmd_duration";
+    settings =
+      {
+        # right_format = "$cmd_duration";
 
-      directory = {
-        format = "[ ](bold #89b4fa)[ $path ]($style)";
-        style = "bold #b4befe";
-      };
+        directory = {
+          format = "[ ](bold #89b4fa)[ $path ]($style)";
+          style = "bold #b4befe";
+        };
 
-      character = {
-        success_symbol = "[ ](bold #89b4fa)[ ➜](bold green)";
-        error_symbol = "[ ](bold #89b4fa)[ ➜](bold red)";
-        # error_symbol = "[ ](bold #89dceb)[ ✗](bold red)";
-      };
+        character = {
+          success_symbol = "[ ](bold #89b4fa)[ ➜](bold green)";
+          error_symbol = "[ ](bold #89b4fa)[ ➜](bold red)";
+          # error_symbol = "[ ](bold #89dceb)[ ✗](bold red)";
+        };
 
-      cmd_duration = {
-        format = "[󰔛 $duration]($style)";
-        disabled = false;
-        style = "bg:none fg:#f9e2af";
-        show_notifications = false;
-        min_time_to_notify = 60000;
-      };
+        cmd_duration = {
+          format = "[󰔛 $duration]($style)";
+          disabled = false;
+          style = "bg:none fg:#f9e2af";
+          show_notifications = false;
+          min_time_to_notify = 60000;
+        };
 
-      palette = "gruvbox_dark";
-    } // builtins.fromTOML (builtins.readFile ./gruvbox.toml);
+        # palette = "gruvbox_dark";
+      }
+      // builtins.fromTOML (builtins.readFile ./gruvbox.toml);
   };
 }

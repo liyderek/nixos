@@ -16,7 +16,7 @@ let
     set -euo pipefail
     cd /etc/nixos
     ${pkgs.nix}/bin/nix flake update
-    ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake /etc/nixos
+    ${pkgs.nixos-rebuild}/bin/nixos-rebuild switch --flake /etc/nixos --print-build-logs
   '';
 in
 {
@@ -25,9 +25,11 @@ in
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
     unitConfig.OnFailure = "nixos-auto-update-notify.service";
+    path = [ pkgs.git ];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = updateScript;
+      TimeoutStartSec = "6h";
     };
   };
 

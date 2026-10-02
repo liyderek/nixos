@@ -3,12 +3,9 @@
   inputs,
   config,
   ...
-}:
-let
+}: let
   hyprland = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-in
-{
-
+in {
   imports = [
     (import ./config.nix)
     # (import ./hyprlock.nix { inherit pkgs; })
@@ -29,15 +26,14 @@ in
     direnv
   ];
 
-  systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
+  systemd.user.targets.hyprland-session.Unit.Wants = ["xdg-desktop-autostart.target"];
 
   wayland.windowManager.hyprland = {
-    enable = true;
+    enable = false;
     package = hyprland;
     xwayland = {
       enable = true;
     };
     systemd.enable = true;
   };
-
 }

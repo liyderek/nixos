@@ -23,15 +23,9 @@
     pkgs.lmodern
   ];
 
-  home.sessionVariables.ADW_COLOR_SCHEME = lib.mkForce "prefer-dark";
-  home.sessionVariables.GTK_THEME = lib.mkForce "Adwaita:dark";
-
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      font-name = "Maple Mono NF 10";
-      document-font-name = "Maple Mono NF 10";
-      monospace-font-name = "Maple Mono NF 10";
     };
   };
 
@@ -42,19 +36,19 @@
       size = 10;
       package = pkgs.maple-mono.NF;
     };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme.override {color = "black";};
-    };
     theme = {
-      name = lib.mkDefault "Adwaita-dark";
-      package = lib.mkDefault pkgs.gnome-themes-extra;
+      name = "catppuccin-mocha-pink-standard";
+      package = pkgs.catppuccin-gtk.override {
+        size = "standard";
+        accents = ["pink"];
+        variant = "mocha";
+      };
     };
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme = 1
     '';
     gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
     };
     gtk3.extraCss = ''
       headerbar, .titlebar {
@@ -62,7 +56,7 @@
       }
     '';
     gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
+      gtk-application-prefer-dark-theme = true;
     };
     gtk4.extraCss = ''
       headerbar, .titlebar {

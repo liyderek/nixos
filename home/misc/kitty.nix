@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.kitty = {
     enable = true;
 
-    themeFile = "gruvbox-dark-hard";
+    # themeFile = "gruvbox-dark-hard";
 
     font = {
       name = "Maple Mono NF";

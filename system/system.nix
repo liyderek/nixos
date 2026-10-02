@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   ...
 }: {
   fileSystems."/run/media/derek/51D00F980942B197" = {
@@ -16,19 +15,6 @@
       "x-systemd.automount"
       "x-systemd.idle-timeout=10min"
     ];
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--no-write-lock-file"
-      "-L" # print build logs
-    ];
-    dates = "02:00";
-    randomizedDelaySec = "45min";
   };
 
   system.stateVersion = "24.11";
