@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./boot.nix
     ./gnome.nix
@@ -27,6 +27,7 @@
     ./flatpak.nix
     ./nh.nix
     ./auto-update.nix
+    ./sunshine.nix
   ];
 
   nixpkgs.overlays = [
