@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  imports = [ ./sleep-screen.nix ];
   home.packages = with pkgs; [
     niri
     swaybg
@@ -69,6 +70,12 @@
 
       spawn-at-startup "noctalia"
 
+         workspace "fun" { open-on-output "DP-1"; }
+         workspace "code" { open-on-output "DP-1"; }
+         workspace "math" { open-on-output "DP-1"; }
+         workspace "aux" { open-on-output "DP-1"; }
+         workspace "music" { open-on-output "DP-1"; }
+
          binds {
           Mod+F1 { spawn "show-keybinds"; }
           Mod+Return { spawn "alacritty"; }
@@ -82,6 +89,7 @@
           Mod+Shift+D { spawn "discord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
           Mod+Shift+S { spawn "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
           Mod+Escape { spawn "hyprlock"; }
+          Mod+Alt+S repeat=false allow-inhibiting=false hotkey-overlay-title="Toggle sleep screen" { spawn "niri-sleep-screen"; }
           Mod+Shift+Escape { spawn "shutdown-script"; }
           Mod+E { spawn "thunar"; }
           Mod+Shift+B { spawn "pkill" "-SIGUSR1" ".waybar-wrapped"; }
@@ -108,27 +116,17 @@
           Mod+Ctrl+Up    { set-window-height "-10%"; }
           Mod+Ctrl+Down  { set-window-height "+10%"; }
 
-          Mod+1 { focus-workspace "1"; }
-          Mod+2 { focus-workspace "2"; }
-          Mod+3 { focus-workspace "3"; }
-          Mod+4 { focus-workspace "4"; }
-          Mod+5 { focus-workspace "5"; }
-          Mod+6 { focus-workspace "6"; }
-          Mod+7 { focus-workspace "7"; }
-          Mod+8 { focus-workspace "8"; }
-          Mod+9 { focus-workspace "9"; }
-          Mod+0 { focus-workspace "10"; }
+          Mod+1 { focus-workspace "fun"; }
+          Mod+2 { focus-workspace "code"; }
+          Mod+3 { focus-workspace "math"; }
+          Mod+4 { focus-workspace "aux"; }
+          Mod+5 { focus-workspace "music"; }
 
-          Mod+Shift+1 { move-column-to-workspace "1"; }
-          Mod+Shift+2 { move-column-to-workspace "2"; }
-          Mod+Shift+3 { move-column-to-workspace "3"; }
-          Mod+Shift+4 { move-column-to-workspace "4"; }
-          Mod+Shift+5 { move-column-to-workspace "5"; }
-          Mod+Shift+6 { move-column-to-workspace "6"; }
-          Mod+Shift+7 { move-column-to-workspace "7"; }
-          Mod+Shift+8 { move-column-to-workspace "8"; }
-          Mod+Shift+9 { move-column-to-workspace "9"; }
-          Mod+Shift+0 { move-column-to-workspace "10"; }
+          Mod+Shift+1 { move-column-to-workspace "fun"; }
+          Mod+Shift+2 { move-column-to-workspace "code"; }
+          Mod+Shift+3 { move-column-to-workspace "math"; }
+          Mod+Shift+4 { move-column-to-workspace "aux"; }
+          Mod+Shift+5 { move-column-to-workspace "music"; }
 
           Mod+V { spawn "sh" "-c" "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy"; }
 
