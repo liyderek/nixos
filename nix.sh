@@ -8,7 +8,7 @@ if (( $# > 0 )); then
 fi
 
 case "$command" in
-  rebuild|build|upgrade|work|update)
+  rebuild|boot|build|upgrade|work|update)
     host="$(hostname)"
     if (( $# > 0 )) && [[ "$1" != -* ]]; then
       host="${1:-$host}"
@@ -20,6 +20,9 @@ esac
 case "$command" in
   rebuild)
     exec nh os switch --hostname "$host" --no-specialisation "$repo" "$@"
+    ;;
+  boot)
+    exec nh os boot --hostname "$host" --no-specialisation "$repo" "$@"
     ;;
   build)
     exec nh os build --hostname "$host" --no-specialisation "$repo" "$@"
@@ -62,7 +65,7 @@ case "$command" in
     exec nix run "$@"
     ;;
   help|-h|--help)
-    printf 'Usage: %s {rebuild|build|upgrade|work} [hostname] [nh options ...]\n' "$0"
+    printf 'Usage: %s {rebuild|boot|build|upgrade|work} [hostname] [nh options ...]\n' "$0"
     printf '       %s update [hostname] [input ...] [-- nh options ...]\n' "$0"
     printf '       %s clean [nh options ...]\n' "$0"
     printf '       %s {check|edit|run} [arguments ...]\n' "$0"

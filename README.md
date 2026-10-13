@@ -169,6 +169,7 @@ output. The development shell provides `nh`, `just`, and the formatter:
 ```sh
 nix develop
 just rebuild                # Current hostname
+just boot                   # Stage a generation for the next reboot
 just build nixosmacbook     # Build a host without activating it
 just check                  # Evaluate the flake for all supported architectures
 just upgrade                # Update inputs, build, and activate
@@ -180,6 +181,9 @@ just clean --dry            # Preview cleanup
 
 The wrappers perform local builds/rebuilds. Run them on the corresponding
 machine, or configure an appropriate ARM builder for the MacBook.
+
+For a kernel or desktop-environment migration, use `./nix.sh boot <hostname>`
+and reboot to start the new generation with a fresh graphical session.
 
 `nh` updates inputs as part of a build or switch, so `update` also builds the
 selected host. Pass build options after `--` for that command:

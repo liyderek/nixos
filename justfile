@@ -4,6 +4,9 @@ default:
 rebuild host="":
     ./nix.sh rebuild "{{host}}"
 
+boot host="":
+    ./nix.sh boot "{{host}}"
+
 build host="":
     ./nix.sh build "{{host}}"
 
