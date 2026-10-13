@@ -1,0 +1,17 @@
+_: {
+  flake.modules.nixos.base = { pkgs, ... }: {
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.derek = {
+      isNormalUser = true;
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "podman"
+        "docker"
+        "dialout"
+        "uucp"
+      ]; # Enable ‘sudo’ for the user.
+      shell = pkgs.zsh;
+    };
+  };
+}

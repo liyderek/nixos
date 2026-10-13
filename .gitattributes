@@ -1,4 +1,4 @@
-audio/minecraft.mp3 filter=lfs diff=lfs merge=lfs -text
-deb/chatgpt_amd64.deb filter=lfs diff=lfs merge=lfs -text
 assets/audio/minecraft.mp3 filter=lfs diff=lfs merge=lfs -text
 assets/deb/chatgpt_amd64.deb filter=lfs diff=lfs merge=lfs -text
+audio/minecraft.mp3 filter=lfs diff=lfs merge=lfs -text
+deb/chatgpt_amd64.deb filter=lfs diff=lfs merge=lfs -text

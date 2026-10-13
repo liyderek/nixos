@@ -1,22 +1,12 @@
 {
-  description = "NixOS configuration";
-
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://ezkea.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
-    ];
-  };
+  description = "Shared NixOS desktop and Apple Silicon MacBook configuration";
 
   inputs = {
+    self.lfs = true;
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
 
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak";
@@ -25,11 +15,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland = {
-      url = "github:hyprwm/hyprland";
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hypr-contrib.url = "github:hyprwm/contrib";
 
     catppuccin-starship = {
       url = "github:catppuccin/starship";
@@ -57,49 +46,18 @@
     # claude-desktop.inputs.flake-utils.follows = "flake-utils";
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    catppuccin,
-    home-manager,
-    ...
-  }: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                openldap = prev.openldap.overrideAttrs (_: {
-                  doCheck = false;
-                });
-              })
-            ];
-          }
-          ./configuration.nix
-          catppuccin.nixosModules.catppuccin
-          home-manager.nixosModules.home-manager
-          inputs.nix-flatpak.nixosModules.nix-flatpak
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-
-            home-manager.users.derek = import ./home;
-
-            home-manager.extraSpecialArgs = {
-              inherit
-                inputs
-                nixpkgs
-                catppuccin
-                ;
-            };
-          }
-        ];
-        specialArgs = {
-          inherit inputs nixpkgs;
-        };
+  outputs =
+    inputs:
+    let
+      customLib = import ./lib { lib = inputs.nixpkgs.lib; };
+    in
+    inputs.flake-parts.lib.mkFlake
+      {
+        inherit inputs;
+        specialArgs = { inherit customLib; };
+      }
+      {
+        imports = [ (inputs.import-tree ./modules) ];
+        flake.lib = customLib;
       };
-    };
-  };
 }
