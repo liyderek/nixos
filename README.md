@@ -206,6 +206,8 @@ graphics, DSP audio configuration, and speaker protection. The host also uses:
 - libinput, Bluetooth/Blueman, UPower, power profiles, a 2x-scaled internal
   display, and no 32-bit graphics/audio;
 - its existing enabled firewall.
+- an 8 GiB swap file and memory-conscious build/download concurrency for the
+  8 GiB MacBook.
 
 ### Vendor firmware: first build
 
