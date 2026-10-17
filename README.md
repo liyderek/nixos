@@ -40,6 +40,7 @@ modules/
       displays.nix             Monitor/workspace layouts
     nixosmacbook/
       config.nix               MacBook bootloader, Wi-Fi, and laptop settings
+      boot.nix                 Quiet U-Boot/systemd-boot and Mocha Plymouth splash
       imports.nix              Select system/user features, including Apple Silicon
       nixosSystem.nix          Publish nixosConfigurations.nixosmacbook
       hardware-configuration.nix MacBook disks and platform
@@ -160,6 +161,20 @@ Niri uses its GNOME screen-sharing portal and Waybar's native Niri workspace
 module. `Super+F1` opens Niri's hotkey overlay; `Super+Escape` locks the session
 with Swaylock.
 
+### Boot splash and virtual consoles
+
+Both hosts use Catppuccin Mocha TTY colors and the 32-pixel Unicode Terminus
+console font (`ter-u32n`), including in the initrd. These settings live in
+`modules/base/console.nix`.
+
+The MacBook uses the Catppuccin Mocha Plymouth splash with no boot-menu delay,
+kernel console messages, or systemd status lines during normal boot.
+`modules/hosts/nixosmacbook/boot.nix` also disables Asahi's early console and
+builds a silent U-Boot so pre-Linux messages do not interrupt the splash.
+Boot diagnostics remain available in the journal after login.
+
+Rebuild each host and reboot to apply its boot and console settings.
+
 ### Helper commands
 
 `nix.sh` works from any working directory. Rebuilds, builds, specialisations,
@@ -210,8 +225,37 @@ graphics, DSP audio configuration, and speaker protection. The host also uses:
 - libinput, Bluetooth/Blueman, UPower, power profiles, a 2x-scaled internal
   display, and no 32-bit graphics/audio;
 - its existing enabled firewall.
-- an 8 GiB swap file and memory-conscious build/download concurrency for the
-  8 GiB MacBook.
+- zstd-compressed RAM swap with an uncompressed capacity of 100% of RAM,
+  an 8 GiB SSD swap file for overflow, and memory-conscious build/download
+  concurrency for the 8 GiB MacBook.
+
+### Trackpad motion and scrolling
+
+The MacBook's Niri user service loads the custom curve adapter configured in
+`modules/hosts/nixosmacbook/input.nix`. It matches the built-in Apple SPI
+trackpad (`05ac:0341`) and uses the same base motion and scroll points generated
+from `0.1*x + 0.01*x^2 + 0.005*x^3`: 20 samples, step `0.5`, rounded to three
+decimal places like the supplied generator. Libinput interpolates between
+samples and extrapolates past the last one. This is a macOS-like cubic curve,
+not a measured macOS Tahoe profile.
+
+The adapter's `motionScale = 0.5` in `input.nix` halves pointer speed while
+`maxGain = 0.4` caps the base curve's high-speed gain. The final samples form a
+constant-gain tail, so fast flicks stay capped even beyond the sampled range.
+Low-speed samples below the cap retain their original values. The trackpad's
+Niri `scroll-factor` is `0.25` in
+`modules/hosts/nixosmacbook/home.nix`, reducing scrolling to one quarter of the
+base curve's speed. Pointer and scroll sensitivity are tuned independently of
+the gain cap.
+
+`gestureScale = 0.15` configures a separate constant-gain fallback for swipe
+gestures. Niri uses libinput's unaccelerated swipe deltas for window/workspace
+navigation; leaving the custom profile's fallback at its default raw `1.0`
+made those gestures too sensitive. The gesture gain is independent of pointer
+and two-finger scrolling, and stays constant even for fast swipes.
+
+After rebuilding, log out and back in to load a changed adapter. Successful
+initialisation is logged by `journalctl --user -u niri.service -b`.
 
 ### Vendor firmware: first build
 
@@ -257,8 +301,9 @@ MongoDB Compass also check platform support.
 
 Desktop-only packages include Steam, Lutris, Wine/Winetricks, Gamescope,
 AppImage tools, Lunar/Badlion, Android Studio, Omnissa Horizon, Parsec, AMD AMF,
-ROCm Ollama, VMware, and the amd64 ChatGPT/iLoader packages. The MacBook uses
-CPU Ollama. MongoDB, Sunshine, the local Nuvio server, the Minion Flatpak,
+ROCm Ollama, VMware, and the amd64 iLoader package. The MacBook uses CPU Ollama.
+ChatGPT is installed on both hosts using the matching Debian asset in
+`assets/deb/`. MongoDB, Sunshine, the local Nuvio server, the Minion Flatpak,
 NTFS mount, and desktop Ethernet tuning are imported only by the desktop.
 
 Inspect the exclusions after updating inputs:

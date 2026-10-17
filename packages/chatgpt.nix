@@ -5,13 +5,24 @@
   dpkg,
 }:
 let
-  version = "26.930.21537";
+  sources = {
+    x86_64-linux = {
+      version = "26.930.21537";
+      src = ../assets/deb/chatgpt_amd64.deb;
+    };
+    aarch64-linux = {
+      version = "26.1007.21434";
+      src = ../assets/deb/chatgpt_arm64.deb;
+    };
+  };
+  source = sources.${stdenv.hostPlatform.system};
+  inherit (source) version;
 
   chatgpt-unwrapped = stdenv.mkDerivation {
     pname = "chatgpt-unwrapped";
     inherit version;
 
-    src = ../assets/deb/chatgpt_amd64.deb;
+    inherit (source) src;
 
     nativeBuildInputs = [ dpkg ];
 
@@ -83,7 +94,7 @@ buildFHSEnv {
     homepage = "https://openai.com/chatgpt/desktop/";
     license = lib.licenses.unfree;
     mainProgram = "chatgpt";
-    platforms = [ "x86_64-linux" ];
+    platforms = builtins.attrNames sources;
     sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
   };
 }

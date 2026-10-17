@@ -7,6 +7,11 @@ _: {
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = false;
 
+    # Swap Command (Super) and Control on the Apple keyboard.
+    boot.extraModprobeConfig = ''
+      options hid_apple swap_ctrl_cmd=1
+    '';
+
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
     services.libinput.enable = true;
@@ -19,6 +24,19 @@ _: {
         size = 8 * 1024;
       }
     ];
+
+    # Prefer compressed RAM swap before the SSD swap file.
+    zramSwap = {
+      enable = true;
+      algorithm = "zstd";
+      memoryPercent = 100;
+      priority = 100;
+    };
+    boot.kernel.sysctl = {
+      "vm.swappiness" = 150;
+      "vm.page-cluster" = 0;
+    };
+
     nix.settings = {
       max-jobs = 1;
       cores = 2;
