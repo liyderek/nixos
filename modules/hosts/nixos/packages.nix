@@ -5,7 +5,6 @@ _: {
       amf
       vmware-workstation
       (callPackage ../../../packages/iloader.nix { })
-      (callPackage ../../../packages/chatgpt.nix { })
     ];
   };
 }
