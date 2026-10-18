@@ -102,6 +102,7 @@ _: {
           vinegar
           stockfish
           moonlight-qt
+          chatgpt
         ]
         ++ lib.optional (inputs.claude-desktop.packages ? ${pkgs.stdenv.hostPlatform.system}) (
           inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop.override {
