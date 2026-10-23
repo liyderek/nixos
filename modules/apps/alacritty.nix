@@ -6,18 +6,18 @@ _: {
       settings = {
         font = {
           normal = {
-            family = "Terminus";
+            family = "Maple Mono NF";
             style = "Regular";
           };
           bold = {
-            family = "Terminus";
-            style = "Regular";
+            family = "Maple Mono NF";
+            style = "Bold";
           };
           italic = {
-            family = "Terminus";
-            style = "Regular";
+            family = "Maple Mono NF";
+            style = "Italic";
           };
-          size = 12;
+          size = 11;
         };
       };
     };

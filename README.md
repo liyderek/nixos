@@ -257,9 +257,12 @@ MongoDB Compass also check platform support.
 
 Desktop-only packages include Steam, Lutris, Wine/Winetricks, Gamescope,
 AppImage tools, Lunar/Badlion, Android Studio, Omnissa Horizon, Parsec, AMD AMF,
-ROCm Ollama, VMware, and the amd64 ChatGPT/iLoader packages. The MacBook uses
-CPU Ollama. MongoDB, Sunshine, the local Nuvio server, the Minion Flatpak,
-NTFS mount, and desktop Ethernet tuning are imported only by the desktop.
+ROCm Ollama, VMware, and the amd64 iLoader package. ChatGPT is shared by both
+hosts and uses the pinned `nixpkgs-master` package, which includes Linux support
+from [nixpkgs PR #551713](https://github.com/NixOS/nixpkgs/pull/551713).
+The MacBook uses CPU Ollama. MongoDB, Sunshine, the local Nuvio server, the
+Minion Flatpak, NTFS mount, and desktop Ethernet tuning are imported only by the
+desktop.
 
 Inspect the exclusions after updating inputs:
 

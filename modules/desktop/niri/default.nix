@@ -130,6 +130,12 @@ _: {
             clip-to-geometry true
            }
 
+           // Keep extension-created Chrome windows from taking focus.
+           window-rule {
+            match app-id="^google-chrome(-.*)?$"
+            open-focused false
+           }
+
            window-rule {
             match title="float_alacritty"
             open-floating true
@@ -152,10 +158,6 @@ _: {
 
            animations {
             off
-           }
-
-           debug {
-          honor-xdg-activation-with-invalid-serial
            }
     '';
 
