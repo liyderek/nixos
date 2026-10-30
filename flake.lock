@@ -456,6 +456,7 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-master": "nixpkgs-master",
         "noctalia": "noctalia",
+        "silent-sddm": "silent-sddm",
         "spicetify-nix": "spicetify-nix"
       }
     },
@@ -541,6 +542,26 @@
       "original": {
         "type": "file",
         "url": "https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg"
+      }
+    },
+    "silent-sddm": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791819358,
+        "narHash": "sha256-dFDDy25he3SkDOck7hG8AKY82SpnagW7o2sPJA6VBXQ=",
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "rev": "d477613b07ca13729af20cb4699b308ac7348d2f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "uiriansan",
+        "repo": "SilentSDDM",
+        "type": "github"
       }
     },
     "spicetify-nix": {

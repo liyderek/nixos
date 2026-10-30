@@ -8,6 +8,7 @@
       services
       home-manager
       apple-silicon
+      joycond
     ];
   };
   configurations.homeManager.nixosmacbook.module = {

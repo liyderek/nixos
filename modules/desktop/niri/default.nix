@@ -79,6 +79,14 @@ _: {
 
           ${config.my.displays.niri}
 
+          hotkey-overlay {
+            skip-at-startup
+          }
+
+          overview {
+            backdrop-color "#1e1e2e"
+          }
+
           spawn-at-startup "noctalia"
 
              binds {

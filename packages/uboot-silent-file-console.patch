@@ -1,0 +1,61 @@
+diff --git a/common/console.c b/common/console.c
+--- a/common/console.c
++++ b/common/console.c
+@@ -562,5 +562,9 @@
+-void fputc(int file, const char c)
+-{
+-	if ((unsigned int)file < MAX_FILES)
+-		console_putc(file, c);
+-}
++void fputc(int file, const char c)
++{
++	if (IS_ENABLED(CONFIG_SILENT_CONSOLE) && gd &&
++	    (gd->flags & GD_FLG_SILENT))
++		return;
++
++	if ((unsigned int)file < MAX_FILES)
++		console_putc(file, c);
++}
+@@ -568,5 +572,9 @@
+-void fputs(int file, const char *s)
+-{
+-	if ((unsigned int)file < MAX_FILES)
+-		console_puts(file, s);
+-}
++void fputs(int file, const char *s)
++{
++	if (IS_ENABLED(CONFIG_SILENT_CONSOLE) && gd &&
++	    (gd->flags & GD_FLG_SILENT))
++		return;
++
++	if ((unsigned int)file < MAX_FILES)
++		console_puts(file, s);
++}
+@@ -1020,12 +1028,15 @@
+-int console_announce_r(void)
+-{
+-#if !CONFIG_IS_ENABLED(PRE_CONSOLE_BUFFER)
+-	char buf[DISPLAY_OPTIONS_BANNER_LENGTH];
+-
+-	display_options_get_banner(false, buf, sizeof(buf));
+-
+-	console_puts_select(stdout, false, buf);
+-#endif
+-
+-	return 0;
+-}
++int console_announce_r(void)
++{
++#if !CONFIG_IS_ENABLED(PRE_CONSOLE_BUFFER)
++	char buf[DISPLAY_OPTIONS_BANNER_LENGTH];
++
++	if (IS_ENABLED(CONFIG_SILENT_CONSOLE) && (gd->flags & GD_FLG_SILENT))
++		return 0;
++
++	display_options_get_banner(false, buf, sizeof(buf));
++
++	console_puts_select(stdout, false, buf);
++#endif
++
++	return 0;
++}

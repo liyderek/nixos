@@ -4,7 +4,7 @@ _: {
       enable = true;
       options = {
         recolor = true;
-        # recolor-keephue = true;
+        recolor-keephue = true;
         selection-clipboard = "clipboard";
       };
       mappings = {
