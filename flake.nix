@@ -30,6 +30,11 @@
     };
     catppuccin.url = "github:catppuccin/nix";
 
+    silent-sddm = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
     spicetify-nix.url = "github:gerg-l/spicetify-nix";

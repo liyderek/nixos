@@ -40,7 +40,10 @@ modules/
       displays.nix             Monitor/workspace layouts
     nixosmacbook/
       config.nix               MacBook bootloader, Wi-Fi, and laptop settings
-      boot.nix                 Quiet U-Boot/systemd-boot and Mocha Plymouth splash
+      boot.nix                 Quiet U-Boot/systemd-boot and minimal Mocha splash
+      display-manager.nix      SilentSDDM greeter and MacBook wallpaper
+      brightness.nix           Asahi ambient-light sensor and Wluma auto-brightness
+      touchbar.nix             tiny-dfr stop/start around suspend/resume
       imports.nix              Select system/user features, including Apple Silicon
       nixosSystem.nix          Publish nixosConfigurations.nixosmacbook
       hardware-configuration.nix MacBook disks and platform
@@ -180,11 +183,17 @@ Both hosts use Catppuccin Mocha TTY colors and the 32-pixel Unicode Terminus
 console font (`ter-u32n`), including in the initrd. These settings live in
 `modules/base/console.nix`.
 
-The MacBook uses the Catppuccin Mocha Plymouth splash with no boot-menu delay,
-kernel console messages, or systemd status lines during normal boot.
-`modules/hosts/nixosmacbook/boot.nix` also disables Asahi's early console and
-builds a silent U-Boot so pre-Linux messages do not interrupt the splash.
-Boot diagnostics remain available in the journal after login.
+The MacBook uses a minimal Plymouth splash: a monochrome NixOS logo above a
+thin progress bar on a solid Catppuccin Mocha background. The theme is packaged
+in `packages/plymouth-nixos-mocha.nix` and suppresses normal boot messages,
+spinners, and percentage labels.
+
+`modules/hosts/nixosmacbook/boot.nix` hides boot-menu delays, disables Asahi's
+early console, removes U-Boot's logo/board information, and patches its banner
+and file-console output paths to respect silent mode. Initrd activation and
+display-manager output go to the journal. Plymouth retains its final frame
+while the greeter takes over, rather than restoring the text console. Boot
+diagnostics remain available in the journal after login.
 
 Rebuild each host and reboot to apply its boot and console settings.
 
@@ -241,6 +250,42 @@ graphics, DSP audio configuration, and speaker protection. The host also uses:
 - zstd-compressed RAM swap with an uncompressed capacity of 100% of RAM,
   an 8 GiB SSD swap file for overflow, and memory-conscious build/download
   concurrency for the 8 GiB MacBook.
+
+### Login screen and automatic brightness
+
+The MacBook uses SilentSDDM's `default` preset with
+`assets/wallpaper/kurzgesagt-galaxies.webp` on its lock and login views. The
+greeter runs under Weston on the main display's persistent DRM alias, leaving
+the separate Touch Bar display to tiny-dfr. Both Weston and the Qt greeter use
+the macOS cursor theme/package from Niri's Home Manager pointer settings, with
+an explicit cursor search path and a `default` alias for Qt/Wayland's fallback
+lookups in the minimal greeter environment. Greeter
+scaling and cursor size are configured in `display-manager.nix`. Niri is the
+default session, with automatic login disabled. The desktop continues to use greetd.
+
+Wluma starts with the MacBook's graphical session and reads the Asahi
+`aop-sensors-als` IIO ambient-light sensor. It controls only
+`/sys/class/backlight/apple-panel-bl`, without screen capture. Untrained lighting
+profiles start at 20/35/50/70/85/100% brightness from night through outdoors;
+existing learned profiles are preserved. Adjust brightness manually to teach
+Wluma your preferences in each lighting condition. Its logs are available with
+`journalctl --user -u wluma.service -b`.
+
+Noctalia's MacBook-only brightness override maps `eDP-1` explicitly to
+`apple-panel-bl`. This also routes the Touch Bar's screen-brightness buttons to
+the main screen: automatic device detection otherwise prefers the Touch Bar's
+separate raw backlight.
+
+### Touch Bar resume recovery
+
+The MacBook stops `tiny-dfr.service` synchronously before suspend, releasing its
+DRM/input devices before the kernel powers down the Touch Bar, then queues a
+fresh start after resume. Stopping has a five-second timeout; startup failures
+retry every five seconds while the devices become ready. A post-resume restart
+alone cannot prevent the observed DRM commit timeouts. If the driver is already
+stuck from an earlier sleep, reboot after applying the configuration, then check
+`journalctl -u tiny-dfr.service -u sleep-actions.service -b` after a sleep/wake
+cycle. The new suspend sequence still needs hardware sleep/wake verification.
 
 ### Trackpad motion and scrolling
 

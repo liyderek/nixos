@@ -9,6 +9,7 @@
       home-manager
       mongodb
       sunshine
+      joycond
     ];
   };
   configurations.homeManager.nixos.module = {
