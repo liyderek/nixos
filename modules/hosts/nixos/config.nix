@@ -16,6 +16,19 @@ _: {
       ];
     };
 
+    # About 16 GiB of logical compressed swap on the 32 GiB desktop.
+    # Higher priority keeps the existing 32 GiB /swapfile as overflow.
+    zramSwap = {
+      enable = true;
+      algorithm = "zstd";
+      memoryPercent = 50;
+      priority = 100;
+    };
+    boot.kernel.sysctl = {
+      "vm.swappiness" = 100; # Balance anonymous-page and file-cache reclaim.
+      "vm.page-cluster" = 0; # Avoid unnecessary read-ahead on compressed swap.
+    };
+
     virtualisation.vmware.host = {
       enable = true;
       package = pkgs.vmware-workstation.override { enableMacOSGuests = true; };
