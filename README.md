@@ -48,7 +48,7 @@ modules/
       home.nix                 MacBook Home Manager settings and state version
       displays.nix             Retina display and Touch Bar exclusion
   packages/                    Per-system custom package outputs
-  services/                    Auto-update, nix-ld, MongoDB, Sunshine
+  services/                    nix-ld, MongoDB, Sunshine
   flake-parts.nix              Module-registry integration
   home-manager.nix             Attach each host's user configuration to NixOS
   options.nix                  Deferred NixOS/Home Manager host configurations
@@ -153,9 +153,6 @@ The Nix-related shell aliases all call `nix.sh`:
 | `nix-clean` | `clean` |
 | `cdnix` | `edit` |
 | `nvim` | `run --refresh /home/derek/nvf-config#derek-neovim` |
-
-The 2 AM auto-update service also uses the wrapper's `upgrade` command with
-its own hostname.
 
 Niri uses its GNOME screen-sharing portal and Waybar's native Niri workspace
 module. `Super+F1` opens Niri's hotkey overlay; `Super+Escape` locks the session
@@ -330,6 +327,71 @@ Inspect the exclusions after updating inputs:
 nix eval --json \
   .#nixosConfigurations.nixosmacbook.config.home-manager.users.derek.my.excludedPackages
 ```
+
+## OpenClaw
+
+`modules/apps/openclaw.nix` configures OpenClaw through the first-party
+`nix-openclaw` Home Manager module. It installs the CLI and starts the local
+gateway at login, including its browser dashboard at <http://127.0.0.1:18789>.
+The gateway token is generated locally during activation.
+
+OpenClaw also manages a private Tailscale Serve HTTPS route while the gateway
+runs. On the desktop, open <https://nixos.tail6e150d.ts.net/> from a device on
+your tailnet; the MacBook uses <https://nixosmacbook.tail6e150d.ts.net/> after
+rebuilding there. Tailscale identity authenticates browser connections, while
+the local gateway retains token authentication. The NixOS configuration grants
+`derek` Tailscale operator access so the user service can manage its Serve route.
+
+The agent uses `openai/gpt-6-sol`, high reasoning effort, the OpenClaw runtime,
+and local tools. Its identity and instructions are Nix-managed in
+`~/.openclaw/workspace`; project files elsewhere in your home directory are
+accessible using their absolute paths. Runtime credentials and sessions are
+stored under `~/.openclaw/` on each machine.
+
+Sign in to your ChatGPT subscription on each host:
+
+```sh
+openclaw models auth login --provider openai
+```
+
+Run `openclaw tui` for the terminal UI or `openclaw dashboard` for the browser
+interface. Inspect the gateway with `systemctl --user status openclaw-gateway`.
+Change managed settings in `modules/apps/openclaw.nix` and rebuild the host.
+
+### OpenClaw integrations
+
+`modules/apps/openclaw-integrations.nix` configures GitHub through `gh`, Google
+Workspace through `gog`, a visible agent-only Chromium profile, the Obsidian
+vault at `~/Documents/Obsidian Vault`, and Brave web search. The desktop also
+runs the Discord bot; keeping it on one gateway avoids duplicate bot replies
+from both hosts. DMs and commands are restricted to Derek's Discord account.
+
+Install [claw to your Discord account](https://discord.com/oauth2/authorize?client_id=1566203251257245696&integration_type=1&scope=applications.commands)
+with **Add to My Apps**, then use `/jarvis` and fill its `input` option. The command
+works in server channels, DMs, and group DMs where Discord permits user-installed
+apps, with replies visible to everyone in the conversation. A pinned Nix patch to
+the Discord plugin admits only this command when the sender explicitly matches
+the command, owner, and DM
+allowlists. Other server/group-DM messages remain disabled. The plugin's build
+checks exercise native command authorization for each context and rejected users.
+
+Runtime secret files live in `~/.config/openclaw/secrets/`: `discord-bot-token`
+on the desktop, `brave-api-key`, `google-oauth-client.json`, and the locally
+generated `google-keyring-password`. GitHub and Google OAuth sessions remain
+in their tools' user-owned credential stores.
+
+Authorize accounts on each host with:
+
+```sh
+gh auth login --hostname github.com --git-protocol https --web
+gog auth credentials ~/.config/openclaw/secrets/google-oauth-client.json
+gog auth add derekli21870@gmail.com --services gmail,calendar,drive,docs,sheets
+```
+
+The `gog` wrapper supplies the account and local file-keyring password to both
+interactive commands and the gateway. To use Obsidian's official CLI, enable
+Settings → General → Command line interface in Obsidian and keep its app running;
+direct Markdown access to the vault also works.
 
 ## Checks and updates
 

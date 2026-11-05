@@ -10,6 +10,25 @@ _: {
         select = "underline";
       };
       settings.editor.indent-guides.render = true;
+      settings.keys.normal.space.r = {
+        r = [
+          ":write"
+          ":sh hxct run \"%{buffer_name}\" --window 2>&1 || true"
+        ];
+        p = ":open \"%sh{hxct receive-problem --prompt --path-only}\"";
+        n = "rename_symbol"; # Space r previously renamed symbols.
+      };
+      settings.keys.normal.space.t = {
+        a = [
+          ":write"
+          ":sh hxct add \"%{buffer_name}\""
+        ];
+        l = ":sh hxct list \"%{buffer_name}\"";
+        c = [
+          ":write"
+          ":sh hxct receive \"%{buffer_name}\""
+        ];
+      };
 
       languages = {
         language = [
@@ -17,6 +36,10 @@ _: {
             name = "nix";
             auto-format = true;
             formatter.command = "${pkgs.nixfmt}/bin/nixfmt";
+          }
+          {
+            name = "latex";
+            language-servers = [ "texlab" ];
           }
           {
             name = "svelte";
@@ -48,6 +71,7 @@ _: {
         ];
 
         language-server = {
+          texlab.command = "${pkgs.texlab}/bin/texlab";
           svelte-language-server = {
             command = "${pkgs.svelte-language-server}/bin/svelteserver";
             args = [ "--stdio" ];
@@ -74,6 +98,11 @@ _: {
     };
 
     home.packages = with pkgs; [
+      (pkgs.writeShellScriptBin "hxct" ''
+        export PATH="${pkgs.alacritty}/bin:${pkgs.fuzzel}/bin:$PATH"
+        exec ${pkgs.python3}/bin/python3 ${../../packages/hxct.py} "$@"
+      '')
+      texlab
       svelte-language-server
       typescript-language-server
       typescript

@@ -11,7 +11,6 @@ _: {
         boot = {
           loader.timeout = 0;
           consoleLogLevel = 0;
-          initrd.verbose = false;
           plymouth = {
             enable = true;
             showDelay = 0;

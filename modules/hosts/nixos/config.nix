@@ -1,5 +1,5 @@
 _: {
-  configurations.nixos.nixos.module = { pkgs, ... }: {
+  configurations.nixos.nixos.module = { config, lib, pkgs, ... }: {
     networking.hostName = "nixos";
     networking.firewall = {
       allowedTCPPorts = [
@@ -33,6 +33,18 @@ _: {
       enable = true;
       package = pkgs.vmware-workstation.override { enableMacOSGuests = true; };
     };
+
+    # The kernel module aggregator now reads a .ko.cer for every external
+    # module. VMware installs unsigned modules without those files.
+    boot.extraModulePackages = lib.mkForce [
+      (config.boot.kernelPackages.vmware.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          for module in "$out"/lib/modules/*/misc/{vmmon,vmnet}.ko; do
+            touch "$module.cer"
+          done
+        '';
+      }))
+    ];
 
     security.pki.certificateFiles = [ ./rootCA.pem ];
     services.flatpak.packages = [ "gg.minion.Minion" ];

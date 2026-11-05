@@ -1,0 +1,19 @@
+--- a/dist/.setup/provider-B9drnVwM.mjs
++++ b/dist/.setup/provider-B9drnVwM.mjs
+@@ -2170,2 +2170,3 @@
++import { isOwnerPersonalJarvis } from "./personal-jarvis.mjs";
+ //#region extensions/discord/src/monitor/native-command-auth.ts
+ function resolveDiscordNativePolicyReader(params) {
+@@ -4065,1 +4066,2 @@
+-	const { guildInfo, channelConfig } = channelAccess;
++	const { guildInfo, channelConfig } = channelAccess;
++	const personalJarvis = isOwnerPersonalJarvis({ interaction, cfg, discordConfig });
+@@ -4084,1 +4086,1 @@
+-	if (channelAccess.channelDenial && !canBypassConfiguredAcpGuildGuards()) return reject(channelAccess.channelDenial === "disabled" ? "This channel is disabled." : "This channel is not allowed.");
++	if (channelAccess.channelDenial && !personalJarvis && !canBypassConfiguredAcpGuildGuards()) return reject(channelAccess.channelDenial === "disabled" ? "This channel is disabled." : "This channel is not allowed.");
+@@ -4136,1 +4138,1 @@
+-	if (!groupDmAccess.allowed) return reject(groupDmAccess.reason === "disabled" ? "Discord group DMs are disabled." : "This group DM is not allowed.");
++	if (!groupDmAccess.allowed && !personalJarvis) return reject(groupDmAccess.reason === "disabled" ? "Discord group DMs are disabled." : "This group DM is not allowed.");
+@@ -4138,1 +4140,1 @@
+-		commandAuthorized = await resolveDiscordGuildNativeCommandAuthorized({
++		commandAuthorized = personalJarvis || await resolveDiscordGuildNativeCommandAuthorized({
