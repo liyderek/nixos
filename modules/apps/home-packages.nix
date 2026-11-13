@@ -85,7 +85,18 @@ _: {
           prettier
           waypipe
           jetbrains.rust-rover
-          anki
+          # nixpkgs Anki's offline uv wheel set omits hatchling's tomlkit dependency.
+          (anki.overrideAttrs (old: {
+            nativeBuildInputs = old.nativeBuildInputs ++ [ pkg-config ];
+            buildInputs = old.buildInputs ++ [ zstd ];
+            env = old.env // {
+              UV_FIND_LINKS = runCommand "anki-uv-wheels-with-tomlkit" { } ''
+                mkdir -p $out
+                ln -s ${old.env.UV_FIND_LINKS}/*.whl $out/
+                ln -s ${python3Packages.tomlkit.dist}/*.whl $out/
+              '';
+            };
+          }))
           obsidian
           boilr
           basedpyright
@@ -105,6 +116,7 @@ _: {
           chatgpt
           kdePackages.kdenlive
           octaveFull
+          jujutsu
         ]
         ++ lib.optional (inputs.claude-desktop.packages ? ${pkgs.stdenv.hostPlatform.system}) (
           inputs.claude-desktop.packages.${pkgs.stdenv.hostPlatform.system}.claude-desktop.override {

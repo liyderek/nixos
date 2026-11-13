@@ -17,6 +17,9 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    helix-plugins.url = "github:maxschipper/helix-plugins-nix";
+    helix-plugins.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-openclaw.url = "github:openclaw/nix-openclaw";
 
     nixos-apple-silicon = {

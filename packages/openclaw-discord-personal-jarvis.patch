@@ -1,5 +1,5 @@
---- a/dist/.setup/provider-B9drnVwM.mjs
-+++ b/dist/.setup/provider-B9drnVwM.mjs
+--- a/dist/.setup/provider-CI_OLfvz.mjs
++++ b/dist/.setup/provider-CI_OLfvz.mjs
 @@ -2170,2 +2170,3 @@
 +import { isOwnerPersonalJarvis } from "./personal-jarvis.mjs";
  //#region extensions/discord/src/monitor/native-command-auth.ts
