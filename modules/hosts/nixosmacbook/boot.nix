@@ -68,7 +68,10 @@ _: {
         nixpkgs.overlays = [
           (_final: prev: {
             uboot-asahi = prev.uboot-asahi.overrideAttrs (old: {
-              patches = (old.patches or [ ]) ++ [ ../../../packages/uboot-silent-file-console.patch ];
+              patches =
+                (old.patches or [ ])
+                ++ [ ../../../packages/uboot-silent-file-console.patch ]
+                ++ lib.optional (config.boot.loader.timeout != 0) ../../../packages/uboot-visible-efi-console.patch;
               postPatch = (old.postPatch or "") + ''
                 substituteInPlace configs/apple_m1_defconfig \
                   --replace-fail 'CONFIG_BOOTDELAY=1' 'CONFIG_BOOTDELAY=0'

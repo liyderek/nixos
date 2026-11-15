@@ -1,7 +1,7 @@
 _: {
   configurations.homeManager.nixos.module = {
     my.displays = {
-      niri = ''
+      niriMonitorDefaults = ''
         output "DP-1" {
           mode "2560x1440@179.952"
           position x=0 y=0
@@ -11,6 +11,8 @@ _: {
           position x=2560 y=0
           scale 1.5
         }
+      '';
+      niri = ''
         output "eDP-1" { off; }
 
         workspace "fun" { open-on-output "DP-1"; }

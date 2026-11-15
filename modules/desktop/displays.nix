@@ -6,6 +6,11 @@ _: {
         default = "";
         description = "Host-specific Niri outputs and workspace placement.";
       };
+      niriMonitorDefaults = lib.mkOption {
+        type = lib.types.lines;
+        default = "";
+        description = "Initial contents of the writable Niri monitor.kdl managed by nwg-displays.";
+      };
       swayOutputs = lib.mkOption {
         type = lib.types.attrsOf (lib.types.attrsOf lib.types.str);
         default = { };

@@ -164,6 +164,31 @@ Niri uses its GNOME screen-sharing portal and Waybar's native Niri workspace
 module. `Super+F1` opens Niri's hotkey overlay; `Super+Escape` locks the session
 with Swaylock.
 
+### Graphical display settings
+
+Run `nwg-displays` to adjust Niri monitor layout, scaling, resolution, and
+rotation. The main Niri config includes the writable
+`~/.config/niri/monitor.kdl`; GUI changes apply immediately and survive rebuilds.
+Home Manager creates that file only when it does not already exist, using the
+host's `my.displays.niriMonitorDefaults`. Workspace assignments and the MacBook's
+Touch Bar exclusion remain in the declarative host configuration.
+
+### PDF reading and text-to-speech
+
+Both hosts install Okular with Qt TextToSpeech support and explicitly enable
+the socket-activated Speech Dispatcher service in `modules/apps/okular.nix`.
+Piper's **Lessac High** US-English neural voice is the default. Its model and
+configuration are pinned in the Nix store, so synthesis works offline after
+installation. The inference-only Piper package omits training dependencies;
+speech rate and volume controls are supported. The stock synthesizers remain
+available for selecting other voices or languages.
+In Okular, use **Tools → Speak Whole Document** or **Speak Current Page**, or
+select text and choose **Speak Text** from its context menu.
+
+After rebuilding, restart `speech-dispatcher.service` in your user session and
+reopen Okular to refresh its voice list. Test the new default with
+`spd-say -w "This is the Piper neural voice."`.
+
 ### Boot splash and virtual consoles
 
 Both hosts use Catppuccin Mocha TTY colors and the 32-pixel Unicode Terminus
@@ -262,6 +287,34 @@ Noctalia's MacBook-only brightness override maps `eDP-1` explicitly to
 `apple-panel-bl`. This also routes the Touch Bar's screen-brightness buttons to
 the main screen: automatic device detection otherwise prefers the Touch Bar's
 separate raw backlight.
+
+### Experimental USB-C display output
+
+The MacBook has a `fairydust` boot-menu specialisation for testing native USB-C
+DisplayPort Alt Mode, including USB-C-to-HDMI adapters. It pins Asahi's Fairydust
+commit `ce9f2eba72c061a50b2d790450e90af3439d8c24`, retains the two subsequent
+stock-kernel fixes, and identifies itself as `7.1.13-fairydust` in `uname -r`.
+Debug information is zlib-compressed to limit kernel build disk usage.
+Fairydust is selected as the default after every bootloader installation; the
+normal `NixOS` entry provides the stock Asahi kernel.
+
+Asahi's stage-2 m1n1 loads its device tree **before** the boot menu. Therefore
+both kernel entries share the Fairydust device-tree payload at
+`/boot/m1n1/boot.bin`; the stock payload is also installed as
+`/boot/m1n1/boot-stock.bin`. This is not a fully isolated device-tree experiment.
+To restore the stock device tree from a working Linux session, run
+`sudo install -m644 /boot/m1n1/boot-stock.bin /boot/m1n1/boot.bin` and choose the
+normal kernel entry on the next boot.
+
+After rebuilding for boot, reboot; `NixOS (fairydust)` is selected by default in
+the five-second boot menu. When this menu is enabled, U-Boot's EFI hand-off
+re-enables console output so the menu is visible. Connect the adapter to
+**USB-C Left-front**, the left-side port closer to the trackpad. Starting with
+the display connected may work better than hot-plugging. Check `uname -r` and
+`niri msg outputs`, then use
+`nwg-displays` to arrange the screen. Actual display output still needs a
+hardware test; Fairydust remains experimental and can have hot-plug, resume,
+colour, and display-mode quirks.
 
 ### Touch Bar resume recovery
 
