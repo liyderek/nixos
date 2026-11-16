@@ -5,6 +5,8 @@
     self.lfs = true;
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+    # VMware's NAT binary from this revision loads correctly; newer builds crash.
+    nixpkgs-vmware.url = "github:nixos/nixpkgs/6510408d147d8c5e6d76043e899e9251756f6a75";
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
@@ -14,6 +16,11 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    helix-plugins.url = "github:maxschipper/helix-plugins-nix";
+    helix-plugins.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-openclaw.url = "github:openclaw/nix-openclaw";
 
     nixos-apple-silicon = {
       url = "github:nix-community/nixos-apple-silicon";

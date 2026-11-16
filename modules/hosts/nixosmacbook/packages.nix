@@ -4,7 +4,6 @@ _: {
       brightnessctl
       widevine-cdm
       asahi-bless
-      (callPackage ../../../packages/chatgpt.nix { })
     ];
 
     # The ARM CDM is adapted using Asahi's widevine-installer fixup.

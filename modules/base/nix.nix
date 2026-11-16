@@ -2,6 +2,8 @@ _: {
   flake.modules.nixos.base = {
     # unfree
     nixpkgs.config.allowUnfree = true;
+    # GTK2 remains required by legacy packages; scope the exception to gtk+.
+    nixpkgs.config.problems.handlers."gtk+".broken = "warn";
 
     # flakes
     nix.settings = {

@@ -46,10 +46,6 @@ _: {
 
         # Enable "Silent Boot"
         consoleLogLevel = 3;
-        initrd = {
-          verbose = false;
-          # systemd.enable = true;
-        };
         kernelParams = [
           "quiet"
           "loglevel=3"

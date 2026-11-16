@@ -176,8 +176,23 @@ _: {
               clip-to-geometry true
              }
 
+             // Keep new Chrome windows from taking focus.
+             // Leave honor-xdg-activation-with-invalid-serial disabled:
+             // open-focused does not block activation of existing windows.
+             window-rule {
+              match app-id="^google-chrome(-.*)?$"
+              open-focused false
+             }
+
              window-rule {
               match title="float_alacritty"
+              open-floating true
+              clip-to-geometry true
+             }
+
+             // Keep the testcase dashboard above the editor without fullscreening.
+             window-rule {
+              match app-id="^hxct-testcases$"
               open-floating true
               clip-to-geometry true
              }
@@ -198,10 +213,6 @@ _: {
 
              animations {
               ${lib.optionalString (!config.my.niri.animations.enable) "off"}
-             }
-
-             debug {
-            honor-xdg-activation-with-invalid-serial
              }
       '';
 
