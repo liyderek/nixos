@@ -1,8 +1,10 @@
 _: {
   configurations.homeManager.nixosmacbook.module = {
     my.displays = {
-      niri = ''
+      niriMonitorDefaults = ''
         output "eDP-1" { scale 1.75; }
+      '';
+      niri = ''
         // tiny-dfr owns the Touch Bar; it is not a desktop monitor.
         output "DSI-1" { off; }
 

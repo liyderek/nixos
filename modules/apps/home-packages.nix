@@ -113,6 +113,7 @@ _: {
           vinegar
           stockfish
           moonlight-qt
+          octaveFull
           chatgpt
           kdePackages.kdenlive
           octaveFull

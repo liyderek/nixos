@@ -6,6 +6,9 @@ _: {
       pkgs,
       ...
     }:
+    let
+      monitorDefaults = pkgs.writeText "niri-monitor-defaults.kdl" config.my.displays.niriMonitorDefaults;
+    in
     {
       options.my.niri.animations.enable = lib.mkEnableOption "Niri animations";
       options.my.niri.pointerSettings = lib.mkOption {
@@ -30,6 +33,7 @@ _: {
 
       config.home.packages = with pkgs; [
         niri
+        nwg-displays
         swaybg
         networkmanagerapplet
         wl-clip-persist
@@ -42,6 +46,17 @@ _: {
         glib
         wayland
       ];
+
+      # Seed the GUI-owned file before the new config symlink triggers a reload.
+      # Existing monitor settings are intentionally preserved across rebuilds.
+      config.home.activation.niriMonitorConfig =
+        lib.hm.dag.entryBetween [ "linkGeneration" ] [ "writeBoundary" ]
+          ''
+            monitor=${lib.escapeShellArg "${config.xdg.configHome}/niri/monitor.kdl"}
+            if [[ ! -e "$monitor" && ! -L "$monitor" ]]; then
+              run ${pkgs.coreutils}/bin/install -Dm644 ${monitorDefaults} "$monitor"
+            fi
+          '';
 
       config.xdg.configFile."niri/config.kdl".text = ''
              prefer-no-csd
@@ -77,6 +92,7 @@ _: {
               }
              }
 
+          include "monitor.kdl"
           ${config.my.displays.niri}
 
           hotkey-overlay {

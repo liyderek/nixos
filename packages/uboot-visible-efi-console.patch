@@ -1,0 +1,29 @@
+diff --git a/lib/efi_loader/efi_console.c b/lib/efi_loader/efi_console.c
+--- a/lib/efi_loader/efi_console.c
++++ b/lib/efi_loader/efi_console.c
+@@ -20,6 +20,9 @@
+ #include <stdio_dev.h>
+ #include <video_console.h>
+ #include <linux/delay.h>
+-
++#include <asm/global_data.h>
++
++DECLARE_GLOBAL_DATA_PTR;
++
+ #define EFI_COUT_MODE_2 2
+ #define EFI_MAX_COUT_MODE 3
+@@ -1317,5 +1320,9 @@
+-efi_status_t efi_console_register(void)
+-{
+-	efi_status_t r;
+-	struct efi_device_path *dp;
+-
++efi_status_t efi_console_register(void)
++{
++	efi_status_t r;
++	struct efi_device_path *dp;
++
++	/* U-Boot's startup silence must not hide the EFI boot menu. */
++	if (IS_ENABLED(CONFIG_SILENT_CONSOLE))
++		gd->flags &= ~GD_FLG_SILENT;
++
