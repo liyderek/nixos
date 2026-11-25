@@ -235,6 +235,27 @@
         "type": "github"
       }
     },
+    "helix-dap-vars": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789857332,
+        "narHash": "sha256-SdEXxeGhVPerdiiiI+bk3NCvrCxaCDJqQZzm86+RtQI=",
+        "owner": "georgesleen",
+        "repo": "helix-test-debug",
+        "rev": "55c1f79326c57535245d2c36e29852be4e306ae4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "georgesleen",
+        "repo": "helix-test-debug",
+        "rev": "55c1f79326c57535245d2c36e29852be4e306ae4",
+        "type": "github"
+      }
+    },
     "helix-plugins": {
       "inputs": {
         "nixpkgs": [
@@ -623,6 +644,7 @@
         "claude-desktop": "claude-desktop",
         "compose2nix": "compose2nix",
         "flake-parts": "flake-parts",
+        "helix-dap-vars": "helix-dap-vars",
         "helix-plugins": "helix-plugins",
         "home-manager": "home-manager",
         "import-tree": "import-tree",

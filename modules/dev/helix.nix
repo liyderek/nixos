@@ -37,17 +37,27 @@ _: {
         o = "file_explorer"; # Keep the built-in explorer displaced from Space e.
       };
       settings.keys.normal.space.r = {
+        d = [
+          ":write"
+          ":debug-start binary-io %sh{hxdbg-io build \"%{buffer_name}\"} %sh{hxdbg-io tty \"%{buffer_name}\"}"
+        ];
+        g = [
+          ":write"
+          ":sh hxdbg-gdb \"%{buffer_name}\" 2>&1 || true"
+        ];
         r = [
           ":write"
           ":sh hxct run \"%{buffer_name}\" --window 2>&1 || true"
         ];
         p = ":open \"%sh{hxct receive-problem --prompt --path-only}\"";
+        P = ":open \"%sh{hxct new --prompt --path-only --misc}\"";
         n = "rename_symbol"; # Space r previously renamed symbols.
       };
+      settings.keys.normal.space.G.V = ":dap-variables"; # Keep the built-in Space G v popup.
       settings.keys.normal.space.t = {
         a = [
           ":write"
-          ":sh hxct add \"%{buffer_name}\""
+          ":sh hxct add \"%{buffer_name}\" --window"
         ];
         l = ":sh hxct list \"%{buffer_name}\"";
         c = [
@@ -61,11 +71,41 @@ _: {
           {
             name = "cpp";
             auto-format = true;
+            indent = {
+              tab-width = 2;
+              unit = "  ";
+            };
             formatter = {
               command = "${pkgs.llvmPackages_19.clang-tools}/bin/clang-format";
-              args = [
-                "--style=file"
-                "--assume-filename=%{buffer_name}"
+              args = [ "--style={BasedOnStyle: Microsoft, IndentWidth: 2, UseTab: Never}" ];
+            };
+            debugger = {
+              name = "lldb-dap";
+              transport = "stdio";
+              command = "${inputs.helix-dap-vars.packages.${pkgs.stdenv.hostPlatform.system}.helix-dap-vars}/bin/helix-dap-vars";
+              args = [ "--" "${pkgs.llvmPackages_22.lldb}/bin/lldb-dap" ];
+              templates = [
+                {
+                  name = "binary";
+                  request = "launch";
+                  completion = [ { name = "binary"; completion = "filename"; } ];
+                  args = { program = "{0}"; console = "internalConsole"; };
+                }
+                {
+                  name = "binary-io";
+                  request = "launch";
+                  completion = [
+                    { name = "binary"; completion = "filename"; }
+                    { name = "terminal"; completion = "filename"; }
+                  ];
+                  args = { program = "{0}"; stdio = [ "{1}" "{1}" "{1}" ]; };
+                }
+                {
+                  name = "attach";
+                  request = "attach";
+                  completion = [ "pid" ];
+                  args = { pid = "{0}"; console = "internalConsole"; };
+                }
               ];
             };
           }
@@ -134,6 +174,16 @@ _: {
       "constructor" = "pink"
     '';
 
+    xdg.configFile."helix/cogs/dap-vars.scm".source = inputs.helix-dap-vars + "/dap-vars.scm";
+    # The existing helix.scm is empty; take ownership only of this command file.
+    xdg.configFile."helix/helix.scm" = {
+      force = true;
+      text = ''
+        (require "cogs/dap-vars.scm")
+        (provide dap-variables)
+      '';
+    };
+
     xdg.configFile."helix/init.scm".text = ''
       (require "scopeline/scopeline.scm")
       (require "forest/forest.scm")
@@ -150,6 +200,25 @@ _: {
     };
 
     home.packages = with pkgs; [
+      inputs.helix-dap-vars.packages.${pkgs.stdenv.hostPlatform.system}.helix-dap-vars
+      (pkgs.writeShellScriptBin "hxdbg" ''
+        export PATH="${pkgs.libnotify}/bin:$PATH"
+        exec ${pkgs.bash}/bin/bash ${../../packages/hxdbg.sh} ${pkgs.stdenv.cc}/bin/c++ "$@"
+      '')
+      (pkgs.writeShellScriptBin "hxdbg-gdb" ''
+        export PATH="${pkgs.libnotify}/bin:$PATH"
+        program=$(${pkgs.bash}/bin/bash ${../../packages/hxdbg.sh} ${pkgs.stdenv.cc}/bin/c++ "$1") || exit $?
+        exec ${pkgs.alacritty}/bin/alacritty --title "Helix C++ Debug" --hold -e ${pkgs.gdb}/bin/gdb -q -ex "break main" -ex run --args "$program"
+      '')
+      (pkgs.writeShellScriptBin "hxdbg-io" ''
+        export PATH="${pkgs.libnotify}/bin:$PATH"
+        export HXDBG_BASH=${pkgs.bash}/bin/bash
+        export HXDBG_HELPER=${../../packages/hxdbg.sh}
+        export HXDBG_COMPILER=${pkgs.stdenv.cc}/bin/c++
+        export HXDBG_ALACRITTY=${pkgs.alacritty}/bin/alacritty
+        export HXDBG_PYTHON=${pkgs.python3}/bin/python3
+        exec ${pkgs.python3}/bin/python3 ${../../packages/hxdbg_io.py} "$@"
+      '')
       (pkgs.writeShellScriptBin "hxct" ''
         export PATH="${pkgs.alacritty}/bin:${pkgs.fuzzel}/bin:$PATH"
         exec ${pkgs.python3}/bin/python3 ${../../packages/hxct.py} "$@"
