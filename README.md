@@ -43,6 +43,7 @@ modules/
       boot.nix                 Quiet U-Boot/systemd-boot and minimal Mocha splash
       display-manager.nix      SilentSDDM greeter and MacBook wallpaper
       brightness.nix           Asahi ambient-light sensor and Wluma auto-brightness
+      power.nix                AC-connect wake and closed-lid external-display use
       touchbar.nix             tiny-dfr stop/start around suspend/resume
       imports.nix              Select system/user features, including Apple Silicon
       nixosSystem.nix          Publish nixosConfigurations.nixosmacbook
@@ -169,6 +170,15 @@ rotation. The main Niri config includes the writable
 Home Manager creates that file only when it does not already exist, using the
 host's `my.displays.niriMonitorDefaults`. Workspace assignments and the MacBook's
 Touch Bar exclusion remain in the declarative host configuration.
+
+On the MacBook, connecting AC power requests a system wake and turns Niri's
+monitors back on. `packages/macsmc-ac-wake/` bridges the SMC power-supply
+notification to an s2idle wake event; it is built for the kernel selected by each
+specialisation. `modules/hosts/nixosmacbook/power.nix` keeps that wake source
+enabled and also turns monitors on after a resume while plugged in. Closing the
+lid on AC power or while docked leaves the external display usable; an undocked
+lid close on battery still suspends. The session remains locked if it was locked
+before sleep. Waking from a complete shutdown is a separate firmware feature.
 
 ### PDF reading and text-to-speech
 

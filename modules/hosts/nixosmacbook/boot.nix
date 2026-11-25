@@ -21,7 +21,7 @@ _: {
         boot = {
           loader.timeout = 0;
           consoleLogLevel = 0;
-          initrd.verbose = false;
+          # initrd.verbose = false;
           initrd.systemd = {
             settings.Manager = {
               DefaultStandardOutput = "journal";
