@@ -7,18 +7,28 @@ After rebuilding, in a saved C/C++/Rust/Python/Java solution buffer:
 
 | Keys | Action |
 | --- | --- |
-| Space t a | Save and create empty input/output testcase files |
+| Space t a | Save and open a floating two-pane testcase editor |
 | Space t l | List testcase file paths and numbers |
 | Space r r | Save, compile, and open a floating Alacritty testcase dashboard |
 | Space r p | Receive a C++ problem, prompt for its relative path, then open it in Helix |
+| Space r P | Create a C++ problem from your template without a browser page, then open it |
 | Space r n | Rename symbol (Helix's former Space r action) |
 | Space t c | Save and import samples into the current solution |
 
 Testcase names match CompetiTest.nvim's default multi-file naming:
-`task_input0.txt`, `task_output0.txt`, etc. Open and edit these in Helix with
-`:open task_input0.txt` and `:open task_output0.txt` or the file picker.
+`task_input0.txt`, `task_output0.txt`, etc. In the floating editor, type multiline
+input and expected output, switch fields with Tab, save with Ctrl-S, or cancel
+with Esc. Open existing cases in Helix with `:open task_input0.txt` and
+`:open task_output0.txt` or the file picker.
 Delete a numbered case with `hxct delete SOURCE NUMBER` in a terminal.
 Deletion cannot be undone.
+
+To start a problem without a page, press Space r P, enter a `.cpp` filename
+(for example `shop`), and press Enter. It creates the file under
+`~/Documents/codeforces/misc`, copies `misc/template.cpp`, fills the problem
+name and date, and opens the result in Helix. Esc cancels; existing files are
+never overwritten. From a terminal, use `hxct new --name shop --misc`. Without
+`--misc`, the CLI still creates files relative to the current directory.
 
 For problem import, install the Competitive Companion browser extension.
 Press Space r p to start the listener, then press the extension button on the
@@ -43,7 +53,7 @@ the SSH case, `hxct` times out. The graphical filename prompt requires a
 Wayland session; for headless use `hxct receive-problem --name codeforces/2283/F.cpp`.
 It accepts both IPv4 and IPv6 localhost; rejected payloads print a reason.
 A successful import creates the chosen `.cpp` file under Helix's working
-directory, using `~/Documents/codeforces/template.cpp` if present, and adds
+directory, using `~/Documents/codeforces/misc/template.cpp`, and adds
 the samples alongside it.
 Don't press Space r p a second time while the first listener is active:
 both attempts use port 27121.
@@ -51,7 +61,8 @@ Space t c instead appends samples to an existing source file. Both commands
 listen at loopback port 27121 for 60 seconds; from a terminal use
 `hxct receive-problem --port 27122 --timeout 120` for another port.
 
-In a terminal: `hxct add SOURCE --input '2 3' --output '5'`,
+In a terminal: `hxct add SOURCE --tui` opens the editor in that terminal;
+`hxct add SOURCE --input '2 3' --output '5'` adds a case non-interactively,
 `hxct run SOURCE --diff`, `hxct run SOURCE --exact` (byte comparison),
 or `hxct run SOURCE --timeout 2`. Space r r opens a separate floating
 Alacritty window with testcase statuses and output/expected/input/errors panes.

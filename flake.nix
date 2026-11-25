@@ -20,6 +20,9 @@
     helix-plugins.url = "github:maxschipper/helix-plugins-nix";
     helix-plugins.inputs.nixpkgs.follows = "nixpkgs";
 
+    helix-dap-vars.url = "github:georgesleen/helix-test-debug/55c1f79326c57535245d2c36e29852be4e306ae4";
+    helix-dap-vars.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-openclaw.url = "github:openclaw/nix-openclaw";
 
     nixos-apple-silicon = {

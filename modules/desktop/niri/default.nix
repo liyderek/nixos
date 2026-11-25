@@ -99,7 +99,7 @@ _: {
               Mod+F { maximize-column; }
               Mod+Shift+F { fullscreen-window; }
               Mod+Space { toggle-window-floating; }
-              Mod+Shift+D { spawn "discord" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
+              Mod+Shift+D { spawn "bash" "-c" "discord --enable-features=UseOzonePlatform --ozone-platform=wayland; :"; }
               Mod+Shift+S { spawn "spotify" "--enable-features=UseOzonePlatform" "--ozone-platform=wayland"; }
               Mod+Escape { spawn "swaylock" "--daemonize"; }
               Mod+Alt+S repeat=false allow-inhibiting=false hotkey-overlay-title="Toggle sleep screen" { spawn "niri-sleep-screen"; }
@@ -177,6 +177,12 @@ _: {
              // Keep the testcase dashboard above the editor without fullscreening.
              window-rule {
               match app-id="^hxct-testcases$"
+              open-floating true
+              clip-to-geometry true
+             }
+
+             window-rule {
+              match app-id="^hxdbg-io$"
               open-floating true
               clip-to-geometry true
              }
