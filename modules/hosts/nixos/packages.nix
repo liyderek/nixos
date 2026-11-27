@@ -4,6 +4,7 @@ _: {
       sunshine
       amf
       vmware-workstation
+      seanime
       (callPackage ../../../packages/iloader.nix { })
     ];
   };

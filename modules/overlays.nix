@@ -9,12 +9,6 @@
     openldap = prev.openldap.overrideAttrs (_: {
       doCheck = false;
     });
-    # Correct the opencode 2.2.5 Bun dependency hash in nixpkgs.
-    opencode = prev.opencode.overrideAttrs (old: {
-      node_modules = old.node_modules.overrideAttrs (_: {
-        outputHash = "sha256-prx9dX7kUvs/E3zopkaPk5LXh3xJAy5sZeum/W8L7cA=";
-      });
-    });
   };
   flake.modules.nixos.base.nixpkgs.overlays = [ config.flake.overlays.default ];
 }

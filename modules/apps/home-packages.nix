@@ -85,7 +85,7 @@ _: {
           prettier
           waypipe
           jetbrains.rust-rover
-          # nixpkgs Anki's offline uv wheel set omits hatchling's tomlkit dependency.
+          # Add tomlkit when absent from nixpkgs Anki's offline uv wheel set.
           (anki.overrideAttrs (old: {
             nativeBuildInputs = old.nativeBuildInputs ++ [ pkg-config ];
             buildInputs = old.buildInputs ++ [ zstd ];
@@ -93,7 +93,11 @@ _: {
               UV_FIND_LINKS = runCommand "anki-uv-wheels-with-tomlkit" { } ''
                 mkdir -p $out
                 ln -s ${old.env.UV_FIND_LINKS}/*.whl $out/
-                ln -s ${python3Packages.tomlkit.dist}/*.whl $out/
+                for wheel in ${python3Packages.tomlkit.dist}/*.whl; do
+                  if [ ! -e "$out/$(basename "$wheel")" ]; then
+                    ln -s "$wheel" "$out/"
+                  fi
+                done
               '';
             };
           }))
